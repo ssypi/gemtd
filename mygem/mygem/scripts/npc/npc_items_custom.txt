@@ -1,0 +1,140 @@
+"DOTAAbilities"
+{
+    "item_place_building"
+    {
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
+        "BaseClass" "item_datadriven"
+        "ID" "953"
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "Target"    "POINT"
+                "ScriptFile"    "scripts/vscripts/items.lua"
+                "Function"  "Build"
+            }
+        }
+
+    }
+
+    "item_placerock"
+    {
+        //"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
+        "BaseClass" "item_place_building_free" //this lets us actually place a building
+        "ID" "24532"
+
+        "ItemCost"            "90"
+        "ItemShopTags"          "consumable"
+        "ItemQuality"          "consumable"
+        "ItemStackable"          "1"
+        "ItemShareability"        "ITEM_FULLY_SHAREABLE_STACKING"
+        "ItemPermanent"          "0"
+        "ItemInitialCharges"      "1"
+        "SideShop"            "1"
+
+        //Ability Info
+        "AbilityName" "item_placerock"
+        "AbilityCastRange" "1024"
+        "AbilityCastPoint" "0.0"
+        "BuildingName" "npc_dota_goodguys_tower1_top"
+        "PreventBlocking" "1" //Yes, we want to alter the grid
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type" "FIELD_INTEGER"
+                "alignment_grid_size" "3" //This building is 4x4 on the gridnav
+            }
+            "02"
+            {
+                "var_type" "FIELD_INTEGER"
+                "squares_per_side" "3" //This field makes no sense, all it does is scale alignment_grid_size
+            }
+            "03"
+            {
+                "var_type" "FIELD_INTEGER"
+                "building_size" "1" //hopefully 4 grid units, in dota units.
+            }
+        }
+    }
+
+	//=================================================================================================================
+	// Recipe: Arcane Boots
+	//=================================================================================================================
+	"item_recipe_arcane_boots2"
+	{
+		"ID"							"1005"
+
+		"BaseClass"						"item_recipe_arcane_boots"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_arcane_boots2"
+		"ItemRequirements"
+		{
+			"01"						"item_energy_booster;item_arcane_boots"
+		}
+	}
+	
+	//=================================================================================================================
+	// Arcane Boots II
+	//=================================================================================================================
+	"item_arcane_boots2"
+	{
+		"ID"							"1006"
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass"						"item_arcane_boots"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"55.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"25"
+		"ItemCost"						"2450"
+		"ItemShopTags"					"move_speed;boost_mana;mana_pool"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDisassembleRule"			"0"
+		"ItemAlertable"					"1"
+		"ItemAliases"					"mana;mb"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement"		"75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"500"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_radius"		"600"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_amount"		"250"
+			}
+		}
+	}
+}

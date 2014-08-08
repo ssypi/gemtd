@@ -1,0 +1,103 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"gem_destroy"
+    {
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "BaseClass" "ability_datadriven"
+        "Maxlevel" "1"
+        "OnSpellStart"
+        {
+            "RemoveUnit"
+            {
+                "Target" "CASTER"
+            }
+        }
+    }
+
+    "gem_keep"
+    {
+            "BaseClass" "ability_datadriven"
+            "Maxlevel" "1"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "AbilityCastPoint"				"0.0"
+        "AbilityCooldown"				"1"
+        "AbilityManaCost"				"0"
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                                "Target"    "CASTER"
+                                "ScriptFile"    "scripts/vscripts/abilities.lua"
+                                "Function"  "GemKeep"
+            }
+        }
+    }
+
+        "gem_delete"
+        {
+                "BaseClass" "ability_datadriven"
+                "Maxlevel" "1"
+            "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+            "AbilityCastPoint"				"0.0"
+            "AbilityCooldown"				"1"
+            "AbilityManaCost"				"0"
+
+            "OnSpellStart"
+            {
+                "RunScript"
+                {
+                                    "Target"    "CASTER"
+                                    "ScriptFile"    "scripts/vscripts/abilities.lua"
+                                    "Function"  "GemDelete"
+                }
+            }
+        }
+
+	//=================================================================================================================
+	// Templar Assassin: Refraction Holdout
+	//=================================================================================================================
+	"templar_assassin_refraction_holdout"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"17.0 17.0 17.0 17.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_absorb"				"200 300 400 500"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_damage"				"20 40 60 80"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"17.0 17.0 17.0 17.0"
+			}
+		}
+	}
+}
