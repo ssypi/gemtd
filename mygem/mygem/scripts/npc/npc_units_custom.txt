@@ -3,10 +3,29 @@
 {
 	"Version"	"1"
 
+    "npc_dude_spawner"
+    {
+        "BaseClass" "npc_dota_creature"
+        //"Model" "models/developmoent/invisiblebox.vmdl"
+        "Model" "models\effects\dust_00.vmdl"
+                "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+
+        "MinimapIcon"   ""
+        "vscripts"  "ai/spawner.lua"
+
+                "AbilityLayout" "4"
+        "ability1"  "spawner_basic"
+                "Ability2"					""
+                "Ability3"					""
+                "Ability4"					""
+
+    }
+
     "dude1"
     {
         "BaseClass" "npc_dota_creature"
-        "Model"						"models/props_gameplay/sheep01.mdl"
+        "Model"						"models/props_gameplay/sheep01.vmdl"
         "ModelScale"				"1.5"
         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
@@ -16,9 +35,101 @@
         "MovementSpeed"				"300"
         "MovementTurnRate"			"1"
 
+        "vscripts"  "ai/dude.lua"
+
         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
 
+    }
+
+    "gem_building_chipped_sapphire"
+    {
+            "BaseClass" "npc_dota_tower"
+            "Model" "models/buildings/building_racks_melee_reference.vmdl"
+            "SoundSet"					"Tower.Water"
+            "ModelScale" 				".5"
+            "RingRadius" "200" //approx 4x4
+            "StatusHealth" "50"
+            "StatusHealthRegen" "0"
+
+            "BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+
+            // Attack
+                    //----------------------------------------------------------------
+                    "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+                    "AttackDamageMin"			"100"		// Damage range min.
+                    "AttackDamageMax"			"120"		// Damage range max.
+                    "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+                    "AttackRate"				"1"			// Speed of attack.
+                    "AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+                    "AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+                    "AttackRange"				"700"		// Range within a target can be attacked.
+                    "ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
+                    "ProjectileSpeed"			"750"		// Speed of projectile.
+
+                    "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+                    "MovementSpeed"				"0"
+                    "MovementTurnRate"			"1.0"
+
+                    "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+                    "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+                    "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+                    "BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+
+                    "VisionDaytimeRange"		"2000"
+                    "VisionNighttimeRange"		"2000"
+
+            "AbilityLayout" "4"
+            "Ability1"					"gem_keep"
+            "Ability2"					""
+            "Ability3"					""
+            "Ability4"					""
+    }
+
+    "gem_building_chipped_ruby"
+    {
+        "BaseClass" "npc_dota_tower"
+        "Model" "models/buildings/building_racks_ranged_reference.vmdl"
+        "SoundSet"					"Tower.Fire"
+
+        "ModelScale" 				".5"
+        "RingRadius" "200" //approx 4x4
+        "StatusHealth" "50"
+        "StatusHealthRegen" "0"
+
+        // Attack
+        //----------------------------------------------------------------
+        "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageMin"			"100"		// Damage range min.
+        "AttackDamageMax"			"120"		// Damage range max.
+        "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"				"1"			// Speed of attack.
+        "AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+        "AttackRange"				"700"		// Range within a target can be attacked.
+        "ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
+        "ProjectileSpeed"			"750"		// Speed of projectile.
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "MovementSpeed"				"0"
+        "MovementTurnRate"			"1.0"
+
+        "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+        "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+        "BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+
+        "VisionDaytimeRange"		"2000"
+        "VisionNighttimeRange"		"2000"
+
+
+        "AbilityLayout" "4"
+        "Ability1"					"gem_keep"
+        "Ability2"					"tower_invulnerability"
+        "Ability3"					""
+        "Ability4"					""
     }
 
     "npc_mygem_building_rock"

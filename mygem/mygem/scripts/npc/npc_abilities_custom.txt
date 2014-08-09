@@ -57,6 +57,78 @@
             }
         }
 
+
+        "spawner_basic"
+        {
+            "BaseClass"	"ability_datadriven"
+            "AbilityName"	"spawner_basic"
+            "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+
+            //"AbilityTextureName"	"jakiro_liquid_fire"
+
+            "OnCreated"
+            {
+                "ApplyModifier"
+                {
+                    "Target"	"CASTER"
+                    "ModifierName"	"modifier_custom_spawner"
+                }
+            }
+
+            "Modifiers"
+            {
+                "modifier_custom_spawner"
+                {
+                    "Passive" "1"
+                    "States"
+                    {
+                        "MODIFIER_STATE_NO_HEALTH_BAR"      "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_INVULNERABLE"       "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_UNSELECTABLE"      "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_MAGIC_IMMUNE"      "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_ATTACK_IMMUNE"      "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_OUT_OF_GAME"      "MODIFIER_STATE_VALUE_ENABLED"
+                    }
+                }
+            }
+        }
+
+        "tower_invulnerability"
+        {
+            "BaseClass"	"ability_datadriven"
+            "AbilityName"	"tower_invulnerability"
+            "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+
+            //"AbilityTextureName"	"jakiro_liquid_fire"
+
+            "OnCreated"
+            {
+            	"ApplyModifier"
+            	{
+            		"Target"	"CASTER"
+            		"ModifierName"	"modifier_custom_invulnerability"
+            	}
+            }
+
+            "Modifiers"
+            {
+            	"modifier_custom_invulnerability"
+            	{
+            		"Passive" "1"
+
+            		"States"
+            		{
+            		    "MODIFIER_STATE_NO_HEALTH_BAR"      "MODIFIER_STATE_VALUE_ENABLED"
+            		    "MODIFIER_STATE_INVULNERABLE"       "MODIFIER_STATE_VALUE_ENABLED"
+            		    //"MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+            		    //"MODIFIER_STATE_UNSELECTABLE"      "MODIFIER_STATE_VALUE_ENABLED"
+            		}
+            	}
+            }
+        }
+
 	//=================================================================================================================
 	// Templar Assassin: Refraction Holdout
 	//=================================================================================================================

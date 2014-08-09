@@ -1,5 +1,8 @@
 require("util")
+require("states/build")
+require("states/running")
 require("mygem")
+
 
 -- This chunk of code forces the reloading of all modules when we reload script.
 if g_reloadState == nil then
@@ -30,16 +33,26 @@ function Precache( context )
             PrecacheResource( "particle", "*.vpcf", context )
             PrecacheResource( "particle_folder", "particles/folder", context )
     ]]
+    PrecacheResource("model", "models/developmoent/invisiblebox.vmdl", context)
+    PrecacheResource("model", "models/props_gameplay/sheep01.vmdl", context)
+    PrecacheResource("model", "models/effects/dust_00.vmdl", context)
     PrecacheUnitByNameSync("npc_dota_building", context)
+    PrecacheUnitByNameSync("npc_dota_goodguys_tower1_top", context)
+    PrecacheUnitByNameSync("npc_dota_badguys_tower1_top", context)
+    PrecacheUnitByNameSync("item_place_building_free", context)
     PrecacheUnitByNameSync("npc_dota_hero_viper", context)
     PrecacheResource("model", "models/buildings/building_plain_reference.vmdl", context)
-    PrecacheResource("particle", "particles/status_fx/status_effect_building_placement_good.vpcf", context)
-    PrecacheResource("particle", "particles/status_fx/status_effect_building_placement_bad.vpcf", context)
-    PrecacheResource("particle", "status_effect_building_placement_good.vpcf", context)
-    PrecacheResource("particle", "status_effect_building_placement_bad.vpcf", context)
-    PrecacheResource("particle", "*.projected_square.vpcf", context)
+
+    PrecacheResource("model", "models/buildings/building_racks_ranged_reference.vmdl", context)
+    PrecacheResource("model", "models/buildings/building_racks_melee_reference.vmdl", context)
+    --PrecacheResource("particle", "particles/status_fx/status_effect_building_placement_good.vpcf", context)
+    --PrecacheResource("particle", "particles/status_fx/status_effect_building_placement_bad.vpcf", context)
+    --PrecacheResource("particle", "status_effect_building_placement_good.vpcf", context)
+    --PrecacheResource("particle", "status_effect_building_placement_bad.vpcf", context)
+    --PrecacheResource("particle", "*.projected_square.vpcf", context)
     PrecacheResource("particle_folder", "particles/ui_mouseactions", context)
     PrecacheResource("particle_folder", "particles/status_fx", context)
+    PrecacheResource("particle_folder", "particles/base_attacks", context)
     --PrecacheResource("particle", "particles/units/heroes/hero_viper.vpcf", context)
     --PrecacheResource("soundfile", "scripts/game_sounds_heroes/game_sounds_viper.txt", context)
 end
@@ -57,7 +70,16 @@ function MyGemGameMode:InitGameMode()
     game:SetThink( "OnThink", self, "GlobalThink", 2 )
     --game:ClientLoadGridNav()
 
+    GameRules:SetPreGameTime(10.0)
+
+    game:SetTopBarTeamValuesOverride(false)
+    game:SetTopBarTeamValuesVisible(false)
+    game:SetTopBarTeamValue(10, 10)
+    game:SetTopBarTeamValuesVisible(true)
+    game:SetTopBarTeamValue(10, 10)
+
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(MyGemGameMode, 'AutoAssignPlayer'), self)
+
 end
 
 
@@ -71,12 +93,12 @@ function Dynamic_Wrap(mt, name)
     end
 end
 
+
 -- Evaluate the state of the game
 function MyGemGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         if not MyGemGameMode.started then
-            MyGemGameMode.started = true
-            SetThink("GameLoop", self, "gameLoop")
+            MyGemGameMode:Start()
         end
 		--print( "Template addon script is running." )
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
