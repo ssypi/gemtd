@@ -81,6 +81,7 @@ end
 function InitPlayer(player)
     player.state = Build
     player.state.Begin(player)
+    player.gems = {}
     table.insert(MyGemGameMode.players, player)
 end
 

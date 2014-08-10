@@ -40,6 +40,13 @@ function IsEveryoneDead()
     return true
 end
 
+function SpawnMazeTester()
+    print("Spaning Maze tester")
+    local spawnPoint = thisEntity:GetOrigin()
+    local tester = CreateUnitByName("maze_tester", spawnPoint, true, nil, nil, DOTA_TEAM_GOODGUYS)
+    tester:GetPrivateScriptScope():DispatchOnPostSpawn(waypoints)
+end
+
 function SpawnDude()
     print("Spawning dude, current count: " .. #dudes)
     local spawnPoint = thisEntity:GetOrigin()

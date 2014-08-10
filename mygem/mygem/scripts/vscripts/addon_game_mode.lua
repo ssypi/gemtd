@@ -37,11 +37,14 @@ function Precache( context )
     PrecacheResource("model", "models/props_gameplay/sheep01.vmdl", context)
     PrecacheResource("model", "models/effects/dust_00.vmdl", context)
     PrecacheUnitByNameSync("npc_dota_building", context)
+    PrecacheUnitByNameSync("maze_tester", context)
     PrecacheUnitByNameSync("npc_dota_goodguys_tower1_top", context)
     PrecacheUnitByNameSync("npc_dota_badguys_tower1_top", context)
     PrecacheUnitByNameSync("item_place_building_free", context)
     PrecacheUnitByNameSync("npc_dota_hero_viper", context)
     PrecacheResource("model", "models/buildings/building_plain_reference.vmdl", context)
+    PrecacheResource("model", "models/player.vmdl", context)
+    PrecacheResource("model", "models/courier/donkey_unicorn/donkey_unicorn.vmdl", context)
 
     PrecacheResource("model", "models/buildings/building_racks_ranged_reference.vmdl", context)
     PrecacheResource("model", "models/buildings/building_racks_melee_reference.vmdl", context)
@@ -69,6 +72,16 @@ function MyGemGameMode:InitGameMode()
     local game = GameRules:GetGameModeEntity()
     game:SetThink( "OnThink", self, "GlobalThink", 2 )
     --game:ClientLoadGridNav()
+
+    Convars:RegisterCommand('tester', function(name)
+    -- Check if the server ran it
+        local player = Convars:GetCommandClient()
+        print(player)
+        print(player:GetAssignedHero())
+        if player.spawner ~= nil then
+            player.spawner:GetPrivateScriptScope():SpawnMazeTester()
+        end
+    end, '', 0)
 
     GameRules:SetPreGameTime(10.0)
 

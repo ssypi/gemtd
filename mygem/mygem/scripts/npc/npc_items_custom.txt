@@ -66,8 +66,8 @@
 
         "OnSpellStart"
         {
-            "SpendCharge"
-            {}
+            //"SpendCharge"
+            //{}
             "RunScript"
             {
                 "Target"    "POINT"

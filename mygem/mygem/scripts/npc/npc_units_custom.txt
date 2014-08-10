@@ -22,6 +22,32 @@
 
     }
 
+
+    "maze_tester"
+    {
+        "BaseClass" "npc_dota_creature"
+        //"Model"						"models/player.vmdl"
+        "Model"						"models/courier/donkey_unicorn/donkey_unicorn.vmdl"
+        //"Model"						"models/heroes/viper/viper.vmdl"
+        "ModelScale"				"2"
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
+        "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+        "MovementSpeed"				"800"
+        "MovementTurnRate"			"1"
+
+        "vscripts"  "ai/dude.lua"
+
+        "AbilityLayout" "1"
+        "Ability1"					"super_speed"
+
+        "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+        "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+
+    }
+
     "dude1"
     {
         "BaseClass" "npc_dota_creature"
@@ -48,11 +74,11 @@
             "Model" "models/buildings/building_racks_melee_reference.vmdl"
             "SoundSet"					"Tower.Water"
             "ModelScale" 				".5"
-            "RingRadius" "200" //approx 4x4
+            "RingRadius" "100" //approx 4x4
             "StatusHealth" "50"
             "StatusHealthRegen" "0"
 
-            "BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+            "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
 
             // Attack
                     //----------------------------------------------------------------
@@ -75,14 +101,14 @@
                     "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
                     "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-                    "BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+                    "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
 
                     "VisionDaytimeRange"		"2000"
                     "VisionNighttimeRange"		"2000"
 
             "AbilityLayout" "4"
-            "Ability1"					"gem_keep"
-            "Ability2"					""
+            "Ability1"					""
+            "Ability2"					"tower_invulnerability"
             "Ability3"					""
             "Ability4"					""
     }
@@ -94,7 +120,7 @@
         "SoundSet"					"Tower.Fire"
 
         "ModelScale" 				".5"
-        "RingRadius" "200" //approx 4x4
+        "RingRadius" "100" //approx 4x4
         "StatusHealth" "50"
         "StatusHealthRegen" "0"
 
@@ -119,36 +145,45 @@
         "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-        "BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
 
         "VisionDaytimeRange"		"2000"
         "VisionNighttimeRange"		"2000"
 
 
         "AbilityLayout" "4"
-        "Ability1"					"gem_keep"
+        "Ability1"					""
         "Ability2"					"tower_invulnerability"
         "Ability3"					""
         "Ability4"					""
+    }
+
+    "gem_dummy"
+    {
+        "BaseClass" "npc_dota_creature"
+        "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
     }
 
     "npc_mygem_building_rock"
     {
         "BaseClass" "npc_dota_building"
         "Model" "models/buildings/building_plain_reference.vmdl"
-        "RingRadius" "200" //approx 4x4
+        "RingRadius" "100" //approx 4x4
         "StatusHealth" "50"
         "StatusHealthRegen" "0"
 
-        "BoundsHullName"			"DOTA_HULL_SIZE_TOWER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
 
         //"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-	 "AbilityLayout" "4"
-        "Ability1"					"gem_keep"			// Ability 1
-        "Ability2"					"gem_delete"			// Ability 2
-        "Ability3"					"gem_destroy"			// Ability 3
-        "Ability4"					""			// Ability 4
+	 "AbilityLayout" "1"
+        "Ability1"					"gem_destroy"			// Ability 1
+        //"Ability2"					""			// Ability 2
+        //"Ability3"					""			// Ability 3
+        //"Ability4"					""			// Ability 4
 
     }
 

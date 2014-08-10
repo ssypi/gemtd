@@ -1,5 +1,7 @@
 local ABILITY_BUILD = "gem_build"
 local ITEM_BUILD = "item_place_building"
+local GEMS_PER_ROUND = 5
+
 
 
 if Build == nil then
@@ -19,6 +21,19 @@ function Build.Update(player)
         player.done = false
         Build.done = true
     end
+
+    if #player.gems >= GEMS_PER_ROUND then
+        for i=1, #player.gems do
+            local gem = player.gems[i]
+            if not gem:HasAbility("gem_keep") then
+                gem:AddAbility("gem_keep")
+                gem:FindAbilityByName("gem_keep"):SetLevel(1)
+            end
+        end
+        RemoveBuildAbility(player)
+    end
+
+
     -- TODO: check if we're done and need to change state
 end
 

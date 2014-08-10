@@ -5,9 +5,10 @@
 
 	"gem_destroy"
     {
-        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
         "BaseClass" "ability_datadriven"
         "Maxlevel" "1"
+        "ItemBaseLevel" "1"
         "OnSpellStart"
         {
             "RemoveUnit"
@@ -21,7 +22,8 @@
     {
             "BaseClass" "ability_datadriven"
             "Maxlevel" "1"
-        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+            "ItemBaseLevel" "1"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
         "AbilityCastPoint"				"0.0"
         "AbilityCooldown"				"1"
         "AbilityManaCost"				"0"
@@ -57,6 +59,47 @@
             }
         }
 
+        "super_speed"
+        {
+            "BaseClass"	"ability_datadriven"
+            "AbilityName"	"super_speed"
+            "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+
+                        "OnCreated"
+                        {
+                            "ApplyModifier"
+                            {
+                                "Target"	"CASTER"
+                                "ModifierName"	"modifier_super_speed"
+                            }
+
+                            "ApplyModifier"
+                            {
+                                "Target"    "CASTER"
+                                "ModifierName"  "modifier_bloodseeker_thirst_speed"
+                            }
+                        }
+
+                        "Modifiers"
+                        {
+                            "modifier_super_speed"
+                            {
+                                "Passive" "1"
+                                "States"
+                                {
+                                    "MODIFIER_STATE_NO_HEALTH_BAR"      "MODIFIER_STATE_VALUE_ENABLED"
+                                    "MODIFIER_STATE_UNSELECTABLE"      "MODIFIER_STATE_VALUE_ENABLED"
+                                    "MODIFIER_STATE_MAGIC_IMMUNE"      "MODIFIER_STATE_VALUE_ENABLED"
+                                    "MODIFIER_STATE_ATTACK_IMMUNE"      "MODIFIER_STATE_VALUE_ENABLED"
+                                }
+
+                                "Properties"
+                                {
+                                    "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"  "1000"
+                                }
+                            }
+                        }
+        }
 
         "spawner_basic"
         {
@@ -84,9 +127,9 @@
                     {
                         "MODIFIER_STATE_NO_HEALTH_BAR"      "MODIFIER_STATE_VALUE_ENABLED"
                         "MODIFIER_STATE_INVULNERABLE"       "MODIFIER_STATE_VALUE_ENABLED"
+                        "MODIFIER_STATE_INVISIBLE"          "MODIFIER_STATE_VALUE_ENABLED"
                         "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
                         "MODIFIER_STATE_UNSELECTABLE"      "MODIFIER_STATE_VALUE_ENABLED"
-                        "MODIFIER_STATE_MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_ENABLED"
                         "MODIFIER_STATE_MAGIC_IMMUNE"      "MODIFIER_STATE_VALUE_ENABLED"
                         "MODIFIER_STATE_ATTACK_IMMUNE"      "MODIFIER_STATE_VALUE_ENABLED"
                         "MODIFIER_STATE_OUT_OF_GAME"      "MODIFIER_STATE_VALUE_ENABLED"
