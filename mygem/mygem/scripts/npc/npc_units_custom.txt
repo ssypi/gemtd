@@ -50,18 +50,23 @@
 
     "dude1"
     {
-        "BaseClass" "npc_dota_creature"
+        "BaseClass" "npc_dota_creep"
         "Model"						"models/props_gameplay/sheep01.vmdl"
         "ModelScale"				"1.5"
         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 
+        "StatusHealth" "400"
+
+
         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
         "MovementSpeed"				"300"
         "MovementTurnRate"			"1"
 
         "vscripts"  "ai/dude.lua"
+
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
@@ -83,8 +88,8 @@
             // Attack
                     //----------------------------------------------------------------
                     "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-                    "AttackDamageMin"			"100"		// Damage range min.
-                    "AttackDamageMax"			"120"		// Damage range max.
+                    "AttackDamageMin"			"50"		// Damage range min.
+                    "AttackDamageMax"			"90"		// Damage range max.
                     "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
                     "AttackRate"				"1"			// Speed of attack.
                     "AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
@@ -127,8 +132,8 @@
         // Attack
         //----------------------------------------------------------------
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-        "AttackDamageMin"			"100"		// Damage range min.
-        "AttackDamageMax"			"120"		// Damage range max.
+        "AttackDamageMin"			"60"		// Damage range min.
+        "AttackDamageMax"			"100"		// Damage range max.
         "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
         "AttackRate"				"1"			// Speed of attack.
         "AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
@@ -154,7 +159,7 @@
         "AbilityLayout" "4"
         "Ability1"					""
         "Ability2"					"tower_invulnerability"
-        "Ability3"					""
+        "Ability3"					"attack_splash"
         "Ability4"					""
     }
 

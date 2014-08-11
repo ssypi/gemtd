@@ -3,6 +3,114 @@
 {
 	"Version"		"1"
 
+	"gem_attack_splash"
+	{
+	    "BaseClass" "ability_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+	    "Modifiers"
+	    {
+	        "modifier_splash"
+	        {
+	            "Passive"   "1"
+
+	            "OnAttackLanded"
+	            {
+	                "Damage"
+                	{
+                	    "Target"
+                	    {
+                	        "Center"    "TARGET"
+                	        "Radius"    "500"
+                	        "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                	        "Types" "DOTA_UNIT_TARGET_ALL"
+                	    }
+                	    "Type"  "DAMAGE_TYPE_PURE"
+                	    "Damage"    "150"
+                	}
+
+                	"AttachEffect"
+                    {
+                        "Target" "CASTER"
+                        "EffectName" "particles\econ\generic\generic_buff_1\generic_buff_1.vpcf"
+                        "EffectAttachType" "follow_overhead"
+                        "EffectLifeDurationScale" "1"
+                        "EffectColorA" "255 0 0"
+                    }
+	            }
+	        }
+	    }
+	}
+
+	"attack_splash"
+	{
+	        "ID"    "833"
+	        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	        "BaseClass" "life_stealer_feast"
+	        //"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		    //"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+
+		    //		"AbilityCastRange"				"450"
+
+
+	        //"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+	        //"Maxlevel" "1"
+            //"ItemBaseLevel" "1"
+	    "IsHidden"                              "0"
+	    "Passive"                               "1"
+
+	    "OnProjectileHit"
+	    {
+	                                                "ApplyModifier"
+                                                    {
+                                                            "ModifierName" "tower_freezing_splash_slow"
+                                                            "Target"
+                                                            {
+                                                                    "Center" "TARGET"
+                                                                    "Radius" "500"
+                                                                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                                                                    "Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+                                                            }
+                                                    }
+
+	        "Damage"
+	        {
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Radius"    "500"
+	                "Teams" "DOTA_UNIT_TARGET_TEAM_BOTH"
+	                "Types" "DOTA_UNIT_TARGET_ALL"
+	            }
+	            "Type"  "DAMAGE_TYPE_PURE"
+	            "Damage"    "100"
+	        }
+
+	        "FireEffect"
+            {
+                "Target" "TARGET"
+                "EffectName" "lich_frost_nova"
+                "EffectAttachType" "follow_origin"
+                "EffectRadius" "500"
+            }
+        }
+
+        "Modifiers"
+        {
+        	"tower_freezing_splash_slow"
+        	{
+        		"Passive" "1"
+
+        		"Properties"
+        		{
+        		    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-50"
+        		    "MODIFIER_PROPERTY_MODEL_SCALE" "0.5"
+        		}
+        	}
+        }
+	}
+
 	"gem_destroy"
     {
         "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"

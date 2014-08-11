@@ -54,6 +54,7 @@ function Precache( context )
     --PrecacheResource("particle", "status_effect_building_placement_bad.vpcf", context)
     --PrecacheResource("particle", "*.projected_square.vpcf", context)
     PrecacheResource("particle_folder", "particles/ui_mouseactions", context)
+    PrecacheResource("particle_folder", "particles/econ/generic/generic_buff_1", context)
     PrecacheResource("particle_folder", "particles/status_fx", context)
     PrecacheResource("particle_folder", "particles/base_attacks", context)
     --PrecacheResource("particle", "particles/units/heroes/hero_viper.vpcf", context)
@@ -84,12 +85,12 @@ function MyGemGameMode:InitGameMode()
     end, '', 0)
 
     GameRules:SetPreGameTime(10.0)
-
-    game:SetTopBarTeamValuesOverride(false)
+    GameRules:SetGoldPerTick(0)
+    game:SetFogOfWarDisabled(true)
     game:SetTopBarTeamValuesVisible(false)
-    game:SetTopBarTeamValue(10, 10)
-    game:SetTopBarTeamValuesVisible(true)
-    game:SetTopBarTeamValue(10, 10)
+    game:SetAlwaysShowPlayerInventory(true)
+--    game:SetGoldSoundDisabled(true)
+
 
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(MyGemGameMode, 'AutoAssignPlayer'), self)
 

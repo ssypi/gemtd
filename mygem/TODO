@@ -12,3 +12,16 @@
  Friendly unit that runs through your maze
  at very fast speed
  for checking if you have holes
+
+-Error sound/display when unable to place gem
+
+-Stuck detection
+ Save position and compare to
+ pos x seconds ago
+  reset timer when stunned
+  OR
+  check pos on every tick
+  if different then save current time
+  else if currenttime - last time > threshold
+  then unit is stuck
+    -> phase/teleport to end/
