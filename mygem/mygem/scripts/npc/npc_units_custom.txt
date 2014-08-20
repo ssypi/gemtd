@@ -6,22 +6,22 @@
     "npc_dude_spawner"
     {
         "BaseClass" "npc_dota_creature"
-        //"Model" "models/developmoent/invisiblebox.vmdl"
-        "Model" "models\effects\dust_00.vmdl"
-                "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+        "Model" "models/development/invisiblebox.vmdl"
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 
         "MinimapIcon"   ""
         "vscripts"  "ai/spawner.lua"
 
-                "AbilityLayout" "4"
+        "AbilityLayout" "4"
         "ability1"  "spawner_basic"
-                "Ability2"					""
-                "Ability3"					""
-                "Ability4"					""
+        "Ability2"					""
+        "Ability3"					""
+        "Ability4"					""
 
     }
-
 
     "maze_tester"
     {
@@ -45,71 +45,270 @@
 
         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
-
     }
 
-    "dude1"
+    "gem_dummy"
     {
-        "BaseClass" "npc_dota_creep"
-        "Model"						"models/props_gameplay/sheep01.vmdl"
-        "ModelScale"				"1.5"
-        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
-
+        "BaseClass" "npc_dota_creature"
         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 
-        "StatusHealth" "400"
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+    }
+
+    "npc_mygem_building_rock"
+    {
+        "BaseClass" "npc_dota_building"
+        "Model" "models/buildings/building_plain_reference.vmdl"
+        "RingRadius" "100" //approx 4x4
+        "StatusHealth" "50"
+        "StatusHealthRegen" "0"
+
+        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+
+        //"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+    	"AbilityLayout" "1"
+            "Ability1"					"gem_delete"			// Ability 1
+            //"Ability2"					""			// Ability 2
+            //"Ability3"					""			// Ability 3
+            //"Ability4"					""			// Ability 4
+    }
 
 
-        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-        "MovementSpeed"				"300"
-        "MovementTurnRate"			"1"
+    // ------------------------------------------------------------------------
+    // TOWERS
+    // ------------------------------------------------------------------------
 
-        "vscripts"  "ai/dude.lua"
+    // --------------------------------
+    // Special
+    // --------------------------------
 
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+    "gem_special_malachite"
+    {
+        "BaseClass" "npc_dota_tower"
 
-        "VisionDaytimeRange"		"9000"		// Range of vision during day light.
-        "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+        "Model" "models/buildings/building_racks_melee_reference.vmdl"
+        "ModelScale" 				".8"
+        "SoundSet"					"Tower.Water"
 
+        "RingRadius" "100"
+        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+
+        "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageMin"			"50"
+        "AttackDamageMax"			"90"
+        "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"				"0.5"
+        "AttackAnimationPoint"		"0"
+        "AttackAcquisitionRange"	"700"
+        "AttackRange"				"800"
+
+        "ProjectileModel"   "particles/base_attacks/generic_projectile.vpcf"
+        "ProjectileSpeed"   "800"
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "MovementSpeed"				"0"
+        "MovementTurnRate"			"1.0"
+
+        "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+        "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+        "VisionDaytimeRange"		"2000"
+        "VisionNighttimeRange"		"2000"
+
+        "AbilityLayout" "4"
+        "Ability1"					"tower_invulnerability"
+        "Ability2"					"malachite_multishot"
+        "Ability3"					""
+        "Ability4"					""
+
+        // Custom
+        "CombinedFrom"
+        {
+            "gem_building_chipped_opal"         "1"
+            "gem_building_chipped_emerald"      "1"
+            "gem_building_chipped_aquamarine"   "1"
+        }
+        "AttacksAir"     "GEM_ATTACK_BOTH"
+    }
+
+
+    // --------------------------------
+    // Chipped
+    // --------------------------------
+
+    "gem_building_chipped_aquamarine"
+    {
+        "BaseClass" "npc_dota_tower"
+
+        "Model" "models/buildings/building_racks_melee_reference.vmdl"
+        "ModelScale" 				".5"
+        "SoundSet"					"Tower.Water"
+
+        "RingRadius" "100"
+        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+
+        "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageMin"			"50"
+        "AttackDamageMax"			"90"
+        "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"				"1"
+        "AttackAnimationPoint"		"0"
+        "AttackAcquisitionRange"	"700"
+        "AttackRange"				"700"
+
+        "ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+        "ProjectileSpeed"			"750"
+
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "MovementSpeed"				"0"
+        "MovementTurnRate"			"1.0"
+
+        "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+        "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+        "VisionDaytimeRange"		"2000"
+        "VisionNighttimeRange"		"2000"
+
+        "AbilityLayout" "4"
+        "Ability1"					"tower_invulnerability"
+        "Ability2"					""
+        "Ability3"					""
+        "Ability4"					""
+
+        // Custom
+        "CombinesTo"    "gem_special_malachite"
+        "AttacksAir"     "GEM_ATTACK_BOTH"
+    }
+
+    "gem_building_chipped_emerald"
+    {
+        "BaseClass" "npc_dota_tower"
+
+        "Model" "models/buildings/building_racks_melee_reference.vmdl"
+        "ModelScale" 				".5"
+        "SoundSet"					"Tower.Water"
+
+        "RingRadius" "100"
+        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+
+        "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageMin"			"50"
+        "AttackDamageMax"			"90"
+        "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"				"1"
+        "AttackAnimationPoint"		"0"
+        "AttackAcquisitionRange"	"700"
+        "AttackRange"				"700"
+
+        "ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+        "ProjectileSpeed"			"750"
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "MovementSpeed"				"0"
+        "MovementTurnRate"			"1.0"
+
+        "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+        "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+        "VisionDaytimeRange"		"2000"
+        "VisionNighttimeRange"		"2000"
+
+        "AbilityLayout" "4"
+        "Ability1"					"tower_invulnerability"
+        "Ability2"					""
+        "Ability3"					""
+        "Ability4"					""
+
+        // Custom
+        "CombinesTo"    "gem_special_malachite"
+        "AttacksAir"     "GEM_ATTACK_BOTH"
+    }
+
+    "gem_building_chipped_opal"
+    {
+        "BaseClass" "npc_dota_tower"
+
+        "Model" "models/buildings/building_racks_melee_reference.vmdl"
+        "ModelScale" 				".5"
+        "SoundSet"					"Tower.Water"
+
+        "RingRadius" "100"
+        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+
+        "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageMin"			"50"
+        "AttackDamageMax"			"90"
+        "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"				"1"
+        "AttackAnimationPoint"		"0"
+        "AttackAcquisitionRange"	"700"
+        "AttackRange"				"700"
+
+        "ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+        "ProjectileSpeed"			"750"
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "MovementSpeed"				"0"
+        "MovementTurnRate"			"1.0"
+
+        "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+        "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+        "VisionDaytimeRange"		"2000"
+        "VisionNighttimeRange"		"2000"
+
+        "AbilityLayout" "4"
+        "Ability1"					"tower_invulnerability"
+        "Ability2"					""
+        "Ability3"					""
+        "Ability4"					""
+
+        // Custom
+        "CombinesTo"    "gem_special_malachite"
+        "AttacksAir"     "GEM_ATTACK_BOTH"
     }
 
     "gem_building_chipped_sapphire"
     {
             "BaseClass" "npc_dota_tower"
-            "Model" "models/buildings/building_racks_melee_reference.vmdl"
-            "SoundSet"					"Tower.Water"
-            "ModelScale" 				".5"
-            "RingRadius" "100" //approx 4x4
-            "StatusHealth" "50"
-            "StatusHealthRegen" "0"
 
+            //"Model" "models/buildings/building_racks_melee_reference.vmdl"
+            "Model" "models/gem_blue/gem_blue.vmdl"
+            "ModelScale" 				".5"
+            "SoundSet"					"Tower.Water"
+
+            "RingRadius" "100"
             "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
 
-            // Attack
-                    //----------------------------------------------------------------
-                    "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-                    "AttackDamageMin"			"50"		// Damage range min.
-                    "AttackDamageMax"			"90"		// Damage range max.
-                    "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-                    "AttackRate"				"1"			// Speed of attack.
-                    "AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
-                    "AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
-                    "AttackRange"				"700"		// Range within a target can be attacked.
-                    "ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
-                    "ProjectileSpeed"			"750"		// Speed of projectile.
+            "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+            "AttackDamageMin"			"50"		// Damage range min.
+            "AttackDamageMax"			"90"		// Damage range max.
+            "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+            "AttackRate"				"1"			// Speed of attack.
+            "AttackAnimationPoint"		"0"		// Normalized time in animation cycle to attack.
+            "AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+            "AttackRange"				"700"		// Range within a target can be attacked.
 
-                    "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-                    "MovementSpeed"				"0"
-                    "MovementTurnRate"			"1.0"
+            "ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
+            "ProjectileSpeed"			"750"		// Speed of projectile.
 
-                    "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
-                    "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
-                    "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+            "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+            "MovementSpeed"				"0"
+            "MovementTurnRate"			"1.0"
 
-                    "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+            "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+            "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+            "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-                    "VisionDaytimeRange"		"2000"
-                    "VisionNighttimeRange"		"2000"
+            "VisionDaytimeRange"		"2000"
+            "VisionNighttimeRange"		"2000"
 
             "AbilityLayout" "4"
             "Ability1"					""
@@ -121,7 +320,7 @@
     "gem_building_chipped_ruby"
     {
         "BaseClass" "npc_dota_tower"
-        "Model" "models/buildings/building_racks_ranged_reference.vmdl"
+        "Model" "models/gem_chipped_ruby.vmdl"
         "SoundSet"					"Tower.Fire"
 
         "ModelScale" 				".5"
@@ -159,38 +358,169 @@
         "AbilityLayout" "4"
         "Ability1"					""
         "Ability2"					"tower_invulnerability"
-        "Ability3"					"attack_splash"
+        "Ability3"					"tower_splash"
         "Ability4"					""
     }
 
-    "gem_dummy"
+    "gem_building_chipped_diamond"
     {
-        "BaseClass" "npc_dota_creature"
-        "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+            "BaseClass" "npc_dota_tower"
 
-        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-        "AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+            "Model" "models/buildings/building_racks_melee_reference.vmdl"
+            "ModelScale" 				".5"
+            "SoundSet"					"Tower.Water"
+
+            "RingRadius" "100"
+            "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+
+            "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+            "AttackDamageMin"			"50"		// Damage range min.
+            "AttackDamageMax"			"90"		// Damage range max.
+            "AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+            "AttackRate"				"1"			// Speed of attack.
+            "AttackAnimationPoint"		"0"		// Normalized time in animation cycle to attack.
+            "AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+            "AttackRange"				"700"		// Range within a target can be attacked.
+
+            "ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
+            "ProjectileSpeed"			"750"		// Speed of projectile.
+
+            "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+            "MovementSpeed"				"0"
+            "MovementTurnRate"			"1.0"
+
+            "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+            "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+            "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+            "VisionDaytimeRange"		"2000"
+            "VisionNighttimeRange"		"2000"
+
+            "AbilityLayout" "4"
+            "Ability1"					""
+            "Ability2"					"tower_invulnerability"
+            "Ability3"					""
+            "Ability4"					""
+
+            // Custom
+            "AttacksAir"     "GEM_ATTACK_GROUND"
     }
 
-    "npc_mygem_building_rock"
+
+    // ========================================================================
+    // Enemies
+    // ========================================================================
+
+    "dude1"
     {
-        "BaseClass" "npc_dota_building"
-        "Model" "models/buildings/building_plain_reference.vmdl"
-        "RingRadius" "100" //approx 4x4
-        "StatusHealth" "50"
-        "StatusHealthRegen" "0"
+         "BaseClass" "npc_dota_creature"
+         "Model"						"models/props_gameplay/sheep01.vmdl"
+         "ModelScale"				"1.5"
+         "SoundSet" "Sheep"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+         "Level" "1"
+         "ConsideredHero" "0"
+         "IsAncient" "1"
 
-        //"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "400"
 
-	 "AbilityLayout" "1"
-        "Ability1"					"gem_destroy"			// Ability 1
-        //"Ability2"					""			// Ability 2
-        //"Ability3"					""			// Ability 3
-        //"Ability4"					""			// Ability 4
+         "BountyGoldMin"				"5"
+         "BountyGoldMax"				"5"
 
+         "Ability1" "dude_passive"
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+         "MovementSpeed"				"300"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
     }
+
+    "dude2"
+    {
+         "BaseClass" "npc_dota_creep"
+         "Model"						"models/courier/drodo/drodo.vmdl"
+         "ModelScale"				"1.5"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "600"
+
+         "BountyGoldMin"				"5"
+         "BountyGoldMax"				"5"
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+         "MovementSpeed"				"300"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+
+    "dude3"
+    {
+         "BaseClass" "npc_dota_creep"
+         "Model"						"models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
+         "ModelScale"				"1.5"
+         "SoundSet"					"Undying_Zombie"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "1000"
+
+         "BountyGoldMin"				"8"
+         "BountyGoldMax"				"8"
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+         "MovementSpeed"				"300"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+
+    "dude4_air"
+    {
+         "BaseClass" "npc_dota_creep"
+         "Model"						"models/courier/smeevil_magic_carpet/smeevil_magic_carpet_flying.vmdl"
+         "ModelScale"				"1.5"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+         "SoundSet" "Courier_smeevil"
+
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "600"
+
+         "BountyGoldMin"				"8"
+         "BountyGoldMax"				"8"
+
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
+         "MovementSpeed"				"250"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+
 
 	//=================================================================================	
 	// Creature: Gnoll Assassin

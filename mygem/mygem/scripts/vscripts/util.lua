@@ -1,3 +1,11 @@
+function FindTableKey(table, value)
+    for k,v in pairs(table) do
+        if v == value then
+            return k
+        end
+    end
+end
+
 function PrintTable(t, indent, done)
     --print ( string.format ('PrintTable type %s', type(keys)) )
     if type(t) ~= "table" then return end

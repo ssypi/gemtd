@@ -18,8 +18,23 @@ function MyGemGameMode:Start()
 end
 
 function CreateRock(pos, owner)
-    local unit = CreateUnitByName("npc_mygem_building_rock", pos, false, owner, owner, DOTA_TEAM_GOODGUYS)
-    unit:SetControllableByPlayer(owner:GetPlayerID(), true)
+    local rock = CreateUnitByName("npc_mygem_building_rock", pos, false, owner, owner, DOTA_TEAM_GOODGUYS)
+    rock:SetControllableByPlayer(owner:GetPlayerID(), true)
+    local gridNavBlocker = SpawnEntityFromTableSynchronous("point_simple_obstruction", {
+        origin = pos
+    })
+    rock.blocker = gridNavBlocker
+end
+
+function RemoveRock(rock)
+    print("Removing rock")
+    if rock.blocker ~= nil then
+        print("Removing blocker")
+        DoEntFireByInstanceHandle(rock.blocker, "Disable", "1", 0, nil, nil)
+        DoEntFireByInstanceHandle(rock.blocker, "Kill", "1", 1, nil, nil)
+--        UTIL_Remove(rock.blocker)
+    end
+    UTIL_Remove(rock)
 end
 
 -- TODO: We should create one for each player and set it to player.spawner
@@ -31,7 +46,21 @@ function CreateSpawners()
             local spawnPoint = spawnPoints[i]:GetOrigin()
             local spawner = CreateUnitByName("npc_dude_spawner", spawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS)
             local scope = spawner:GetPrivateScriptScope()
-            scope:DispatchOnPostSpawn()
+
+            local waypoints = {}
+
+            local playerNum = 1
+
+            local i = 1
+            repeat
+                local wpName = "waypoint_p" .. playerNum .. "_w" .. i
+                local wp = Entities:FindByName(nil, wpName)
+                table.insert(waypoints, wp)
+                i = i+1
+            until wp == nil
+
+            spawner.waypoints = waypoints
+            --scope:DispatchOnPostSpawn()
             table.insert(spawners, spawner)
         end
     end
@@ -48,7 +77,6 @@ end
  ]]
 
 function MyGemGameMode:GameLoop()
---    print("gameloop")
     local players = MyGemGameMode.players
 
     for i = 1, #spawners do
@@ -71,7 +99,7 @@ function MyGemGameMode:GameLoop()
         state.Update(player)
     end
 
-    return 1
+    return 0.05
 end
 
 function KillTrigger(trigger, keys)
@@ -82,6 +110,7 @@ function InitPlayer(player)
     player.state = Build
     player.state.Begin(player)
     player.gems = {}
+    player.allGems = {}
     table.insert(MyGemGameMode.players, player)
 end
 
@@ -99,6 +128,7 @@ function MyGemGameMode:AutoAssignPlayer(keys)
     -- Set Global variable hero for debugging
     -- TODO: remove later
     local hero = player:GetAssignedHero()
+    hero.kalamies = "hoihoi"
 
 --    local item = CreateItem("item_quelling_blade", hero, hero)
 --    local item2 = CreateItem("item_placerock", hero, hero)
@@ -107,7 +137,7 @@ function MyGemGameMode:AutoAssignPlayer(keys)
     --hero:AddItem(item2)
     --hero:AddItem(item3)
 
-    GameRules:GetGameModeEntity():ClientLoadGridNav()
+    --GameRules:GetGameModeEntity():ClientLoadGridNav()
 
     -- Disable attack (5 = DOTA_UNIT_CAP_NO_ATTACK)
     hero:SetMoveCapability(5)

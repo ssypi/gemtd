@@ -3,6 +3,100 @@
 {
 	"Version"		"1"
 
+
+    "builder_test"
+    {
+    	    "BaseClass" "ability_datadriven"
+            "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+            "AbilityManaCost" "0"
+            "AbilityCooldown" "0"
+
+            "OnSpellStart"
+            {
+                "RunScript"
+                {
+                    "Target"    "POINT"
+                    "ScriptFile"    "scripts/vscripts/items.lua"
+                    "Function"  "BuildTest"
+                }
+            }
+    }
+
+	"dude_passive"
+	{
+	    "ID"    "8453"
+	    "BaseClass" "ability_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+	    "AbilityTextureName"		"axe_battle_hunger"
+
+        "Maxlevel" "1"
+
+	    "OnUpgrade"
+         {
+            "ApplyModifier"
+            {
+                "Target"	"CASTER"
+                "ModifierName"	"modifier_phased"
+            }
+         }
+
+	    "Modifiers"
+	    {
+	        "modifier_dude_passive"
+	        {
+
+	        }
+	    }
+	}
+
+	"fx_test_ability"
+    {
+     // General
+     //-------------------------------------------------------------------------------------------------------------
+     "BaseClass"			"ability_datadriven"
+     "AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+     "AbilityTextureName"		"axe_battle_hunger"
+     // Modifiers
+     //-------------------------------------------------------------------------------------------------------------
+     "Modifiers"
+     {
+      "fx_test_modifier"
+      {
+       "Passive" "1"
+       "OnCreated"
+       {
+        "AttachEffect"
+        {
+         "Target" "CASTER"
+         "EffectName" "particles\econ\generic\generic_buff_1\generic_buff_1.vpcf"
+         "EffectAttachType" "follow_overhead"
+         "EffectLifeDurationScale" "1"
+         "EffectColorA" "255 255 0"
+        }
+       }
+      }
+     }
+    }
+
+    "tower_splash"
+    {
+        "BaseClass" "ability_datadriven"
+    	"AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "MaxLevel"  "1"
+
+        "OnUpgrade"
+        {
+            "ApplyModifier"
+            {
+                "Target"	"CASTER"
+                "ModifierName"	"modifier_dragon_knight_splash_attack"
+            }
+        }
+    }
+
 	"gem_attack_splash"
 	{
 	    "BaseClass" "ability_datadriven"
@@ -110,6 +204,108 @@
         	}
         }
 	}
+
+	// ========================================================================
+    // Tower Abilities
+	// ========================================================================
+    "malachite_multishot"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "Maxlevel" "1"
+        "ItemBaseLevel" "1"
+
+        "Modifiers"
+        {
+            "modifier_malachite_multishot"
+            {
+                "Passive"   "1"
+                "Hidden"    "0"
+                "OnAttackStart"
+                {
+                    "CreateBonusAttack"
+                    {
+                        "Target"
+                        {
+                            "Center"    "TARGET"
+                            "Radius"    "1000"
+                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                            "MaxTargets"    "10"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+	// ========================================================================
+	// Build related
+	// ========================================================================
+
+
+    "gem_combine_special"
+    {
+        "BaseClass" "ability_datadriven"
+        "Maxlevel" "1"
+        "ItemBaseLevel" "1"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "AbilityCastPoint"				"0.0"
+        "AbilityCooldown"				"10"
+        "AbilityManaCost"				"0"
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                                "Target"    "CASTER"
+                                "ScriptFile"    "scripts/vscripts/abilities.lua"
+                                "Function"  "GemCombineSpecial"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_combine_special"
+            {
+                "Passive"   "1"
+                "Hidden"    "1"
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "Target" "CASTER"
+                        "EffectName" "particles\econ\generic\generic_buff_1\generic_buff_1.vpcf"
+                        "EffectAttachType" "follow_overhead"
+                        "EffectLifeDurationScale" "1"
+                        "EffectColorA" "255 255 0"
+                    }
+                }
+            }
+        }
+    }
+
+    "gem_combine"
+    {
+        "BaseClass" "ability_datadriven"
+        "Maxlevel" "1"
+        "ItemBaseLevel" "1"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "AbilityCastPoint"				"0.0"
+        "AbilityCooldown"				"10"
+        "AbilityManaCost"				"0"
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                                "Target"    "CASTER"
+                                "ScriptFile"    "scripts/vscripts/abilities.lua"
+                                "Function"  "GemCombine"
+            }
+        }
+    }
 
 	"gem_destroy"
     {
@@ -250,18 +446,10 @@
         {
             "BaseClass"	"ability_datadriven"
             "AbilityName"	"tower_invulnerability"
-            "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+            "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
             //"AbilityTextureName"	"jakiro_liquid_fire"
 
-            "OnCreated"
-            {
-            	"ApplyModifier"
-            	{
-            		"Target"	"CASTER"
-            		"ModifierName"	"modifier_custom_invulnerability"
-            	}
-            }
 
             "Modifiers"
             {

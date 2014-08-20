@@ -1,30 +1,49 @@
 local currentWaypoint = 1
 local waypoints = {}
+local moving = false
+
+local endCallback = function () print("no end callback provided") end
 
 local TARGET_RANGE = 200
 
-function DispatchOnPostSpawn(scope, waypointTable)
+function DispatchOnPostSpawn(scope, waypointTable, lastWpCallback)
     waypoints = waypointTable
-    thisEntity:SetThink("DudeThink", self, "DudeThinker", 1)
+    endCallback = lastWpCallback
+    thisEntity:SetThink("DudeThink", self, "DudeThinker", 0.5)
 end
 
 function DudeThink()
     local moveTarget = waypoints[currentWaypoint]:GetOrigin()
 
-    local wpReached = thisEntity:IsPositionInRange(moveTarget, TARGET_RANGE)
-    if not wpReached then
---        print("moving to wp#" .. currentWaypoint)
-        ExecuteOrderFromTable({
-            UnitIndex = thisEntity:entindex(),
-            OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-            Position = moveTarget
-        })
-    else
-        currentWaypoint = currentWaypoint + 1
-        if #waypoints < currentWaypoint then
-            currentWaypoint = 1
+    if moving then
+        local wpReached = thisEntity:IsPositionInRange(moveTarget, TARGET_RANGE)
+        if wpReached then
+            currentWaypoint = currentWaypoint + 1
+            moving = false
+            if currentWaypoint > #waypoints then
+                print("Reached last waypoint")
+                Explode()
+            end
+        else
+            -- TODO: Check if stuck
         end
---        print("Target reached, next wp#" .. currentWaypoint)
+    else
+        OrderMoveToPos(moveTarget)
+        moving = true
     end
-    return 1
+    return 0.5
+end
+
+function Explode()
+    -- TODO: Add particles
+    UTIL_Remove(thisEntity)
+    endCallback()
+end
+
+function OrderMoveToPos(targetPos)
+    ExecuteOrderFromTable({
+        UnitIndex = thisEntity:entindex(),
+        OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+        Position = targetPos
+    })
 end
