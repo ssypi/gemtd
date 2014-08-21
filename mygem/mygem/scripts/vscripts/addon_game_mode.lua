@@ -1,8 +1,8 @@
 require("util")
+require("Gem")
 require("states/build")
 require("states/running")
 require("mygem")
-require("test")
 
 
 function kala()

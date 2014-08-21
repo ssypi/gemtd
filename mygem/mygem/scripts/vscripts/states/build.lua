@@ -34,11 +34,13 @@ function CheckForCombineSpecial(player)
         print("Combined from:")
         PrintTable(combinedFrom)
         for _,currentGem in pairs(allGems) do
-            local gemName = currentGem:GetUnitName()
-            print(gemName)
-            if combinedFrom[gemName] then
-                print("Found combine")
-                combinedFrom[gemName] = combinedFrom[gemName] - combinedFrom[gemName]
+            if IsValid(currentGem) then
+                local gemName = currentGem:GetUnitName()
+                print(gemName)
+                if combinedFrom[gemName] then
+                    print("Found combine")
+                    combinedFrom[gemName] = combinedFrom[gemName] - combinedFrom[gemName]
+                end
             end
         end
 
@@ -54,14 +56,20 @@ function AddSpecialCombine(gem)
         gem:AddAbility("gem_combine_special")
         gem:FindAbilityByName("gem_combine_special"):SetLevel(1)
     end
+end
 
-    -- TODO: Add special combine ability/particle
+function IsValid(entity)
+    local isValid = IsValidEntity(entity) and not IsMarkedForDeletion(entity)
+    return isValid
 end
 
 function CheckForCombine(player, gem)
+    if not IsValid(gem) then
+        return
+    end
     local gems = player.gems
     for i=1, #gems do
-        if gems[i] ~= gem and gems[i]:GetUnitName() == gem:GetUnitName() then
+        if IsValid(gems[i]) and gems[i] ~= gem and gems[i]:GetUnitName() == gem:GetUnitName() then
             if not gems[i]:HasAbility("gem_combine") then
                 gems[i]:AddAbility("gem_combine")
                 gems[i]:FindAbilityByName("gem_combine"):SetLevel(1)
@@ -81,10 +89,13 @@ function Build.Update(player)
     if #player.gems >= GEMS_PER_ROUND then
         for i=1, #player.gems do
             local gem = player.gems[i]
-            CheckForCombine(player, gem)
-            if not gem:HasAbility("gem_keep") then
-                gem:AddAbility("gem_keep")
-                gem:FindAbilityByName("gem_keep"):SetLevel(1)
+            if IsValid(gem) then
+                CheckForCombine(player, gem)
+                if gem:HasAbility("gem_keep") then
+--                    gem:AddAbility("gem_keep")
+                    gem:FindAbilityByName("gem_keep"):SetLevel(1)
+                    gem:FindAbilityByName("gem_keep"):SetHidden(false)
+                end
             end
         end
         RemoveBuildAbility(player)
@@ -100,11 +111,19 @@ function Build.End(player)
 end
 
 function ClearGemAbilities(gem)
+    if not IsValid(gem) then
+        return
+    end
     if gem:HasAbility("gem_keep") then
+        local ability = gem:FindAbilityByName("gem_keep")
         gem:RemoveAbility("gem_keep")
     end
     if gem:HasAbility("gem_combine") then
+        local ability = gem:FindAbilityByName("gem_combine")
         gem:RemoveAbility("gem_combine")
+    end
+    if gem:HasModifier("modifier_keep") then
+        gem:RemoveModifierByName("modifier_keep")
     end
 end
 
@@ -135,12 +154,7 @@ function GiveBuildAbility(player)
     end
     local buildItem = CreateItem(ITEM_BUILD, player, player)
     hero:AddItem(buildItem)
-
---    if hero:HasAbility(ABILITY_BUILD) then
---        hero:RemoveAbility(ABILITY_BUILD)
---    end
---    hero:AddAbility(ABILITY_BUILD)
-    hero.gems = {} -- clear gems already built this level
+    player.gems = {} -- clear gems already built this level
 end
 
 function RemoveBuildAbility(player)

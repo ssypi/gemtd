@@ -15,7 +15,6 @@ end
 
 function StartNextRound(player)
     local hero = player:GetAssignedHero()
-    print("kala: " .. hero.kalamies)
     if currentRound >= #Levels then
         print("All rounds completed!")
         Running.done = true

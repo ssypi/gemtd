@@ -3,11 +3,33 @@
 {
 	"Version"		"1"
 
+    "builder_upgrade_quality"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityManaCost" "1 2 3 4 5"
+        "AbilityCooldown" "1"
+
+        "ItemBaseLevel" "1"
+        "MaxLevel"  "7"
+
+        "AbilityGoldCost"   "10 20 30 40 50"
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "Target"        "CASTER"
+                "ScriptFile"    "scripts/vscripts/abilities.lua"
+                "Function"      "UpgradeQuality"
+            }
+        }
+    }
 
     "builder_test"
     {
     	    "BaseClass" "ability_datadriven"
-            "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+            "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 
             "AbilityManaCost" "0"
             "AbilityCooldown" "0"
@@ -279,7 +301,7 @@
                         "EffectName" "particles\econ\generic\generic_buff_1\generic_buff_1.vpcf"
                         "EffectAttachType" "follow_overhead"
                         "EffectLifeDurationScale" "1"
-                        "EffectColorA" "255 255 0"
+                        "EffectColorA" "255 255 255"
                     }
                 }
             }
@@ -339,6 +361,27 @@
                                 "Target"    "CASTER"
                                 "ScriptFile"    "scripts/vscripts/abilities.lua"
                                 "Function"  "GemKeep"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_keep"
+            {
+                "Passive"   "1"
+                "Hidden"    "1"
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "Target" "CASTER"
+                        "EffectName" "particles\econ\generic\generic_buff_1\generic_buff_1.vpcf"
+                        "EffectAttachType" "follow_overhead"
+                        "EffectLifeDurationScale" "1"
+                        "EffectColorA" "255 0 0"
+                    }
+                }
             }
         }
     }

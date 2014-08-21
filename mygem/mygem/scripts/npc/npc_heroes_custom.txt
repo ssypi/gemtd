@@ -11,7 +11,7 @@
 
         //"Ability1"  "gem_attack_splash"
         "Ability1"  "malachite_multishot"
-        "Ability2"  ""
+        "Ability2"  "builder_upgrade_quality"
         "Ability3"  "builder_test"
         "Ability4"  ""
 

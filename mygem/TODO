@@ -38,14 +38,11 @@
 - Armor/Attack types
 - Stop ground-only towers on air levels
 
-- Unit phasing?
 - Bosses / Damage tests
 
 - Upgrade gem level
 - Health
 - Money at the end of round
-
-
 
 - Remove combined gems
 
@@ -59,3 +56,11 @@ slates
  vmdls grate
 
  gold: statue dragon
+
+
+ - Extra chance
+
+ - Toggle normal/half grid
+
+-Models
+ _base_

@@ -106,6 +106,12 @@ function KillTrigger(trigger, keys)
     keys.activator:ForceKill(true)
 end
 
+function GiveBuilderToPlayer(player)
+    local hero = CreateHeroForPlayer('npc_dota_hero_viper', player)
+    hero:FindAbilityByName("builder_upgrade_quality"):SetLevel(1)
+    hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
+end
+
 function InitPlayer(player)
     player.state = Build
     player.state.Begin(player)
@@ -123,12 +129,9 @@ function MyGemGameMode:AutoAssignPlayer(keys)
     player:SetTeam(DOTA_TEAM_GOODGUYS)
     --player:__KeyValueFromInt('teamnumber', DOTA_TEAM_GOODGUYS)
 
-    CreateHeroForPlayer('npc_dota_hero_viper', player)
+    GiveBuilderToPlayer(player)
 
-    -- Set Global variable hero for debugging
-    -- TODO: remove later
-    local hero = player:GetAssignedHero()
-    hero.kalamies = "hoihoi"
+
 
 --    local item = CreateItem("item_quelling_blade", hero, hero)
 --    local item2 = CreateItem("item_placerock", hero, hero)
@@ -139,8 +142,6 @@ function MyGemGameMode:AutoAssignPlayer(keys)
 
     --GameRules:GetGameModeEntity():ClientLoadGridNav()
 
-    -- Disable attack (5 = DOTA_UNIT_CAP_NO_ATTACK)
-    hero:SetMoveCapability(5)
 
     InitPlayer(player)
 end
