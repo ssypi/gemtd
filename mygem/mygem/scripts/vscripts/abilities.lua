@@ -7,6 +7,18 @@ local qualities = {
     -- TODO: "great"
 }
 
+function BuyHp(keys)
+    local caster = keys.caster
+    local player = caster:GetPlayerOwner()
+    local hero = player:GetAssignedHero()
+    if caster:GetHealthDeficit() > 0 then
+        caster:SetHealth(caster:GetHealth()+1)
+    else
+        player:ShowError("Already at full health!")
+        hero:SetGold(hero:GetGold() + 10)
+    end
+end
+
 function OnAbilityPhaseStart(keys)
     print("Ability phase started")
     PrintTable(keys)

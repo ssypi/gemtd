@@ -9,6 +9,21 @@
   ]]
 
 
+function IsInsideNoBuildZone(unit)
+    local zones = Entities:FindAllByName("zone_no_build")
+    for _, zone in pairs(zones) do
+        local center = zone:GetCenter()
+        local max = center + zone:GetBoundingMaxs()
+        local min = center + zone:GetBoundingMins()
+        local unitPos = unit:GetAbsOrigin()
+        local touchesX = (unitPos.x < max.x and unitPos.x > min.x)
+        local touchesY = (unitPos.y < max.y and unitPos.y > min.y)
+        if touchesX and touchesY then
+            return true
+        end
+    end
+    return false
+end
 
 
 function BuildTest(keys)
@@ -19,8 +34,8 @@ function BuildTest(keys)
         player.gems = {}
     end
 
---    caster.__index = Gem
---    caster:ReplaceWith("gem_building_chipped_ruby")
+    --    caster.__index = Gem
+    --    caster:ReplaceWith("gem_building_chipped_ruby")
     --    local gridX = GridNav:WorldToGridPosX(target.x)
     --    local gridY = GridNav:WorldToGridPosY(target.y)
     --    print("Grid X: " .. gridX)
@@ -45,7 +60,7 @@ function BuildTest(keys)
     target.y = target.y - diffY
     print("New: " .. target.x .. ":" .. target.y)
 
---    local blocker = Entities:FindByName(nil, "tree")
+    --    local blocker = Entities:FindByName(nil, "tree")
     --    local entityMaker = Entities:FindByName(nil, "entityMaker")
     --    entityMaker:SpawnEntityAtLocation(target, Vector(0,0,0))
 
@@ -108,6 +123,12 @@ function Build(keys)
 
     -- Check for clear space with a dummy unit, beacause currently buildings have problems with find clear space
     local dummy = CreateUnitByName("gem_dummy", target, true, caster, caster, caster:GetTeamNumber())
+
+    if IsInsideNoBuildZone(dummy) then
+        player:ShowError("You can't build there!")
+        UTIL_Remove(dummy)
+        return
+    end
 
     if dummy:GetOrigin() ~= target then
         print("no space")

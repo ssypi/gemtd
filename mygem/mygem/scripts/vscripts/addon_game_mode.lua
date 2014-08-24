@@ -5,21 +5,6 @@ require("states/build")
 require("states/running")
 require("mygem")
 
--- This chunk of code forces the reloading of all modules when we reload script.
-if g_reloadState == nil then
-    g_reloadState = {}
-    for k, v in pairs(package.loaded) do
-        g_reloadState[k] = v
-    end
-else
-    for k, v in pairs(package.loaded) do
-        if g_reloadState[k] == nil then
-            package.loaded[k] = nil
-        end
-    end
-end
-
-
 if MyGemGameMode == nil then
 	MyGemGameMode = class({})
 end

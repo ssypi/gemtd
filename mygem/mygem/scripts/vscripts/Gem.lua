@@ -145,6 +145,7 @@ function Gem:ReplaceWith(unitName)
         newGem:CreateBlocker()
     end
     UTIL_Remove(self)
+    return newGem
 end
 
 function Gem:ReplaceWithRock()
@@ -159,4 +160,5 @@ function Gem:ReplaceWithRock()
         rock:CreateBlocker()
     end
     UTIL_Remove(self)
+    return rock
 end

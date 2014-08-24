@@ -3,6 +3,27 @@
 {
 	"Version"		"1"
 
+	"base_buy_hp"
+	{
+	    "BaseClass" "ability_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityManaCost" "0"
+        "AbilityCooldown" "3"
+        "AbilityGoldCost"   "10"
+
+        "MaxLevel"  "1"
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "Target"        "CASTER"
+                "ScriptFile"    "scripts/vscripts/abilities.lua"
+                "Function"      "BuyHp"
+            }
+        }
+	}
+
     "builder_toggle_grid_size"
     {
         "BaseClass" "ability_datadriven"
@@ -140,6 +161,41 @@
        }
       }
      }
+    }
+
+    "tower_dot"
+    {
+        "BaseClass" "ability_datadriven"
+
+        "modifiers"
+        {
+            "modifier_attack_passive"
+            {
+                "OnAttackLanded"
+                {
+                    "ApplyModifier"
+                    {
+                        "Target"
+                        {
+                            "Center"    "TARGET"
+                            "Radius"    "%aoe"
+                            "Types"     "DOTA_UNIT_TARGET_CREEP"
+                        }
+                    }
+                }
+            }
+            "modifier_dot"
+            {
+                    "IsDebuff"  "1"
+                    "Duration"  "%duration"
+                    "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+                    "ThinkInterval" "1"
+                    "OnIntervalThink"
+                    {
+                        // runscript / damage
+                    }
+            }
+        }
     }
 
     "tower_splash"

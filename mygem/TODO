@@ -50,12 +50,14 @@
 
 - Disable towers
 
-pig,chicken, flying boot
+pig,chicken, flying boot, pumpkin bucket flinch
 
 slates
  vmdls grate
 
  gold: statue dragon
+ silver: tombstone, statue, colulmn
+ cage
 
 
  - Extra chance

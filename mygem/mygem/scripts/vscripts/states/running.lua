@@ -1,5 +1,5 @@
 Running = {}
-Running.__index  = Running
+Running.__index = Running
 
 local TIME_BETWEEN_SPAWN = 1
 
@@ -7,10 +7,11 @@ function Running.new(player)
     local runState = {}
     setmetatable(runState, Running)
     runState.player = player
+    return runState
 end
 
 function Running:KillAll()
-    for i=1, #self.dudes do
+    for i = 1, #self.dudes do
         local dude = self.dudes[i]
         if IsValid(dude) and dude:IsAlive() then
             dude:ForceKill(true)
@@ -34,7 +35,7 @@ function Running:StartNextRound()
         print("All rounds completed!")
         -- TODO: end, don't start from beginning
         self.currentRound = 1
---        self.done = true
+        --        self.done = true
     else
         self.currentRound = self.currentRound + 1
         print("Starting round #" .. self.currentRound)
@@ -50,7 +51,7 @@ function Running:Update()
     local currentTime = GameRules:GetGameTime()
 
     if #self.dudes >= Levels[self.currentRound].count then
-        if IsEveryoneDead() then
+        if self:IsEveryoneDead() then
             print("All dudes dead, level finished!")
             self.done = true
         end
@@ -68,14 +69,29 @@ function Running:SpawnDude()
     local dude = CreateUnitByName(currentUnit, spawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS)
     table.insert(self.dudes, dude)
     local scope = dude:GetPrivateScriptScope()
-    scope:DispatchOnPostSpawn(player.spawner.waypoints, function () DamagePlayer(player)  end)
+    scope:DispatchOnPostSpawn(player.spawner.waypoints, function() self:DamagePlayer() end)
 end
 
-function DamagePlayer(player)
+function Running:DamagePlayer()
+    local player = self.player
+    local base = player.base
 
+    if not IsValid(base) then
+        self:Lose()
+    else
+        ApplyDamage({
+            attacker = base,
+            victim = base,
+            damage = 1,
+            damage_type = DAMAGE_TYPE_PURE
+        })
+        if not base:IsAlive() then
+            self:Lose()
+        end
+    end
 end
 
-function IsEveryoneDead()
+function Running:IsEveryoneDead()
     for i = 1, #self.dudes do
         local dude = self.dudes[i]
         if IsValid(dude) and dude:IsAlive() then

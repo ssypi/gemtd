@@ -3,6 +3,28 @@
 {
 	"Version"	"1"
 
+    "player_base"
+    {
+        "BaseClass" "npc_dota_creature"
+        "Model" "models/props_debris/skull001.vmdl"
+        "ModelScale"    "15"
+
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+
+        "RingRadius" "200" //approx 4x4
+        "StatusHealth" "50"
+        "StatusHealthRegen" "0"
+
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+
+    	"AbilityLayout" "1"
+        "Ability1"					"base_buy_hp"
+        //"Ability2"					""
+        //"Ability3"					""
+        //"Ability4"					""
+    }
+
     "npc_dude_spawner"
     {
         "BaseClass" "npc_dota_creature"

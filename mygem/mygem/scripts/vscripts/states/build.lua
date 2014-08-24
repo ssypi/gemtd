@@ -4,7 +4,6 @@ local ABILITY_BUILD = "gem_build"
 local ITEM_BUILD = "item_place_building"
 local GEMS_PER_ROUND = 5
 
-
 Build = {}
 Build.__index = Build
 
@@ -94,7 +93,6 @@ function Build:Update()
             if IsValid(gem) then
                 CheckForCombine(player, gem)
                 if gem:HasAbility("gem_keep") then
---                    gem:AddAbility("gem_keep")
                     gem:FindAbilityByName("gem_keep"):SetLevel(1)
                     gem:FindAbilityByName("gem_keep"):SetHidden(false)
                 end
@@ -160,9 +158,6 @@ end
 
 function RemoveBuildAbility(player)
     local hero = player:GetAssignedHero()
---    if hero:HasAbility(ABILITY_BUILD) then
---        hero:RemoveAbility(ABILITY_BUILD)
---    end
     for i=0, 5 do
         local item = hero:GetItemInSlot(i)
         if item ~= nil and item:GetName() == ITEM_BUILD then
