@@ -64,3 +64,11 @@ slates
 
 -Models
  _base_
+
+- Particles when building gem, not after all 5 are
+ built
+
+RandomGem and CreateGem/CreateRock to player class
+
+- Change update loop to timer instead of thinker
+  to avoid running during pause

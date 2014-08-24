@@ -1,54 +1,72 @@
-if Running == nil then
-    Running = {}
+Running = {}
+Running.__index  = Running
+
+local TIME_BETWEEN_SPAWN = 1
+
+function Running.new(player)
+    local runState = {}
+    setmetatable(runState, Running)
+    runState.player = player
 end
 
-local currentRound = 0
-local dudes = {}
-local lastSpawnTime = 0
-local cooldown = 1
-
-function Running.Begin(player)
-    print("Running state started for " .. player:GetPlayerID())
-    Running.done = false
-    StartNextRound(player)
-end
-
-function StartNextRound(player)
-    local hero = player:GetAssignedHero()
-    if currentRound >= #Levels then
-        print("All rounds completed!")
-        Running.done = true
-    else
-        currentRound = currentRound + 1
-        print("Starting round #" .. currentRound)
-        dudes = {}
+function Running:KillAll()
+    for i=1, #self.dudes do
+        local dude = self.dudes[i]
+        if IsValid(dude) and dude:IsAlive() then
+            dude:ForceKill(true)
+        end
     end
 end
 
-function Running.Update(player)
-    if Running.done then
+function Running:Begin()
+    local player = self.player
+    print("Running state started for " .. player:GetPlayerID())
+    self.done = false
+    self.currentRound = 0
+    self.dudes = {}
+    self.lastSpawnTime = 0
+    self:StartNextRound()
+end
+
+function Running:StartNextRound()
+    local player = self.player
+    if self.currentRound >= #Levels then
+        print("All rounds completed!")
+        -- TODO: end, don't start from beginning
+        self.currentRound = 1
+--        self.done = true
+    else
+        self.currentRound = self.currentRound + 1
+        print("Starting round #" .. self.currentRound)
+        self.dudes = {}
+    end
+end
+
+function Running:Update()
+    if self.done then
         print("Doned")
         return
     end
     local currentTime = GameRules:GetGameTime()
 
-    if #dudes >= Levels[currentRound].count then
+    if #self.dudes >= Levels[self.currentRound].count then
         if IsEveryoneDead() then
             print("All dudes dead, level finished!")
-            Running.done = true
+            self.done = true
         end
-    elseif currentTime - lastSpawnTime > cooldown then
-        lastSpawnTime = currentTime
-        SpawnDude(player)
+    elseif currentTime - self.lastSpawnTime > TIME_BETWEEN_SPAWN then
+        self.lastSpawnTime = currentTime
+        self:SpawnDude()
     end
 end
 
-function SpawnDude(player)
-    print("Spawning dude, current count: " .. #dudes)
+function Running:SpawnDude()
+    local player = self.player
+    print("Spawning dude, current count: " .. #self.dudes)
     local spawnPoint = player.spawner:GetOrigin()
-    local currentUnit = Levels[currentRound].unit
+    local currentUnit = Levels[self.currentRound].unit
     local dude = CreateUnitByName(currentUnit, spawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS)
-    table.insert(dudes, dude)
+    table.insert(self.dudes, dude)
     local scope = dude:GetPrivateScriptScope()
     scope:DispatchOnPostSpawn(player.spawner.waypoints, function () DamagePlayer(player)  end)
 end
@@ -58,16 +76,17 @@ function DamagePlayer(player)
 end
 
 function IsEveryoneDead()
-    for i = 1, #dudes do
-        local dude = dudes[i]
-        if IsValidEntity(dude) and not IsMarkedForDeletion(dude) and dude:IsAlive() then
+    for i = 1, #self.dudes do
+        local dude = self.dudes[i]
+        if IsValid(dude) and dude:IsAlive() then
             return false
         end
     end
     return true
 end
 
-function Running.End(player)
+function Running:End()
+    local player = self.player
     print("Running state ended for " .. player:GetPlayerID())
-    Running.nextState = Build
+    self.nextState = Build.new(player)
 end

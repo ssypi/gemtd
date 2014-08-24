@@ -7,6 +7,25 @@ local qualities = {
     -- TODO: "great"
 }
 
+function OnAbilityPhaseStart(keys)
+    print("Ability phase started")
+    PrintTable(keys)
+end
+
+function ToggleGridOn(keys)
+    local caster = keys.caster
+    local player = PlayerResource:GetPlayer(caster:GetPlayerID())
+    player.smallGrid = true
+    print("Small grid on")
+end
+
+function ToggleGridOff(keys)
+    local caster = keys.caster
+    local player = PlayerResource:GetPlayer(caster:GetPlayerID())
+    player.smallGrid = false
+    print("Small grid off")
+end
+
 function UpgradeQuality(keys)
     local caster = keys.caster
     local playerId = keys.caster:GetPlayerID()
@@ -44,7 +63,7 @@ end
 
 function GemDelete(keys)
     local gem = keys.caster
-    RemoveRock(gem)
+    gem:Remove()
 end
 
 -- Combine two same gems into a better quality gem of the same type
@@ -54,18 +73,12 @@ function GemCombine(keys)
     gem.keep = true
     print("Combining gem " .. gem:GetUnitName())
     local unitName = gem:GetUnitName()
-    local gemName = string.find(gem:GetUnitName(), "gem_building_(.+)_(.+)")
---    print(unitName:find("gem_building_(.+)_(.+)"))
-    print(unitName:match("gem_building_(.+)_(.+)"))
     local quality, type = unitName:match("gem_building_(.+)_(.+)")
     local qualityNum = FindTableKey(qualities, quality)
     local newName = "gem_building_" .. qualities[qualityNum+1] .. "_" .. type
-    local pos = gem:GetAbsOrigin()
-    local newGem = Gem:CreateGem(newName, pos, player)
+    local newGem = gem:ReplaceWith(newName)
     newGem.keep = true
     player.done = true
-
-    UTIL_Remove(gem)
 end
 
 -- Combine gems into a special recipe gem
@@ -81,13 +94,12 @@ function GemCombineSpecial(keys)
     local pos = gem:GetAbsOrigin()
     local team = gem:GetTeam()
     local combinesTo = gem.combinesTo
-    local combinedFrom = MyGemGameMode.kv.units[combinesTo].CombinedFrom
+    local combinedFrom = Gem:GetCombineRecipeFor(combinesTo)
     combinedFrom[gem:GetUnitName()] = nil -- Remove the current gem from the recipe since we already used it
 
     print("Combining to " .. combinesTo)
     RemoveCombinedGems(player, combinedFrom)
-    UTIL_Remove(gem)
-    local newGem = CreateUnitByName(combinesTo, pos, false, player, player, team)
+    local newGem = gem:ReplaceWith(combinesTo)
 end
 
 -- Remove all the gems used in a special combine
@@ -97,11 +109,8 @@ function RemoveCombinedGems(player, combinedFrom)
         local gem = allGems[i]
         if combinedFrom[gem:GetUnitName()] then
             combinedFrom[gem:GetUnitName()] = 0 -- So we don't remove multiples of the same gem
-            local pos = gem:GetAbsOrigin()
-            local owner = gem.owner
-            UTIL_Remove(gem)
+            gem:ReplaceWithRock()
             table.remove(allGems, i)
-            CreateRock(pos, owner)
         end
     end
 end

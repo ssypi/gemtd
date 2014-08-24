@@ -7,10 +7,9 @@
     {
         "BaseClass" "npc_dota_creature"
         "Model" "models/development/invisiblebox.vmdl"
-        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-        "AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 
         "MinimapIcon"   ""
         "vscripts"  "ai/spawner.lua"
@@ -88,12 +87,12 @@
     {
         "BaseClass" "npc_dota_tower"
 
-        "Model" "models/buildings/building_racks_melee_reference.vmdl"
-        "ModelScale" 				".8"
+        "Model" "models/gem_chipped_ruby.vmdl"
+        "ModelScale" 				".7"
         "SoundSet"					"Tower.Water"
 
         "RingRadius" "100"
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"			"50"
@@ -148,7 +147,7 @@
         "SoundSet"					"Tower.Water"
 
         "RingRadius" "100"
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"			"50"
@@ -193,7 +192,7 @@
         "SoundSet"					"Tower.Water"
 
         "RingRadius" "100"
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"			"50"
@@ -239,7 +238,7 @@
             "SoundSet"					"Tower.Water"
 
             "RingRadius" "100"
-            "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+            "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
             "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
             "AttackDamageMin"			"50"		// Damage range min.
@@ -303,7 +302,7 @@
         "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "VisionDaytimeRange"		"2000"
         "VisionNighttimeRange"		"2000"
@@ -325,7 +324,7 @@
             "SoundSet"					"Tower.Water"
 
             "RingRadius" "100"
-            "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+            "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
             "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
             "AttackDamageMin"			"50"		// Damage range min.
@@ -371,7 +370,7 @@
         "SoundSet"					"Tower.Water"
 
         "RingRadius" "100"
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"			"80"
@@ -422,7 +421,7 @@
         "SoundSet"					"Tower.Water"
 
         "RingRadius" "100"
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"			"50"
@@ -468,7 +467,7 @@
         "SoundSet"					"Tower.Water"
 
         "RingRadius" "100"
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"			"50"
@@ -513,7 +512,7 @@
         "SoundSet"					"Tower.Water"
 
         "RingRadius" "100"
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"			"50"
@@ -559,7 +558,7 @@
             "SoundSet"					"Tower.Water"
 
             "RingRadius" "100"
-            "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+            "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
             "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
             "AttackDamageMin"			"50"		// Damage range min.
@@ -623,7 +622,7 @@
         "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-        "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
         "VisionDaytimeRange"		"2000"
         "VisionNighttimeRange"		"2000"
@@ -645,7 +644,7 @@
             "SoundSet"					"Tower.Water"
 
             "RingRadius" "100"
-            "BoundsHullName"			"DOTA_HULL_SIZE_FILLER"
+            "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
 
             "AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
             "AttackDamageMin"			"50"		// Damage range min.
@@ -689,7 +688,7 @@
     {
          "BaseClass" "npc_dota_creature"
          "Model"						"models/props_gameplay/sheep01.vmdl"
-         "ModelScale"				"1.5"
+         "ModelScale"				"1.1"
          "SoundSet" "Sheep"
          "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
@@ -719,9 +718,9 @@
 
     "dude2"
     {
-         "BaseClass" "npc_dota_creep"
+         "BaseClass" "npc_dota_creature"
          "Model"						"models/courier/drodo/drodo.vmdl"
-         "ModelScale"				"1.5"
+         "ModelScale"				"1.1"
          "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
          "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
@@ -736,6 +735,9 @@
 
          "vscripts"  "ai/dude.lua"
 
+                  "Ability1" "dude_passive"
+
+
         "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
          "VisionDaytimeRange"		"9000"		// Range of vision during day light.
@@ -744,9 +746,9 @@
 
     "dude3"
     {
-         "BaseClass" "npc_dota_creep"
+         "BaseClass" "npc_dota_creature"
          "Model"						"models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
-         "ModelScale"				"1.5"
+         "ModelScale"				"1.0"
          "SoundSet"					"Undying_Zombie"
          "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
@@ -755,6 +757,8 @@
 
          "BountyGoldMin"				"8"
          "BountyGoldMax"				"8"
+
+         "Ability1" "dude_passive"
 
          "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
          "MovementSpeed"				"300"
@@ -770,9 +774,9 @@
 
     "dude4_air"
     {
-         "BaseClass" "npc_dota_creep"
+         "BaseClass" "npc_dota_creature"
          "Model"						"models/courier/smeevil_magic_carpet/smeevil_magic_carpet_flying.vmdl"
-         "ModelScale"				"1.5"
+         "ModelScale"				"1.1"
          "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
          "SoundSet" "Courier_smeevil"
 
@@ -782,6 +786,8 @@
          "BountyGoldMin"				"8"
          "BountyGoldMax"				"8"
 
+         "Ability1" "dude_passive"
+
 
          "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
          "MovementSpeed"				"250"
@@ -790,6 +796,122 @@
          "vscripts"  "ai/dude.lua"
 
         "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+    "dude5"
+    {
+         "BaseClass" "npc_dota_creature"
+         "Model"						"models/props_gameplay/sheep01.vmdl"
+         "ModelScale"				"1.1"
+         "SoundSet" "Sheep"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
+         "Level" "1"
+         "ConsideredHero" "0"
+         "IsAncient" "1"
+
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "8000"
+
+         "BountyGoldMin"				"5"
+         "BountyGoldMax"				"5"
+
+         "Ability1" "dude_passive"
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+         "MovementSpeed"				"300"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+
+    "dude6"
+    {
+         "BaseClass" "npc_dota_creature"
+         "Model"						"models/courier/drodo/drodo.vmdl"
+         "ModelScale"				"1.1"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "7500"
+
+         "BountyGoldMin"				"5"
+         "BountyGoldMax"				"5"
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+         "MovementSpeed"				"300"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+                  "Ability1" "dude_passive"
+
+
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+
+    "dude7"
+    {
+         "BaseClass" "npc_dota_creature"
+         "Model"						"models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
+         "ModelScale"				"1.0"
+         "SoundSet"					"Undying_Zombie"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "8000"
+
+         "BountyGoldMin"				"8"
+         "BountyGoldMax"				"8"
+
+         "Ability1" "dude_passive"
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+         "MovementSpeed"				"300"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+        "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+         "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+         "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+
+    "dude8_air"
+    {
+         "BaseClass" "npc_dota_creature"
+         "Model"						"models/courier/smeevil_magic_carpet/smeevil_magic_carpet_flying.vmdl"
+         "ModelScale"				"1.1"
+         "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+         "SoundSet" "Courier_smeevil"
+
+         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+         "StatusHealth" "2200"
+
+         "BountyGoldMin"				"8"
+         "BountyGoldMax"				"8"
+
+         "Ability1" "dude_passive"
+
+
+         "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
+         "MovementSpeed"				"250"
+         "MovementTurnRate"			"1"
+
+         "vscripts"  "ai/dude.lua"
+
+         "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
          "VisionDaytimeRange"		"9000"		// Range of vision during day light.
          "VisionNighttimeRange"		"9000"		// Range of vision at night time.

@@ -17,26 +17,6 @@ function MyGemGameMode:Start()
 --    end
 end
 
-function CreateRock(pos, owner)
-    local rock = CreateUnitByName("npc_mygem_building_rock", pos, false, owner, owner, DOTA_TEAM_GOODGUYS)
-    rock:SetControllableByPlayer(owner:GetPlayerID(), true)
-    local gridNavBlocker = SpawnEntityFromTableSynchronous("point_simple_obstruction", {
-        origin = pos
-    })
-    rock.blocker = gridNavBlocker
-end
-
-function RemoveRock(rock)
-    print("Removing rock")
-    if rock.blocker ~= nil then
-        print("Removing blocker")
-        DoEntFireByInstanceHandle(rock.blocker, "Disable", "1", 0, nil, nil)
-        DoEntFireByInstanceHandle(rock.blocker, "Kill", "1", 1, nil, nil)
---        UTIL_Remove(rock.blocker)
-    end
-    UTIL_Remove(rock)
-end
-
 -- TODO: We should create one for each player and set it to player.spawner
 function CreateSpawners()
     local spawnPoints = Entities:FindAllByName("spawn_point")
@@ -66,16 +46,6 @@ function CreateSpawners()
     end
 end
 
---[[
-    for players
-     if player.state.done then
-        player.state.end -- call current state's end transition
-        player.state.done = false
-        player.state = player.state.nextState
-        player.state.begin(player) -- call new state's begin transition
-     player.state.thinker(player)
- ]]
-
 function MyGemGameMode:GameLoop()
     local players = MyGemGameMode.players
 
@@ -90,58 +60,22 @@ function MyGemGameMode:GameLoop()
         local player = players[i]
         local state = player.state
         if state.done then
-            state.End(player)
-            state.done = false
+            state:End()
             state = state.nextState
             player.state = state
-            state.Begin(player)
+            state:Begin()
         end
-        state.Update(player)
+        state:Update()
     end
 
     return 0.05
-end
-
-function KillTrigger(trigger, keys)
-    keys.activator:ForceKill(true)
-end
-
-function GiveBuilderToPlayer(player)
-    local hero = CreateHeroForPlayer('npc_dota_hero_viper', player)
-    hero:FindAbilityByName("builder_upgrade_quality"):SetLevel(1)
-    hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
-end
-
-function InitPlayer(player)
-    player.state = Build
-    player.state.Begin(player)
-    player.gems = {}
-    player.allGems = {}
-    table.insert(MyGemGameMode.players, player)
 end
 
 function MyGemGameMode:AutoAssignPlayer(keys)
     -- Grab the entity index of this player
     local entIndex = keys.index + 1
     local player = EntIndexToHScript(entIndex)
+    Player.Init(player)
 
-
-    player:SetTeam(DOTA_TEAM_GOODGUYS)
     --player:__KeyValueFromInt('teamnumber', DOTA_TEAM_GOODGUYS)
-
-    GiveBuilderToPlayer(player)
-
-
-
---    local item = CreateItem("item_quelling_blade", hero, hero)
---    local item2 = CreateItem("item_placerock", hero, hero)
---    local item3 = CreateItem("item_place_building", hero, hero)
-    --hero:AddItem(item)
-    --hero:AddItem(item2)
-    --hero:AddItem(item3)
-
-    --GameRules:GetGameModeEntity():ClientLoadGridNav()
-
-
-    InitPlayer(player)
 end

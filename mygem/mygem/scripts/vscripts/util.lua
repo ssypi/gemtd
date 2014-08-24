@@ -1,9 +1,34 @@
+function IsValid(entity)
+    local isValid = entity ~= nil and IsValidEntity(entity) and not IsMarkedForDeletion(entity)
+    return isValid
+end
+
+function CopyFunctions(copyFrom, copyTo)
+    for k, v in pairs(copyFrom) do
+        if type(v) == "function" then
+            if copyTo[k] == nil then
+                copyTo[k] = v
+            else
+                print("Error: Trying to override a function! " .. k)
+            end
+        end
+    end
+end
+
 function FindTableKey(table, value)
     for k,v in pairs(table) do
         if v == value then
             return k
         end
     end
+end
+
+function CopyTableShallow(t)
+    local t2 = {}
+    for k, v in pairs(t) do
+        t2[k] = v
+    end
+    return t2
 end
 
 function PrintTable(t, indent, done)

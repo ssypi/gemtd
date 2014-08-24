@@ -19,10 +19,14 @@ function BuildTest(keys)
         player.gems = {}
     end
 
+--    caster.__index = Gem
+--    caster:ReplaceWith("gem_building_chipped_ruby")
     --    local gridX = GridNav:WorldToGridPosX(target.x)
     --    local gridY = GridNav:WorldToGridPosY(target.y)
     --    print("Grid X: " .. gridX)
     --    print("Grid Y: " .. gridY)
+
+
 
     print("Clicked on: " .. target.x .. ":" .. target.y)
     local diffX = target.x % 64
@@ -41,7 +45,7 @@ function BuildTest(keys)
     target.y = target.y - diffY
     print("New: " .. target.x .. ":" .. target.y)
 
-    local blocker = Entities:FindByName(nil, "tree")
+--    local blocker = Entities:FindByName(nil, "tree")
     --    local entityMaker = Entities:FindByName(nil, "entityMaker")
     --    entityMaker:SpawnEntityAtLocation(target, Vector(0,0,0))
 
@@ -76,35 +80,22 @@ function BuildTest(keys)
     --DeepPrintTable(blocker)
 
 
-    CreateRock(target, player)
+    Gem:CreateRock(target, player)
 end
 
 function Build(keys)
     local caster = keys.caster
     local player = caster:GetPlayerOwner()
-    print(player)
-    caster:SetGold(100, true)
     local target = keys.target_points[1]
-
-    target.x = target.x - (target.x % 128) + 64
-    target.y = target.y - (target.y % 128) + 64
-
-
-    --    local gridX = GridNav:WorldToGridPosX(target.x)
-    --    local gridY = GridNav:WorldToGridPosY(target.y)
-    --    print("Grid X: " .. gridX)
-    --    print("Grid Y: " .. gridY)
 
     if player.smallGrid then
         local diffX = target.x % 64
         local diffY = target.y % 64
 
         if diffX > 32 then
-            print("diffx > 32")
             diffX = diffX - 64
         end
         if diffY > 32 then
-            print("diffy < 32")
             diffY = diffY - 64
         end
 
@@ -114,16 +105,16 @@ function Build(keys)
         target.x = target.x - (target.x % 128) + 64
         target.y = target.y - (target.y % 128) + 64
     end
-    local gem = CreateUnitByName("gem_dummy", target, true, caster, caster, caster:GetTeamNumber())
 
-    if gem:GetOrigin() ~= target then
+    -- Check for clear space with a dummy unit, beacause currently buildings have problems with find clear space
+    local dummy = CreateUnitByName("gem_dummy", target, true, caster, caster, caster:GetTeamNumber())
+
+    if dummy:GetOrigin() ~= target then
         print("no space")
-        UTIL_Remove(gem)
-        return
+        UTIL_Remove(dummy)
     else
-        UTIL_Remove(gem)
-        gem = Gem:CreateGem(Gem:RandomGem(player), target, player)
-
+        UTIL_Remove(dummy)
+        Gem:CreateGem(Gem:RandomGem(player), target, player)
         local item = keys.ability
         item:SetCurrentCharges(item:GetCurrentCharges() - 1)
     end

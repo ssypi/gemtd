@@ -5,15 +5,21 @@ local ITEM_BUILD = "item_place_building"
 local GEMS_PER_ROUND = 5
 
 
+Build = {}
+Build.__index = Build
 
-if Build == nil then
-    Build = {}
+function Build.new(player)
+    local buildState = {}
+    setmetatable(buildState, Build)
+    buildState.player = player
+    return buildState
 end
 
 
-function Build.Begin(player)
+function Build:Begin()
+    local player = self.player
     print("Build state started for " .. player:GetPlayerID())
-    Build.done = false
+    self.done = false
     GiveBuildAbility(player)
 end
 
@@ -30,14 +36,14 @@ function CheckForCombineSpecial(player)
     local gem = allGems[#allGems]
     local combinesTo = gem.combinesTo
     if combinesTo ~= nil then
-        local combinedFrom = MyGemGameMode.kv.units[combinesTo].CombinedFrom
+        local combinedFrom = Gem:GetCombineRecipeFor(combinesTo)
         print("Combined from:")
         PrintTable(combinedFrom)
         for _,currentGem in pairs(allGems) do
             if IsValid(currentGem) then
                 local gemName = currentGem:GetUnitName()
                 print(gemName)
-                if combinedFrom[gemName] then
+                if combinedFrom[gemName] ~= nil and combinedFrom[gemName] > 0 then
                     print("Found combine")
                     combinedFrom[gemName] = combinedFrom[gemName] - combinedFrom[gemName]
                 end
@@ -58,11 +64,6 @@ function AddSpecialCombine(gem)
     end
 end
 
-function IsValid(entity)
-    local isValid = IsValidEntity(entity) and not IsMarkedForDeletion(entity)
-    return isValid
-end
-
 function CheckForCombine(player, gem)
     if not IsValid(gem) then
         return
@@ -78,11 +79,12 @@ function CheckForCombine(player, gem)
     end
 end
 
-function Build.Update(player)
+function Build:Update()
+    local player = self.player
     if player.done then
         print("Player done building")
         player.done = false
-        Build.done = true
+        self.done = true
     end
 
     -- TODO: no need to do this on every update call
@@ -102,12 +104,13 @@ function Build.Update(player)
     end
 end
 
-function Build.End(player)
+function Build:End()
+    local player = self.player
     print("Build state ended for " .. player:GetPlayerID())
     ClearUnusedGems(player)
     RemoveBuildAbility(player)
     CheckForCombineSpecial(player)
-    Build.nextState = Running
+    self.nextState = Running.new(player)
 end
 
 function ClearGemAbilities(gem)
@@ -137,9 +140,7 @@ function ClearUnusedGems(player)
             table.insert(player.allGems, gem)
             ClearGemAbilities(gems[i])
         else
-            local pos = gem:GetOrigin()
-            UTIL_Remove(gem)
-            CreateRock(pos, gem.owner)
+            gem:ReplaceWithRock()
             --table.remove(gems, i)
         end
     end

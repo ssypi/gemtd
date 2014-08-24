@@ -10,7 +10,7 @@
         "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 
         //"Ability1"  "gem_attack_splash"
-        "Ability1"  "malachite_multishot"
+        "Ability1"  "builder_toggle_grid_size"
         "Ability2"  "builder_upgrade_quality"
         "Ability3"  "builder_test"
         "Ability4"  ""

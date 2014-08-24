@@ -3,6 +3,34 @@
 {
 	"Version"		"1"
 
+    "builder_toggle_grid_size"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE |  DOTA_ABILITY_BEHAVIOR_TOGGLE"
+        "AbilityManaCost" "0"
+        "AbilityCooldown" "0"
+
+        "OnToggleOn"
+        {
+            "RunScript"
+            {
+                "Target"        "CASTER"
+                "ScriptFile"    "scripts/vscripts/abilities.lua"
+                "Function"      "ToggleGridOn"
+            }
+        }
+
+        "OnToggleOff"
+        {
+            "RunScript"
+            {
+                "Target"        "CASTER"
+                "ScriptFile"    "scripts/vscripts/abilities.lua"
+                "Function"      "ToggleGridOff"
+            }
+        }
+    }
+
     "builder_upgrade_quality"
     {
         "BaseClass" "ability_datadriven"
@@ -29,10 +57,22 @@
     "builder_test"
     {
     	    "BaseClass" "ability_datadriven"
-            "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+            "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+
+            "Radius"    "1000"
 
             "AbilityManaCost" "0"
             "AbilityCooldown" "0"
+
+            OnAbilityPhaseStart
+            {
+                "RunScript"
+            	{
+            	    "Target"    "CASTER"
+            	    "ScriptFile" "scripts/vscripts/abilities.lua"
+            	    "Function" "OnAbilityPhaseStart"
+            	}
+            }
 
             "OnSpellStart"
             {

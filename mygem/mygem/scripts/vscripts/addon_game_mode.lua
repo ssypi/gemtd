@@ -1,13 +1,9 @@
 require("util")
 require("Gem")
+require("player")
 require("states/build")
 require("states/running")
 require("mygem")
-
-
-function kala()
-    print ("kala")
-end
 
 -- This chunk of code forces the reloading of all modules when we reload script.
 if g_reloadState == nil then
@@ -30,7 +26,6 @@ end
 
 function Precache( context )
     --PrecacheUnitByName('npc_precache_everything')
-
     --[[
         Precache things we know we'll use.  Possible file types include (but not limited to):
             PrecacheResource( "model", "*.vmdl", context )
@@ -71,10 +66,8 @@ function Precache( context )
     PrecacheResource("particle_folder", "particles/econ/generic/generic_buff_1", context)
     PrecacheResource("particle_folder", "particles/status_fx", context)
     PrecacheResource("particle_folder", "particles/base_attacks", context)
-    --PrecacheResource("particle", "particles/units/heroes/hero_viper.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_alchemist/alchemist_unstable_concoction_projectile_model.vpcf", context)
     PrecacheResource("particle", "particles/base_attacks/generic_projectile_trail.vpcf", context)
-    --PrecacheResource("soundfile", "scripts/game_sounds_heroes/game_sounds_viper.txt", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_music_int.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/music/valve_dota_001/music/game_sounds_music.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts", context)
@@ -95,7 +88,7 @@ function LoadCustomKV()
 end
 
 function MyGemGameMode:InitGameMode()
-	print( "Template addon is loaded." )
+	print("Mygemm is loaded." )
     LoadCustomKV()
     local game = GameRules:GetGameModeEntity()
     game:SetCameraDistanceOverride(1300)
@@ -103,14 +96,20 @@ function MyGemGameMode:InitGameMode()
     --game:ClientLoadGridNav()
 
     Convars:RegisterCommand('tester', function(name)
-    -- Check if the server ran it
         local player = Convars:GetCommandClient()
         print(player)
         print(player:GetAssignedHero())
         if player.spawner ~= nil then
             player.spawner:GetPrivateScriptScope():SpawnMazeTester()
         end
-    end, '', 0)
+    end, 'Run maze tester', 0)
+
+    Convars:RegisterCommand('killall', function(name)
+        local player = Convars:GetCommandClient()
+        if player.state.KillAll ~= nil then
+            player.state:KillAll()
+        end
+    end, 'Kill all spawned dudes', 0)
 
     GameRules:SetPreGameTime(10.0)
     GameRules:SetGoldPerTick(0)
@@ -119,22 +118,8 @@ function MyGemGameMode:InitGameMode()
     game:SetAlwaysShowPlayerInventory(true)
 --    game:SetGoldSoundDisabled(true)
 
-
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(MyGemGameMode, 'AutoAssignPlayer'), self)
-
 end
-
-
--- A function to re-lookup a function by name every time.
---function Dynamic_Wrap(mt, name)
---    if Convars:GetFloat('developer') == 1 then
---        local function w(...) return mt[name](...) end
---        return w
---    else
---        return mt[name]
---    end
---end
-
 
 -- Evaluate the state of the game
 function MyGemGameMode:OnThink()
@@ -142,7 +127,6 @@ function MyGemGameMode:OnThink()
         if not MyGemGameMode.started then
             MyGemGameMode:Start()
         end
-		--print( "Template addon script is running." )
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		return nil
 	end
