@@ -1,7 +1,7 @@
 require("levels")
 
 local ABILITY_BUILD = "gem_build"
-local ITEM_BUILD = "item_place_building"
+local ITEM_BUILD = "item_place_gem"
 local GEMS_PER_ROUND = 5
 
 Build = {}

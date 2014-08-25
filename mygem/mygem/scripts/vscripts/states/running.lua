@@ -1,7 +1,7 @@
 Running = {}
 Running.__index = Running
 
-local TIME_BETWEEN_SPAWN = 1
+local TIME_BETWEEN_SPAWN = 2
 
 function Running.new(player)
     local runState = {}
@@ -23,13 +23,13 @@ function Running:Begin()
     local player = self.player
     print("Running state started for " .. player:GetPlayerID())
     self.done = false
-    self.currentRound = 0
+    self.currentRound = player.currentRound
     self.dudes = {}
     self.lastSpawnTime = 0
-    self:StartNextRound()
+    self:StartRound()
 end
 
-function Running:StartNextRound()
+function Running:StartRound()
     local player = self.player
     if self.currentRound >= #Levels then
         print("All rounds completed!")
@@ -37,9 +37,40 @@ function Running:StartNextRound()
         self.currentRound = 1
         --        self.done = true
     else
-        self.currentRound = self.currentRound + 1
         print("Starting round #" .. self.currentRound)
         self.dudes = {}
+        self:CheckAirRound()
+    end
+end
+
+function Running:CheckAirRound()
+    EnableAllGems(self.player)
+    if self.currentRound % 4 == 0 then
+        print("Air round!")
+        DisableGroundOnlyGems(self.player)
+    else
+        DisableAirOnlyGems(self.player)
+    end
+end
+
+function EnableAllGems(player)
+    local gems = player.allGems
+    for _, gem in pairs(gems) do
+        gem:Enable()
+    end
+end
+
+function DisableAirOnlyGems(player)
+    local gems = player.allGems
+    for _, gem in pairs(gems) do
+        gem:DisableIfAirOnly()
+    end
+end
+
+function DisableGroundOnlyGems(player)
+    local gems = player.allGems
+    for _, gem in pairs(gems) do
+        gem:DisableIfGroundOnly()
     end
 end
 
@@ -103,6 +134,10 @@ end
 
 function Running:End()
     local player = self.player
+    local hero = player:GetAssignedHero()
+    local goldBonus = 5 + (self.currentRound * 2)
+    hero:SetGold(hero:GetGold() + goldBonus, false)
     print("Running state ended for " .. player:GetPlayerID())
     self.nextState = Build.new(player)
+    player.currentRound = self.currentRound + 1
 end

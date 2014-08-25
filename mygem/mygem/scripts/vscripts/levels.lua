@@ -14,12 +14,12 @@ function NewLevel(unit, amount, isAir)
 end
 
 Levels = {
-    NewLevel("dude1", 5),
-    NewLevel("dude2", 8),
-    NewLevel("dude3", 8),
-    NewLevel("dude4_air", 8, true),
-    NewLevel("dude5", 18),
-    NewLevel("dude6", 18),
-    NewLevel("dude7", 18),
-    NewLevel("dude8_air", 18, true)
+    NewLevel("dude1", 10),
+    NewLevel("dude2", 10),
+    NewLevel("dude3", 10),
+    NewLevel("dude4_air", 10, true),
+    NewLevel("dude5", 10),
+    NewLevel("dude6", 10),
+    NewLevel("dude7", 10),
+    NewLevel("dude8_air", 10, true)
 }

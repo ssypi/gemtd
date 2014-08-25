@@ -20,49 +20,46 @@ Gem.qualities = {
     -- TODO: "great"
 }
 
+
+-- cost: 20, 50, 80, 110, 140, 170, 200, 230
 Gem.upgradeLevels = {
-    {
-        100
-    },
-    {
-        80,
-        20
-    },
-    {
-        60,
-        40
-    },
-    {
-        40,
-        60
-    },
-    {
-        20,
-        80
-    },
-    {
-        0,
-        100
-    }
+    { 100 },
+    { 70, 30 },
+    { 60, 30, 10 },
+    { 50, 30, 20 },
+    { 40, 30, 20, 10 },
+    { 30, 30, 30, 10 },
+    { 20, 30, 30, 20 },
+    { 10, 30, 30, 30 },
+    { 0, 30, 30, 30, 10 }
 }
+
+function Gem:InitCustomKvData()
+    local gemData = MyGemGameMode.kv.units[self:GetUnitName()]
+    self.combinesTo = gemData.CombinesTo
+    self.attacksAir = gemData.AttacksAir
+end
 
 function Gem:CreateGem(unitName, position, player, createBlocker)
     local gem = CreateUnitByName(unitName, position, false, player, player, PlayerResource:GetTeam(player:GetPlayerID()))
     CopyFunctions(Gem, gem)
     gem.owner = player
     gem:AddAbility("gem_keep")
-    gem:FindAbilityByName("gem_keep"):SetHidden(true)
-    gem:FindAbilityByName("gem_keep"):SetLevel(1)
+    local ability = gem:FindAbilityByName("gem_keep")
+    ability:SetLevel(1)
+    ability:SetHidden(true)
+
+    if not gem:HasModifier("modifier_keep") then
+        gem:AddNewModifier(gem, ability, "modifier_keep", {})
+    end
+
     gem:SetControllableByPlayer(player:GetPlayerID(), true)
 
     if createBlocker == nil or createBlocker == true then
-        print("gem blocker arg was true")
         gem:CreateBlocker()
     end
 
-    local gemData = MyGemGameMode.kv.units[gem:GetUnitName()]
-    gem.combinesTo = gemData.CombinesTo
-    gem.attacksAir = gemData.AttacksAir
+    gem:InitCustomKvData()
     if player.gems == nil then
         player.gems = {}
     end
@@ -104,6 +101,26 @@ function Gem:CreateRock(pos, owner, createBlocker)
         rock:CreateBlocker()
     end
     return rock
+end
+
+function Gem:DisableIfAirOnly()
+    if IsValid(self) and self.attacksAir == "GEM_ATTACK_AIR" then
+        self:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
+        print("Disabling " .. self:GetUnitName())
+    end
+end
+
+function Gem:DisableIfGroundOnly()
+    if IsValid(self) and self.attacksAir == "GEM_ATTACK_GROUND" then
+        self:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
+        print("Disabling " .. self:GetUnitName())
+    end
+end
+
+function Gem:Enable()
+    if IsValid(self) then
+        self:SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
+    end
 end
 
 function Gem:CreateBlocker()

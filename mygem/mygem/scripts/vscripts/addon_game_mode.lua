@@ -19,6 +19,7 @@ function Precache( context )
             PrecacheResource( "particle_folder", "particles/folder", context )
     ]]
     PrecacheResource("model", "models/development/invisiblebox.vmdl", context)
+    PrecacheResource("model", "models/props_debris/skull001.vmdl", context)
     PrecacheResource("model", "models/props_gameplay/sheep01.vmdl", context)
     PrecacheResource("model", "models/effects/dust_00.vmdl", context)
     PrecacheResource("model", "models/courier/drodo/drodo.vmdl", context)

@@ -12,7 +12,8 @@ function BuyHp(keys)
     local player = caster:GetPlayerOwner()
     local hero = player:GetAssignedHero()
     if caster:GetHealthDeficit() > 0 then
-        caster:SetHealth(caster:GetHealth()+1)
+--        caster:SetHealth(caster:GetHealth()+1)
+        caster:Heal(1, caster)
     else
         player:ShowError("Already at full health!")
         hero:SetGold(hero:GetGold() + 10)

@@ -6,6 +6,8 @@
 	"base_buy_hp"
 	{
 	    "BaseClass" "ability_datadriven"
+        "AbilityTextureName"    "buy_hp"
+
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityManaCost" "0"
         "AbilityCooldown" "3"
@@ -27,6 +29,8 @@
     "builder_toggle_grid_size"
     {
         "BaseClass" "ability_datadriven"
+        "AbilityTextureName"    "toggle_grid"
+
         "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE |  DOTA_ABILITY_BEHAVIOR_TOGGLE"
         "AbilityManaCost" "0"
         "AbilityCooldown" "0"
@@ -55,14 +59,16 @@
     "builder_upgrade_quality"
     {
         "BaseClass" "ability_datadriven"
+        "AbilityTextureName"    "upgrade_quality"
+
         "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
         "AbilityManaCost" "1 2 3 4 5"
         "AbilityCooldown" "1"
 
         "ItemBaseLevel" "1"
-        "MaxLevel"  "7"
+        "MaxLevel"  "8"
 
-        "AbilityGoldCost"   "10 20 30 40 50"
+        "AbilityGoldCost"   "20 50 80 110 140 170 200 230"
 
         "OnSpellStart"
         {
@@ -365,6 +371,8 @@
     "gem_combine_special"
     {
         "BaseClass" "ability_datadriven"
+        "AbilityTextureName"    "gem_combine_special"
+
         "Maxlevel" "1"
         "ItemBaseLevel" "1"
         "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -407,6 +415,8 @@
     "gem_combine"
     {
         "BaseClass" "ability_datadriven"
+        "AbilityTextureName"    "gem_combine"
+
         "Maxlevel" "1"
         "ItemBaseLevel" "1"
         "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -428,6 +438,8 @@
 	"gem_destroy"
     {
         "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityTextureName"    "gem_destroy"
+
         "BaseClass" "ability_datadriven"
         "Maxlevel" "1"
         "ItemBaseLevel" "1"
@@ -449,6 +461,8 @@
         "AbilityCastPoint"				"0.0"
         "AbilityCooldown"				"1"
         "AbilityManaCost"				"0"
+
+        "AbilityTextureName"    "gem_keep"
 
         "OnSpellStart"
         {
@@ -484,8 +498,10 @@
 
         "gem_delete"
         {
-                "BaseClass" "ability_datadriven"
-                "Maxlevel" "1"
+            "BaseClass" "ability_datadriven"
+            "Maxlevel" "1"
+            "AbilityTextureName"    "gem_destroy"
+
             "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
             "AbilityCastPoint"				"0.0"
             "AbilityCooldown"				"1"

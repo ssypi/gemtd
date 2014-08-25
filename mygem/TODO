@@ -74,3 +74,14 @@ RandomGem and CreateGem/CreateRock to player class
 
 - Change update loop to timer instead of thinker
   to avoid running during pause
+
+
+- Track gem kills and level up accordingly
+  when combining take kills from all parts
+
+- Downgrade quality
+
+- Attack/Armor type system
+
+- First to level x bonuses
+   10 = 30 gold

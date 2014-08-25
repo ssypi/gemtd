@@ -6,6 +6,7 @@ function Player.Init(player)
     CopyFunctions(Player, player)
     player.gems = {}
     player.allGems = {}
+    player.currentRound = 1
     table.insert(MyGemGameMode.players, player)
     player:SetTeam(DOTA_TEAM_GOODGUYS)
     player:CreateBuilder()
@@ -18,7 +19,7 @@ function Player:CreateBuilder()
     local hero = CreateHeroForPlayer('npc_dota_hero_viper', self)
     hero:FindAbilityByName("builder_upgrade_quality"):SetLevel(1)
     hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
-    hero:SetGold(1000, false)
+    hero:SetGold(10, false)
 end
 
 function Player:CreateBase()
