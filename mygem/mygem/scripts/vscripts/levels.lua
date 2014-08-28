@@ -17,9 +17,21 @@ Levels = {
     NewLevel("dude1", 10),
     NewLevel("dude2", 10),
     NewLevel("dude3", 10),
-    NewLevel("dude4_air", 10, true),
+    NewLevel("dude4", 10, true),
     NewLevel("dude5", 10),
     NewLevel("dude6", 10),
     NewLevel("dude7", 10),
-    NewLevel("dude8_air", 10, true)
+    NewLevel("dude8", 10, true),
+    NewLevel("dude9", 10),
+    NewLevel("dude10", 10),
+    NewLevel("dude11", 10),
+    NewLevel("dude12", 10, true),
+    NewLevel("dude13", 10),
+    NewLevel("dude14", 10),
+    NewLevel("dude15", 10),
+    NewLevel("dude16", 10, true),
+    NewLevel("dude17", 10),
+    NewLevel("dude18", 10),
+    NewLevel("dude19", 10),
+    NewLevel("dude20", 10, true)
 }

@@ -6,6 +6,8 @@ Gem.types = {
     "sapphire",
     "ruby",
     "diamond",
+    "topaz",
+    "amethyst",
     "opal",
     "emerald",
     "aquamarine"
@@ -16,8 +18,8 @@ Gem.qualities = {
     "flawed",
     "normal",
     "flawless",
-    "perfect"
-    -- TODO: "great"
+    "perfect",
+    "great"
 }
 
 
@@ -37,7 +39,7 @@ Gem.upgradeLevels = {
 function Gem:InitCustomKvData()
     local gemData = MyGemGameMode.kv.units[self:GetUnitName()]
     self.combinesTo = gemData.CombinesTo
-    self.attacksAir = gemData.AttacksAir
+    self.attackTargets = gemData.AttackTargets
 end
 
 function Gem:CreateGem(unitName, position, player, createBlocker)
@@ -86,7 +88,7 @@ function Gem:RandomGem(player)
         end
     end
     print(quality)
-    local gemName = "gem_building_" .. quality .. "_" .. type
+    local gemName = "gem_" .. quality .. "_" .. type
     print("Random gem name: " .. gemName)
     return gemName
 end
@@ -104,14 +106,14 @@ function Gem:CreateRock(pos, owner, createBlocker)
 end
 
 function Gem:DisableIfAirOnly()
-    if IsValid(self) and self.attacksAir == "GEM_ATTACK_AIR" then
+    if IsValid(self) and self.attackTargets == "GEM_ATTACK_AIR" then
         self:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
         print("Disabling " .. self:GetUnitName())
     end
 end
 
 function Gem:DisableIfGroundOnly()
-    if IsValid(self) and self.attacksAir == "GEM_ATTACK_GROUND" then
+    if IsValid(self) and self.attackTargets == "GEM_ATTACK_GROUND" then
         self:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
         print("Disabling " .. self:GetUnitName())
     end

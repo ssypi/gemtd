@@ -122,6 +122,11 @@ function Running:DamagePlayer()
     end
 end
 
+function Running:Lose()
+    self.player:GetAssignedHero():ForceKill(true)
+    print("Game over!")
+end
+
 function Running:IsEveryoneDead()
     for i = 1, #self.dudes do
         local dude = self.dudes[i]

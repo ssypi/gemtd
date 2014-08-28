@@ -1,0 +1,96 @@
+"DOTAUnits"
+{
+	"Version"	"1"
+
+    "player_base"
+    {
+        "BaseClass" "npc_dota_creature"
+        "Model" "models/props_debris/skull001.vmdl"
+        "ModelScale"    "15"
+
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+
+        "RingRadius" "200" //approx 4x4
+        "StatusHealth" "50"
+        "StatusHealthRegen" "0"
+
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+
+    	"AbilityLayout" "1"
+        "Ability1"					"base_buy_hp"
+        //"Ability2"					""
+        //"Ability3"					""
+        //"Ability4"					""
+    }
+
+    "npc_dude_spawner"
+    {
+        "BaseClass" "npc_dota_creature"
+        "Model" "models/development/invisiblebox.vmdl"
+
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+
+        "MinimapIcon"   ""
+        "vscripts"  "ai/spawner.lua"
+
+        "AbilityLayout" "4"
+        "ability1"  "spawner_basic"
+        "Ability2"					""
+        "Ability3"					""
+        "Ability4"					""
+
+    }
+
+    "maze_tester"
+    {
+        "BaseClass" "npc_dota_creature"
+        //"Model"						"models/player.vmdl"
+        "Model"						"models/courier/donkey_unicorn/donkey_unicorn.vmdl"
+        //"Model"						"models/heroes/viper/viper.vmdl"
+        "ModelScale"				"2"
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
+
+        "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+        "MovementSpeed"				"800"
+        "MovementTurnRate"			"1"
+
+        "vscripts"  "ai/dude.lua"
+
+        "AbilityLayout" "1"
+        "Ability1"					"super_speed"
+
+        "VisionDaytimeRange"		"9000"		// Range of vision during day light.
+        "VisionNighttimeRange"		"9000"		// Range of vision at night time.
+    }
+
+    "gem_dummy"
+    {
+        "BaseClass" "npc_dota_creature"
+        "BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+
+        "MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+        "AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+    }
+
+    "npc_mygem_building_rock"
+    {
+        "BaseClass" "npc_dota_building"
+        "Model" "models/buildings/building_plain_reference.vmdl"
+        "RingRadius" "100" //approx 4x4
+        "StatusHealth" "50"
+        "StatusHealthRegen" "0"
+
+        "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+
+        //"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+    	"AbilityLayout" "1"
+            "Ability1"					"gem_delete"			// Ability 1
+            //"Ability2"					""			// Ability 2
+            //"Ability3"					""			// Ability 3
+            //"Ability4"					""			// Ability 4
+    }

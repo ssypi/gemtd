@@ -1,18 +1,9 @@
-local qualities = {
-    "chipped",
-    "flawed",
-    "normal",
-    "flawless",
-    "perfect"
-    -- TODO: "great"
-}
-
 function BuyHp(keys)
     local caster = keys.caster
     local player = caster:GetPlayerOwner()
     local hero = player:GetAssignedHero()
     if caster:GetHealthDeficit() > 0 then
---        caster:SetHealth(caster:GetHealth()+1)
+        --        caster:SetHealth(caster:GetHealth()+1)
         caster:Heal(1, caster)
     else
         player:ShowError("Already at full health!")
@@ -61,12 +52,6 @@ function UpgradeQuality(keys)
     end
 end
 
-
-
-function Test(keys)
-    print("kalatest")
-end
-
 function GemKeep(keys)
     local gem = keys.caster
     local player = gem.owner
@@ -86,12 +71,14 @@ function GemCombine(keys)
     gem.keep = true
     print("Combining gem " .. gem:GetUnitName())
     local unitName = gem:GetUnitName()
-    local quality, type = unitName:match("gem_building_(.+)_(.+)")
-    local qualityNum = FindTableKey(qualities, quality)
-    local newName = "gem_building_" .. qualities[qualityNum+1] .. "_" .. type
-    local newGem = gem:ReplaceWith(newName)
-    newGem.keep = true
-    player.done = true
+    local quality, type = unitName:match("gem_(.+)_(.+)")
+    local qualityNum = FindTableKey(Gem.qualities, quality)
+    if qualityNum < #Gem.qualities then
+        local newName = "gem_" .. Gem.qualities[qualityNum + 1] .. "_" .. type
+        local newGem = gem:ReplaceWith(newName)
+        newGem.keep = true
+        player.done = true
+    end
 end
 
 -- Combine gems into a special recipe gem
@@ -118,7 +105,7 @@ end
 -- Remove all the gems used in a special combine
 function RemoveCombinedGems(player, combinedFrom)
     local allGems = player.allGems
-    for i=#allGems, 1, -1 do
+    for i = #allGems, 1, -1 do
         local gem = allGems[i]
         if combinedFrom[gem:GetUnitName()] then
             combinedFrom[gem:GetUnitName()] = 0 -- So we don't remove multiples of the same gem
