@@ -10,7 +10,22 @@ end
 -- TODO: maybe we should add the tower_scripts proxy ability only after creation in the init function instead of in KV
 function OnCreated(keys)
     print("OnCreated")
-    PrintTable(keys)
+--    PrintTable(keys)
+
+--    local count = keys.caster:GetModifierCount()
+--    for i=0, count do
+--        print(keys.caster:GetModifierNameByIndex(i))
+--    end
+
+    local gem = keys.caster
+    if gem:HasModifier("modifier_invulnerable") then
+        gem:RemoveModifierByName("modifier_invulnerable")
+    end
+
+    if gem:HasModifier("modifier_tower_truesight_aura") then
+        gem:RemoveModifierByName("modifier_tower_truesight_aura")
+    end
+
     if keys.caster.OnCreated ~= nil then
         keys.caster:OnCreated(keys)
     end

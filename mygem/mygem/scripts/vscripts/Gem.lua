@@ -4,6 +4,10 @@ require("gems/emerald")
 require("gems/topaz")
 require("gems/opal")
 require("gems/diamond")
+require("gems/special/malachite")
+require("gems/special/silver")
+require("gems/special/star")
+require("gems/special/jade")
 
 if Gem == nil then
     Gem = {}
@@ -54,7 +58,8 @@ function Gem:InitCustomKvData()
 end
 
 function Gem:CreateGem(unitName, position, player, createBlocker)
-    local gem = CreateUnitByName(unitName, position, false, player, player, PlayerResource:GetTeam(player:GetPlayerID()))
+    local gem = CreateUnitByName(unitName, position, false, player:GetAssignedHero(), player:GetAssignedHero(), PlayerResource:GetTeam(player:GetPlayerID()))
+--    gem:SetOwner(player)
     CopyFunctions(Gem, gem)
     gem.owner = player
     gem:AddAbility("gem_keep")
@@ -75,16 +80,26 @@ function Gem:CreateGem(unitName, position, player, createBlocker)
     gem:InitCustomKvData()
 --    local unitName = gem.unitName:gsub("%s+", "")
     local quality, type = gem:GetUnitName():match("gem_(.+)_(.+)")
+    print("Qual:" .. quality)
+    print("Type:" .. type)
     gem.quality = quality
     gem.qualityNum = vlua.find(Gem.qualities, quality)
     gem.type = type
     local class = type:gsub("^%l", string.upper)
+    if vlua.find(gem:GetUnitName(), "star") ~= nil then
+        class = "Star"
+    end
     print("Class: " .. class)
     print(quality)
     print(type)
     if _G[class] ~= nil then
         CopyFunctions(_G[class], gem)
     end
+
+    gem:AddAbility("gem_script_proxy")
+    ability = gem:FindAbilityByName("gem_script_proxy")
+    ability:SetLevel(1)
+
     --    if _G[unitName] ~= nil then
     --        CopyFunctions(_G[unitName], gem)
 --    end

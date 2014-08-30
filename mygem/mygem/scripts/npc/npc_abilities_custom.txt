@@ -333,6 +333,269 @@
     // Tower Abilities
 	// ========================================================================
 
+    "jade_lucky"
+    {
+	    "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "Modifiers"
+        {
+            "modifier_jade_lucky"
+            {
+                "Passive"   "1"
+                "IsHidden"  "1"
+                "OnAttackStart"
+                {
+                    "Random"
+                    {
+                        "Chance" "%gold_chance"
+                        //"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+                        "OnSuccess"
+                        {
+                            "ApplyModifier"
+                            {
+                                "ModifierName" "modifier_jade_gold_effect"
+                                "Target" "CASTER"
+                            }
+                            "RunScript"
+                            {
+                                "Target"    "TARGET"
+                                "ScriptFile"    "gems/special/jade.lua"
+                                "Function"  "GiveGold"
+                            }
+                        }
+                    }
+                }
+            }
+
+            "modifier_jade_gold_effect"
+            {
+                "OnAttackLanded"
+                {
+                    "FireSound"
+                    {
+                        //"EffectName"    "sounds/ui/coins_big.vsnd"
+                        "EffectName"    "General.CoinsBig"
+                        "Target"    "CASTER"
+                    }
+
+                    "FireEffect"
+                    {
+                        //"EffectName" "particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"
+                        "EffectName" "particles/generic_gameplay/lasthit_coins.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "Target" "CASTER"
+                    }
+                    "RemoveModifier"
+                    {
+                        "ModifierName" "modifier_jade_gold_effect"
+                        "Target" "CASTER"
+                    }
+                }
+            }
+        }
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"gold_chance"				    "25 25 25"
+			}
+		}
+    }
+
+
+	"aura_burn"
+	{
+	    "BaseClass"     "brewmaster_fire_permanent_immolation"
+		//"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"3"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+    		"AbilitySpecial"
+            {
+            		"01"
+            		{
+            			"var_type"				"FIELD_INTEGER"
+            			"radius"			"500 600 700"
+            		}
+            		"02"
+            		{
+            			"var_type"				"FIELD_FLOAT"
+            			"damage"			"40 50 100"
+            		}
+            }
+	}
+
+
+
+    "star_aura"
+    {
+	    "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "MaxLevel"  "3"
+
+        "Modifiers"
+        {
+            "modifier_star_aura"
+            {
+                "IsHidden"  "0"
+                "Passive"   "1"
+
+                "Aura"  "modifier_star_aura_burn"
+                "Aura_Radius"   "%aura_radius"
+                "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Aura_Types"    "DOTA_UNIT_TARGET_BASIC"
+                "Aura_ApplyToCaster"    "0"
+            }
+
+            "modifier_star_aura_burn"
+            {
+                //"Passive"   "1"
+                "IsHidden"    "0"
+                //"IsDebuff"  "1"
+                //"Duration"  "1"
+                "ThinkInterval" "1"
+
+                "OnIntervalThink"
+                {
+                    "Damage"
+                    {
+                        "Target"    "TARGET"
+                        "Type"      "DAMAGE_TYPE_PURE"
+                        "Damage"    "%burn_damage"
+                    }
+                }
+            }
+        }
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"burn_damage"				    "1 1 1"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"aura_radius"				"500 600 700"
+			}
+		}
+
+    }
+
+    "diamond_crit"
+    {
+	    "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "Modifiers"
+        {
+            "modifier_diamond_crit_passive"
+            {
+                "Passive"   "1"
+                "IsHidden"  "1"
+                "OnAttackStart"
+                {
+                    "Random"
+                    {
+                        "Chance" "%crit_chance"
+                        //"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+                        "OnSuccess"
+                        {
+                            "ApplyModifier"
+                            {
+                                "ModifierName" "modifier_diamond_critical"
+                                "Target" "CASTER"
+                            }
+                        }
+                    }
+                }
+            }
+
+            "modifier_diamond_critical"
+            {
+ 	            "Properties"
+                {
+                    "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_bonus"
+                }
+
+                "OnAttackLanded"
+                {
+                    "FireEffect"
+                    {
+                        "EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "Target" "TARGET"
+                    }
+                    "RemoveModifier"
+                    {
+                        "ModifierName" "modifier_diamond_critical"
+                        "Target" "CASTER"
+                    }
+                }
+            }
+        }
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				    "25 25 25 25 25 30"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_bonus"				"200 200 200 200 200 300"
+			}
+		}
+    }
+
+    "opal_aura"
+    {
+	    "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "MaxLevel"  "6"
+
+        "Modifiers"
+        {
+            "modifier_opal_aura"
+            {
+                "IsHidden"  "0"
+                "Passive"   "1"
+
+                "Aura"  "modifier_opal_aura_buff"
+                "Aura_Radius"   "%aura_radius"
+                "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_BOTH"
+                "Aura_Types"    "DOTA_UNIT_TARGET_BUILDING"
+                "Aura_ApplyToCaster"    "1"
+            }
+            "modifier_opal_aura_buff"
+            {
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%as_bonus"
+                }
+            }
+        }
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"as_bonus"				    "20 30 40 50 60 100"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"aura_radius"				"500 600 700 800 1000 2000"
+			}
+		}
+    }
+
     "sapphire_slow"
     {
         "BaseClass" "ability_datadriven"
@@ -344,7 +607,7 @@
             "modifier_sapphire_slow_debuff"
             {
                 "Passive"   "1"
-                "Hidden"    "0"
+                "IsHidden"    "0"
                 "IsDebuff"  "1"
                 "Duration"  "%duration"
 
@@ -381,7 +644,7 @@
             "modifier_emerald_slow_debuff"
             {
                 "Passive"   "1"
-                "Hidden"    "0"
+                "IsHidden"    "0"
                 "IsDebuff"  "1"
                 "Duration"  "%duration"
                 "ThinkInterval" "1"
@@ -423,19 +686,19 @@
 		}
     }
 
-    "tower_attack_scripts"
+    "gem_script_proxy"
     {
         "BaseClass" "ability_datadriven"
-        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
         "Maxlevel" "1"
         "ItemBaseLevel" "1"
 
         "Modifiers"
         {
-            "modifier_attack_scripts"
+            "modifier_script_proxy"
             {
                 "Passive"   "1"
-                "Hidden"    "1"
+                "IsHidden"    "1"
 
                 "OnCreated"
                 {
@@ -484,7 +747,7 @@
             "modifier_malachite_multishot"
             {
                 "Passive"   "1"
-                "Hidden"    "0"
+                "IsHidden"    "0"
                 "OnAttackStart"
                 {
                     "CreateBonusAttack"
@@ -535,7 +798,7 @@
             "modifier_combine_special"
             {
                 "Passive"   "1"
-                "Hidden"    "1"
+                "IsHidden"    "1"
 
                 "OnCreated"
                 {
@@ -619,7 +882,7 @@
             "modifier_keep"
             {
                 "Passive"   "1"
-                "Hidden"    "1"
+                "IsHidden"    "1"
 
                 "OnCreated"
                 {
@@ -751,12 +1014,12 @@
             	"modifier_custom_invulnerability"
             	{
             		"Passive" "1"
-            		"Hidden"    "1"
+            		"IsHidden"    "1"
 
             		"States"
             		{
             		    "MODIFIER_STATE_NO_HEALTH_BAR"      "MODIFIER_STATE_VALUE_ENABLED"
-            		    "MODIFIER_STATE_INVULNERABLE"       "MODIFIER_STATE_VALUE_ENABLED"
+            		    //"MODIFIER_STATE_INVULNERABLE"       "MODIFIER_STATE_VALUE_ENABLED"
             		    //"MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
             		    //"MODIFIER_STATE_UNSELECTABLE"      "MODIFIER_STATE_VALUE_ENABLED"
             		}

@@ -5,10 +5,23 @@ Opal = {
     }
 }
 
+local ABILITY_AURA = "opal_aura"
+
 function Opal:OnCreated(keys)
     print("Opal created")
-    --TODO: fix not getting called
-    --TODO: add aura, level up
+
+    self:AddAbility(ABILITY_AURA)
+    local ability = self:FindAbilityByName(ABILITY_AURA)
+    ability:SetLevel(self.qualityNum)
+
+    local dmg = self:GetBaseDamageMax()
+    local dmgMin = self:GetBaseDamageMin()
+    print(dmg)
+    print(dmgMin)
+    self:SetBaseDamageMax(dmg-0)
+    self:SetBaseDamageMin(dmgMin-0)
+    print(self:GetBaseDamageMax())
+    print(self:GetBaseDamageMin())
 end
 
 function Opal:OnAttackLanded(keys)

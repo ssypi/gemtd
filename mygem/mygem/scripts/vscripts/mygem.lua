@@ -8,6 +8,15 @@ local spawners = {}
 
 MyGemGameMode.players = {}
 
+function GGTest(trigger, keys, a, b, c)
+    print(trigger)
+    print(keys)
+    print(a)
+    print(b)
+    print(c)
+    PrintTable(keys)
+end
+
 function MyGemGameMode:Start()
     Player.InitAll(MyGemGameMode.players)
     CreateSpawners()

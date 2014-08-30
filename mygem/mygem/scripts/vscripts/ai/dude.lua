@@ -26,6 +26,7 @@ function DudeThink()
             end
         else
             -- TODO: Check if stuck
+            -- Re-order?
         end
     else
         OrderMoveToPos(moveTarget)

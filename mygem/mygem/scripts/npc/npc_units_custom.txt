@@ -148,7 +148,7 @@
 
 "dude1"
 {
-    "BaseClass"                    "npc_dota_creature"
+    "BaseClass"                    "npc_dota_creep_lane"
     "Model"                        "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl"
     "ModelScale"                   "0.5"
     "BoundsHullName"               "DOTA_HULL_SIZE_HERO"
@@ -161,8 +161,8 @@
     "MovementSpeed"                "265"
     "MovementTurnRate"             "1.0"
     "MovementCapabilities"         "DOTA_UNIT_CAP_MOVE_GROUND"
-    "BountyGoldMax"                "0"
-    "BountyGoldMin"                "0"
+    "BountyGoldMax"                "8"
+    "BountyGoldMin"                "5"
 
     "vscripts"                     "ai/dude.lua"
 
@@ -2196,7 +2196,7 @@
     "ProjectileSpeed"          "950"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Diamond"
@@ -2224,7 +2224,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Topaz"
@@ -2252,7 +2252,7 @@
     "ProjectileSpeed"          "1250"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Sapphire"
@@ -2280,7 +2280,7 @@
     "ProjectileSpeed"          "700"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Emerald"
@@ -2308,7 +2308,7 @@
     "ProjectileSpeed"          "600"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Opal"
@@ -2336,7 +2336,7 @@
     "ProjectileSpeed"          "1200"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Amethyst"
@@ -2364,7 +2364,7 @@
     "ProjectileSpeed"          "1400"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Ruby"
@@ -2394,7 +2394,7 @@
     "ProjectileSpeed"          "1400"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Amethyst"
@@ -2422,7 +2422,7 @@
     "ProjectileSpeed"          "900"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Diamond"
@@ -2450,7 +2450,7 @@
     "ProjectileSpeed"          "750"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Emerald"
@@ -2478,7 +2478,7 @@
     "ProjectileSpeed"          "1200"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Opal"
@@ -2506,7 +2506,7 @@
     "ProjectileSpeed"          "1300"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Sapphire"
@@ -2534,7 +2534,7 @@
     "ProjectileSpeed"          "1400"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Ruby"
@@ -2562,7 +2562,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Topaz"
@@ -2590,7 +2590,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Amethyst"
@@ -2618,7 +2618,7 @@
     "ProjectileSpeed"          "850"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Diamond"
@@ -2646,7 +2646,7 @@
     "ProjectileSpeed"          "700"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Emerald"
@@ -2674,7 +2674,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Opal"
@@ -2702,7 +2702,7 @@
     "ProjectileSpeed"          "1300"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Sapphire"
@@ -2730,7 +2730,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Ruby"
@@ -2758,7 +2758,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Topaz"
@@ -2786,7 +2786,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Amethyst"
@@ -2814,7 +2814,7 @@
     "ProjectileSpeed"          "900"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Diamond"
@@ -2842,7 +2842,7 @@
     "ProjectileSpeed"          "900"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Opal"
@@ -2870,7 +2870,7 @@
     "ProjectileSpeed"          "1200"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Sapphire"
@@ -2898,7 +2898,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Topaz"
@@ -2926,7 +2926,7 @@
     "ProjectileSpeed"          "1600"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Ruby"
@@ -2954,7 +2954,7 @@
     "ProjectileSpeed"          "700"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Emerald"
@@ -2982,7 +2982,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Topaz"
@@ -3010,7 +3010,7 @@
     "ProjectileSpeed"          "1700"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Ruby"
@@ -3038,7 +3038,7 @@
     "ProjectileSpeed"          "700"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Emerald"
@@ -3066,7 +3066,7 @@
     "ProjectileSpeed"          "1900"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Amethyst"
@@ -3094,7 +3094,7 @@
     "ProjectileSpeed"          "1300"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Sapphire"
@@ -3122,7 +3122,7 @@
     "ProjectileSpeed"          "1350"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Opal"
@@ -3150,7 +3150,7 @@
     "ProjectileSpeed"          "1200"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Diamond"
@@ -3178,7 +3178,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Yellow Sapphire"
@@ -3211,7 +3211,7 @@
     "ProjectileSpeed"          "800"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Black Opal"
@@ -3244,7 +3244,7 @@
     "ProjectileSpeed"          "1250"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Star Ruby"
@@ -3277,7 +3277,7 @@
     "ProjectileSpeed"          "1200"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Pink Diamond"
@@ -3310,7 +3310,7 @@
     "ProjectileSpeed"          "2000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Jade"
@@ -3343,7 +3343,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Uranium 238"
@@ -3376,7 +3376,7 @@
     "ProjectileSpeed"          "1800"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Silver"
@@ -3409,7 +3409,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Gold"
@@ -3442,7 +3442,7 @@
     "ProjectileSpeed"          "2000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Dark Emerald"
@@ -3475,7 +3475,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Blood Stone"
@@ -3508,7 +3508,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Mine"
@@ -3535,7 +3535,7 @@
     "ProjectileSpeed"          "2500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Red Crystal"
@@ -3568,7 +3568,7 @@
     "ProjectileSpeed"          "1900"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Amethyst"
@@ -3595,7 +3595,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Topaz"
@@ -3622,7 +3622,7 @@
     "ProjectileSpeed"          "1700"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Ruby"
@@ -3649,7 +3649,7 @@
     "ProjectileSpeed"          "1900"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Sapphire"
@@ -3676,7 +3676,7 @@
     "ProjectileSpeed"          "1200"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Opal"
@@ -3703,7 +3703,7 @@
     "ProjectileSpeed"          "1900"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Diamond"
@@ -3730,7 +3730,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Emerald"
@@ -3757,7 +3757,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Air Slate"
@@ -3784,7 +3784,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Slow Slate"
@@ -3811,7 +3811,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Hold Slate"
@@ -3838,7 +3838,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Ancient Slate"
@@ -3865,7 +3865,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Opal Vein Slate"
@@ -3892,7 +3892,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Wraith Slate"
@@ -3919,7 +3919,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Range CHeck"
@@ -3946,7 +3946,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Normal Aquamarine"
@@ -3974,7 +3974,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawed Aquamarine"
@@ -4002,7 +4002,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Chipped Aquamarine"
@@ -4030,7 +4030,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Flawless Aquamarine"
@@ -4058,7 +4058,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Perfect Aquamarine"
@@ -4086,7 +4086,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Aquamarine"
@@ -4098,6 +4098,7 @@
     "BaseClass"                "npc_dota_tower"
     "Model"                    "models/buildings/building_racks_melee_reference.vmdl"
     "ModelScale"               "0.5"
+    "SoundSet"                 "Creep_Bad_Range"
     "BoundsHullName"           "DOTA_HULL_SIZE_HERO"
     "RingRadius"               "100"
     "StatusHealth"               "50"
@@ -4106,18 +4107,18 @@
     "AttackDamageMax"          "6"
     "AttackRate"               "0.5"
     "AttackAnimationPoint"     "0.0"
-    "AttackAcquisitionRange"   "750"
+    "AttackAcquisitionRange"   "1000"
     "AttackRange"              "750"
     "MovementTurnRate"         "1.0"
     "ProjectileModel"          "particles/base_attacks/generic_projectile.vpcf"
     "ProjectileSpeed"          "1300"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Malachite"
-    "AttackTargets"            "GEM_ATTACK_AIR"
+    "AttackTargets"            "GEM_ATTACK_BOTH"
     "CombinedFrom"
      {
              "gem_chipped_emerald" "1"
@@ -4146,7 +4147,7 @@
     "ProjectileSpeed"          "1750"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Paraiba Tourmaline"
@@ -4180,7 +4181,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Poison Slate"
@@ -4207,7 +4208,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Spell Slate"
@@ -4234,7 +4235,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Elder Slate"
@@ -4261,7 +4262,7 @@
     "ProjectileSpeed"          "2000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "|cffffff00Stone of Bryvx"
@@ -4288,7 +4289,7 @@
     "ProjectileSpeed"          "8000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Damage Slate"
@@ -4315,7 +4316,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Range Slate"
@@ -4342,7 +4343,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Viper Slate"
@@ -4369,7 +4370,7 @@
     "ProjectileSpeed"          "2500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Red Facet"
@@ -4396,7 +4397,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Mystic Black Opal"
@@ -4423,7 +4424,7 @@
     "ProjectileSpeed"          "2000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "China Jade"
@@ -4450,7 +4451,7 @@
     "ProjectileSpeed"          "1250"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Blood Star"
@@ -4477,7 +4478,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Uranium 235"
@@ -4504,7 +4505,7 @@
     "ProjectileSpeed"          "1800"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Sterling Silver"
@@ -4531,7 +4532,7 @@
     "ProjectileSpeed"          "711"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Great Pink Diamond"
@@ -4558,7 +4559,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Star Yellow Sapphire"
@@ -4585,7 +4586,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Ancient Blood Stone"
@@ -4612,7 +4613,7 @@
     "ProjectileSpeed"          "2000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Enchanted Emerald"
@@ -4639,7 +4640,7 @@
     "ProjectileSpeed"          "1500"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Egyptian Gold"
@@ -4666,11 +4667,11 @@
     "ProjectileSpeed"          "1300"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Vivid Malachite"
-    "AttackTargets"            "GEM_ATTACK_AIR"
+    "AttackTargets"            "GEM_ATTACK_BOTH"
 }
 
 "gem_special_paraiba_tourmaline_facet"
@@ -4693,7 +4694,7 @@
     "ProjectileSpeed"          "1750"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Paraiba Tourmaline Facet"
@@ -4720,7 +4721,7 @@
     "ProjectileSpeed"          "2600"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Rose Quartz Crystal"
@@ -4747,7 +4748,7 @@
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Fire Star"
@@ -4774,7 +4775,7 @@
     "ProjectileSpeed"          "2000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Silver Knight"
@@ -4801,7 +4802,7 @@
     "ProjectileSpeed"          "2000"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Lucky China Jade"
@@ -4828,11 +4829,11 @@
     "ProjectileSpeed"          "1300"
 
     "Ability1"                 "tower_invulnerability"
-    "Ability2"                 "tower_attack_scripts"
+    "Ability2"                 ""
 
     // Custom
     "UnitName"                 "Mighty Malachite"
-    "AttackTargets"            "GEM_ATTACK_AIR"
+    "AttackTargets"            "GEM_ATTACK_BOTH"
 }
 
 
