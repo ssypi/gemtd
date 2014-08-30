@@ -5,6 +5,7 @@ require("states/build")
 require("states/running")
 require("mygem")
 
+
 if MyGemGameMode == nil then
 	MyGemGameMode = class({})
 end
@@ -19,6 +20,7 @@ function Precache( context )
             PrecacheResource( "particle_folder", "particles/folder", context )
     ]]
     PrecacheResource("model", "models/development/invisiblebox.vmdl", context)
+    PrecacheResource("model", "models/courier/f2p_courier/f2p_courier.vmdl", context)
     PrecacheResource("model", "models/props_debris/skull001.vmdl", context)
     PrecacheResource("model", "models/props_gameplay/sheep01.vmdl", context)
     PrecacheResource("model", "models/effects/dust_00.vmdl", context)
@@ -76,13 +78,18 @@ end
 
 function MyGemGameMode:InitGameMode()
 	print("Mygemm is loaded." )
+
     LoadCustomKV()
     local game = GameRules:GetGameModeEntity()
+    PrintTable(getmetatable(game))
+
+    game:SetAnnouncerDisabled(true)
     game:SetCameraDistanceOverride(1300)
     game:SetThink( "OnThink", self, "GlobalThink", 2 )
     --game:ClientLoadGridNav()
 
     Convars:RegisterCommand('tester', function(name)
+        PrintTable(_G)
         local player = Convars:GetCommandClient()
         print(player)
         print(player:GetAssignedHero())
@@ -91,8 +98,44 @@ function MyGemGameMode:InitGameMode()
         end
     end, 'Run maze tester', 0)
 
-    Convars:RegisterCommand('killall', function(name)
+
+    Convars:RegisterCommand('run', function(name, ...)
+        local args = {...}
+        local string = table.concat(args, "")
+        print(string)
+        assert(loadstring(string))()
+    end, 'Run lua script', 0)
+
+    Convars:RegisterCommand('test', function(name)
+--        local tree1 = Entities:CreateByClassname("MapTree")
+--        local tree2 = Entities:CreateByClassname("CDOTA_MapTree")
+        local tree2 = Entities:FindByClassname(nil, "ent_dota_tree")
         local player = Convars:GetCommandClient()
+        print(TimeOfDay:IsDay())
+        print(TimeOfDay:NightProgress())
+        print(EntityUtils:GetClassFieldType(tree2))
+        print(EntityLinkClasses)
+        print(#EntityLinkClasses)
+        PrintTable(EntityLinkClasses)
+        PrintTable(getmetatable(EntityLinkClasses))
+        tree2:SetAbsOrigin(player:GetAssignedHero():GetAbsOrigin() + Vector(200, 200, 0))
+        tree2:SetOrigin(player:GetAssignedHero():GetAbsOrigin() + Vector(200, 200, 0))
+        if tree2:IsStanding() then
+            print("cutting")
+            tree2:CutDown(player:GetTeam())
+        else
+            print("Growing")
+            tree2:GrowBack()
+        end
+--        tree2:CutDown(player:GetTeam())
+--        tree2:GrowBack()
+--        EntityFramework:CreateEntity("gem_chipped_ruby")
+    end, 'test', 0)
+
+    Convars:RegisterCommand('killall', function(name)
+        PrintTable(getmetatable(_G))
+        local player = Convars:GetCommandClient()
+        player:GetAssignedHero():ForceKill(true)
         if player.state.KillAll ~= nil then
             player.state:KillAll()
         end

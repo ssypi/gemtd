@@ -9,6 +9,7 @@ local spawners = {}
 MyGemGameMode.players = {}
 
 function MyGemGameMode:Start()
+    Player.InitAll(MyGemGameMode.players)
     CreateSpawners()
     MyGemGameMode.started = true
     GameRules:GetGameModeEntity():SetThink("GameLoop", self, "gameThinker", 1)
@@ -75,7 +76,8 @@ function MyGemGameMode:AutoAssignPlayer(keys)
     -- Grab the entity index of this player
     local entIndex = keys.index + 1
     local player = EntIndexToHScript(entIndex)
-    Player.Init(player)
+    player:SetTeam(DOTA_TEAM_GOODGUYS)
 
+    table.insert(MyGemGameMode.players, player)
     --player:__KeyValueFromInt('teamnumber', DOTA_TEAM_GOODGUYS)
 end

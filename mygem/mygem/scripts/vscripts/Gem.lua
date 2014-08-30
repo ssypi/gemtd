@@ -1,3 +1,5 @@
+require("gems/ruby")
+
 if Gem == nil then
     Gem = {}
 end
@@ -39,6 +41,10 @@ Gem.upgradeLevels = {
 function Gem:InitCustomKvData()
     local gemData = MyGemGameMode.kv.units[self:GetUnitName()]
     self.combinesTo = gemData.CombinesTo
+    self.unitName = gemData.UnitName
+    self.fullRadius = gemData.FullAoERadius
+    self.halfRadius = gemData.HalfAoERadius
+    --self.combinedFrom = gemData.CombinedFrom
     self.attackTargets = gemData.AttackTargets
 end
 
@@ -62,6 +68,19 @@ function Gem:CreateGem(unitName, position, player, createBlocker)
     end
 
     gem:InitCustomKvData()
+--    local unitName = gem.unitName:gsub("%s+", "")
+    local quality, type = gem:GetUnitName():match("gem_(.+)_(.+)")
+    local class = type:gsub("^%l", string.upper)
+    print("Class: " .. class)
+    print(quality)
+    print(type)
+    if _G[class] ~= nil then
+        CopyFunctions(_G[class], gem)
+    end
+    --    if _G[unitName] ~= nil then
+    --        CopyFunctions(_G[unitName], gem)
+--    end
+
     if player.gems == nil then
         player.gems = {}
     end
@@ -71,6 +90,11 @@ end
 
 -- Chooses random gem to build according to player's quality level
 function Gem:RandomGem(player)
+    if player.forceNextGem ~= nil then
+        local nextGem = player.forceNextGem
+        player.forceNextGem = nil
+        return nextGem
+    end
     if player.upgradeQuality == nil then
         print("Upgradelevel nil")
         player.upgradeQuality = 1

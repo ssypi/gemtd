@@ -332,6 +332,46 @@
 	// ========================================================================
     // Tower Abilities
 	// ========================================================================
+
+    "tower_attack_scripts"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "Maxlevel" "1"
+        "ItemBaseLevel" "1"
+
+        "Modifiers"
+        {
+            "modifier_attack_scripts"
+            {
+                "Passive"   "1"
+                "Hidden"    "1"
+
+                "OnAttackLanded"
+                {
+                    "RunScript"
+                    {
+                        "Target"    "TARGET"
+                        "ScriptFile"    "gems/base.lua"
+                        "Function"  "OnAttackLanded"
+                        "damage"    "%attack_damage"
+                    }
+                }
+
+                "OnAttackStart"
+                {
+                    "RunScript"
+                    {
+                        "Target"    "TARGET"
+                        "ScriptFile"    "gems/base.lua"
+                        "Function"  "OnAttackStart"
+                        "Damage"    "%attack_damage"
+                    }
+                }
+            }
+        }
+    }
+
     "malachite_multishot"
     {
         "BaseClass" "ability_datadriven"

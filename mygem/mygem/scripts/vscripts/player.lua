@@ -2,13 +2,18 @@ if Player == nil then
     Player = {}
 end
 
+function Player.InitAll(players)
+    for _, player in pairs(players)  do
+        Player.Init(player)
+    end
+end
+
 function Player.Init(player)
+    print("Initializing player#" .. player:GetPlayerID())
     CopyFunctions(Player, player)
     player.gems = {}
     player.allGems = {}
     player.currentRound = 1
-    table.insert(MyGemGameMode.players, player)
-    player:SetTeam(DOTA_TEAM_GOODGUYS)
     player:CreateBuilder()
     player:CreateBase()
     player.state = Build.new(player)
@@ -16,9 +21,10 @@ function Player.Init(player)
 end
 
 function Player:CreateBuilder()
-    local hero = CreateHeroForPlayer('npc_dota_hero_viper', self)
+--    local hero = CreateHeroForPlayer('npc_dota_hero_viper', self)
+    local hero = self:GetAssignedHero()
     hero:FindAbilityByName("builder_upgrade_quality"):SetLevel(1)
-    hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
+--    hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
     hero:SetGold(10, false)
 end
 

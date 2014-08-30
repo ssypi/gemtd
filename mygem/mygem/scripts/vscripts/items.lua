@@ -37,7 +37,17 @@ function BuildTest(keys)
     target.x = target.x - diffX
     target.y = target.y - diffY
 
-    Gem:CreateRock(target, player)
+    CreateUnitByName("custom_sentry", target, false, nil, nil, DOTA_TEAM_BADGUYS)
+--    Gem:CreateRock(target, player)
+end
+
+function scandir(directory)
+    local i, t, popen = 0, {}, io.popen
+    for filename in popen('ls -a "' .. directory .. '"'):lines() do
+        i = i + 1
+        t[i] = filename
+    end
+    return t
 end
 
 function Build(keys)

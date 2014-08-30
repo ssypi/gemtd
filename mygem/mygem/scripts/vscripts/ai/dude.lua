@@ -6,6 +6,21 @@ local endCallback = function () print("no end callback provided") end
 
 local TARGET_RANGE = 200
 
+function Activate(a,b,c,d)
+    print("Activate called")
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+end
+
+function Precache(a,b,c)
+    print("Precache called")
+    print(a)
+    print(b)
+    print(c)
+end
+
 function DispatchOnPostSpawn(scope, waypointTable, lastWpCallback)
     waypoints = waypointTable
     endCallback = lastWpCallback

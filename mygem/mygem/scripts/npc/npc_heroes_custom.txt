@@ -13,7 +13,7 @@
         "Ability1"  "builder_toggle_grid_size"
         "Ability2"  "builder_upgrade_quality"
         "Ability3"  "builder_test"
-        "Ability4"  ""
+        "Ability4"  "ruby_test"
 
         // Attack
 

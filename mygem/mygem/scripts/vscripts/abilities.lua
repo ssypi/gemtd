@@ -31,6 +31,7 @@ function ToggleGridOff(keys)
 end
 
 function UpgradeQuality(keys)
+
     local caster = keys.caster
     local playerId = keys.caster:GetPlayerID()
     local player = PlayerResource:GetPlayer(playerId)
@@ -107,7 +108,7 @@ function RemoveCombinedGems(player, combinedFrom)
     local allGems = player.allGems
     for i = #allGems, 1, -1 do
         local gem = allGems[i]
-        if combinedFrom[gem:GetUnitName()] then
+        if IsValid(gem) and combinedFrom[gem:GetUnitName()] then
             combinedFrom[gem:GetUnitName()] = 0 -- So we don't remove multiples of the same gem
             gem:ReplaceWithRock()
             table.remove(allGems, i)
