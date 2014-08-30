@@ -6,6 +6,16 @@ function OnAttackLanded(keys)
     end
 end
 
+-- TODO: this gets called before custom Gem functions/variables have been initialized which means OnCreated is always nil
+-- TODO: maybe we should add the tower_scripts proxy ability only after creation in the init function instead of in KV
+function OnCreated(keys)
+    print("OnCreated")
+    PrintTable(keys)
+    if keys.caster.OnCreated ~= nil then
+        keys.caster:OnCreated(keys)
+    end
+end
+
 function OnAttackStart(keys)
     local gem = keys.attacker
     print("OnAttackStarted for " .. gem:GetUnitName())

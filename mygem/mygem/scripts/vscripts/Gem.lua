@@ -1,4 +1,9 @@
 require("gems/ruby")
+require("gems/sapphire")
+require("gems/emerald")
+require("gems/topaz")
+require("gems/opal")
+require("gems/diamond")
 
 if Gem == nil then
     Gem = {}
@@ -70,6 +75,9 @@ function Gem:CreateGem(unitName, position, player, createBlocker)
     gem:InitCustomKvData()
 --    local unitName = gem.unitName:gsub("%s+", "")
     local quality, type = gem:GetUnitName():match("gem_(.+)_(.+)")
+    gem.quality = quality
+    gem.qualityNum = vlua.find(Gem.qualities, quality)
+    gem.type = type
     local class = type:gsub("^%l", string.upper)
     print("Class: " .. class)
     print(quality)

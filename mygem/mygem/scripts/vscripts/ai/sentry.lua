@@ -12,18 +12,17 @@ local BEHAVIOR = {
 function Activate()
     print("Sentry spawned")
 
-    thisEntity.isReturning = false
-    thisEntity.isAttacking = false
     thisEntity.behavior = BEHAVIOR.IDLE
 
     -- Disable regular acquisition ai
     thisEntity:SetIdleAcquire(false)
     thisEntity:SetAcquisitionRange(0)
 
-    -- We wait one frame before setting the position incase the unit gets moved right after spawning
+    -- We wait one frame before setting the position incase the unit gets moved during creation
     thisEntity:SetThink("SetGuardSpot")
 
-    thisEntity:SetThink("SentryThink", 5)
+    -- Start thinker after 1 second
+    thisEntity:SetThink("SentryThink", 1)
 end
 
 function SetGuardSpot()
@@ -56,8 +55,6 @@ function SentryThink()
         if thisEntity:IsIdle() then
             print("Is idle!")
             MoveBack()
-        else
-            print("Attaack")
         end
     end
 

@@ -333,6 +333,96 @@
     // Tower Abilities
 	// ========================================================================
 
+    "sapphire_slow"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "MaxLevel" "6"
+
+        "Modifiers"
+        {
+            "modifier_sapphire_slow_debuff"
+            {
+                "Passive"   "1"
+                "Hidden"    "0"
+                "IsDebuff"  "1"
+                "Duration"  "%duration"
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_amount"
+                }
+            }
+        }
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"slow_amount"				"-20 -20 -20 -20 -30 -50"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"5.0 5.0 5.0 6.0 7.0 100.0"
+			}
+		}
+    }
+
+    "emerald_slow"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "MaxLevel" "6"
+
+        "Modifiers"
+        {
+            "modifier_emerald_slow_debuff"
+            {
+                "Passive"   "1"
+                "Hidden"    "0"
+                "IsDebuff"  "1"
+                "Duration"  "%duration"
+                "ThinkInterval" "1"
+
+                "OnIntervalThink"
+                {
+                    "Damage"
+                    {
+                        "Target"    "CASTER"
+                        "Type"      "DAMAGE_TYPE_MAGICAL"
+                        "Damage"    "%damage"
+                    }
+                }
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_amount"
+                }
+            }
+        }
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"slow_amount"				"-15 -20 -25 -30 -50 -50"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"				    "2 3 5 8 16 50"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"3.0 4.0 5.0 6.0 8.0 100.0"
+			}
+		}
+    }
+
     "tower_attack_scripts"
     {
         "BaseClass" "ability_datadriven"
@@ -346,6 +436,16 @@
             {
                 "Passive"   "1"
                 "Hidden"    "1"
+
+                "OnCreated"
+                {
+                    "RunScript"
+                    {
+                        "Target"    "TARGET"
+                        "ScriptFile"    "gems/base.lua"
+                        "Function"  "OnCreated"
+                    }
+                }
 
                 "OnAttackLanded"
                 {
@@ -641,7 +741,7 @@
         {
             "BaseClass"	"ability_datadriven"
             "AbilityName"	"tower_invulnerability"
-            "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+            "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 
             //"AbilityTextureName"	"jakiro_liquid_fire"
 
@@ -651,6 +751,7 @@
             	"modifier_custom_invulnerability"
             	{
             		"Passive" "1"
+            		"Hidden"    "1"
 
             		"States"
             		{
