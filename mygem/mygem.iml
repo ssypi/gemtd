@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mygem/scripts/vscripts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/Stubs" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/mygem/scripts/npc/backup" />
     </content>
     <orderEntry type="jdk" jdkName="LuaJ" jdkType="Lua SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
