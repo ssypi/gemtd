@@ -90,3 +90,7 @@ RandomGem and CreateGem/CreateRock to player class
    10 = 30 gold
 
 fix 711 projectilespeed
+
+- Automatic maze block tester
+ modifier_bloodseeker_thirst_speed
+ super speed
