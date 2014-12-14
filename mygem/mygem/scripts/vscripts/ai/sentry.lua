@@ -9,7 +9,12 @@ local BEHAVIOR = {
     RETURNING = 3
 }
 
+function Spawn()
+    print("spawn called")
+end
+
 function Activate()
+    print("Activate called")
     print("Sentry spawned")
 
     thisEntity.behavior = BEHAVIOR.IDLE
