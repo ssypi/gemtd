@@ -8,6 +8,7 @@ require("gems/special/malachite")
 require("gems/special/silver")
 require("gems/special/star")
 require("gems/special/jade")
+require("gems/special/gold")
 
 if Gem == nil then
     Gem = {}
@@ -49,19 +50,20 @@ Gem.upgradeLevels = {
 
 function Gem:InitCustomKvData()
     local gemData = MyGemGameMode.kv.units[self:GetUnitName()]
+    if gemData.Custom ~= nil then
+        gemData = gemData.Custom
+    end
     self.combinesTo = gemData.CombinesTo
     self.unitName = gemData.UnitName
     self.fullRadius = gemData.FullAoERadius
     self.halfRadius = gemData.HalfAoERadius
     --self.combinedFrom = gemData.CombinedFrom
     self.attackTargets = gemData.AttackTargets
+    self.upgradesTo = gemData.UpgradesTo
 end
 
-function Gem:CreateGem(unitName, position, player, createBlocker)
-    local gem = CreateUnitByName(unitName, position, false, player:GetAssignedHero(), player:GetAssignedHero(), PlayerResource:GetTeam(player:GetPlayerID()))
---    gem:SetOwner(player)
-    CopyFunctions(Gem, gem)
-    gem.owner = player
+function Gem:AddKeep()
+    local gem = self
     gem:AddAbility("gem_keep")
     local ability = gem:FindAbilityByName("gem_keep")
     ability:SetLevel(1)
@@ -70,6 +72,13 @@ function Gem:CreateGem(unitName, position, player, createBlocker)
     if not gem:HasModifier("modifier_keep") then
         gem:AddNewModifier(gem, ability, "modifier_keep", {})
     end
+end
+
+function Gem:CreateGem(unitName, position, player, createBlocker)
+    local gem = CreateUnitByName(unitName, position, false, player:GetAssignedHero(), player:GetAssignedHero(), PlayerResource:GetTeam(player:GetPlayerID()))
+--    gem:SetOwner(player)
+    CopyFunctions(Gem, gem)
+    gem.owner = player
 
     gem:SetControllableByPlayer(player:GetPlayerID(), true)
 
@@ -205,13 +214,18 @@ end
 function Gem:ReplaceWith(unitName)
     local newGem = Gem:CreateGem(unitName, self:GetAbsOrigin(), self.owner, false)
 
-    if IsValid(self.blocker) then
-        newGem.blocker = self.blocker
+    if newGem ~= nil then
+        if IsValid(self.blocker) then
+            newGem.blocker = self.blocker
+        else
+            newGem:CreateBlocker()
+        end
+        newGem.kills = self.kills
+        UTIL_Remove(self)
+        return newGem
     else
-        newGem:CreateBlocker()
+        print("Error replacing " .. self:GetUnitName() .. " with " .. unitName)
     end
-    UTIL_Remove(self)
-    return newGem
 end
 
 function Gem:ReplaceWithRock()
