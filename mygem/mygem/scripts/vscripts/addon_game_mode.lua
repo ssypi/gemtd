@@ -105,7 +105,6 @@ function MyGemGameMode:InitGameMode()
 
     LoadCustomKV()
     local game = GameRules:GetGameModeEntity()
-    PrintTable(getmetatable(game))
 
     game:SetAnnouncerDisabled(true)
     game:SetCameraDistanceOverride(1300)
@@ -127,7 +126,7 @@ function MyGemGameMode:InitGameMode()
         local args = {...}
         local string = table.concat(args, "")
         print(string)
-        assert(loadstring(string))()
+        print(assert(loadstring(string))())
     end, 'Run lua script', 0)
 
     Convars:RegisterCommand('test', function(name)
@@ -157,7 +156,6 @@ function MyGemGameMode:InitGameMode()
     end, 'test', 0)
 
     Convars:RegisterCommand('killall', function(name)
-        PrintTable(getmetatable(_G))
         local player = Convars:GetCommandClient()
         player:GetAssignedHero():ForceKill(true)
         if player.state.KillAll ~= nil then
@@ -166,6 +164,7 @@ function MyGemGameMode:InitGameMode()
     end, 'Kill all spawned dudes', 0)
 
     GameRules:SetPreGameTime(10.0)
+    GameRules:SetHeroSelectionTime(0.0)
     GameRules:SetGoldPerTick(0)
     game:SetFogOfWarDisabled(true)
     game:SetTopBarTeamValuesVisible(false)
@@ -173,6 +172,8 @@ function MyGemGameMode:InitGameMode()
 --    game:SetGoldSoundDisabled(true)
 
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(MyGemGameMode, 'AutoAssignPlayer'), self)
+    ListenToGameEvent('entity_hurt', Dynamic_Wrap(MyGemGameMode, 'OnEntityHurt'), self)
+    print("init gamemode")
 end
 
 -- Evaluate the state of the game

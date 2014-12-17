@@ -8,6 +8,10 @@ local spawners = {}
 
 MyGemGameMode.players = {}
 
+--function MyGemGameMode.players.ForEach(func)
+--
+--end
+
 function GGTest(trigger, keys, a, b, c)
     print(trigger)
     print(keys)
@@ -89,4 +93,8 @@ function MyGemGameMode:AutoAssignPlayer(keys)
 
     table.insert(MyGemGameMode.players, player)
     --player:__KeyValueFromInt('teamnumber', DOTA_TEAM_GOODGUYS)
+end
+
+function MyGemGameMode:OnEntityHurt(keys)
+    PrintTable(keys)
 end

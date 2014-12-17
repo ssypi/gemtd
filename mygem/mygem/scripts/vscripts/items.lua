@@ -18,6 +18,18 @@ end
 
 function BuildTest(keys)
     local caster = keys.caster
+
+    print("attacker:", caster:GetEntityIndex())
+    print("ability:", keys.ability:GetEntityIndex())
+    ApplyDamage({
+        attacker=caster,
+        victim=caster,
+        damage=10,
+        damage_type=DAMAGE_TYPE_PHYSICAL,
+        ability=keys.ability,
+        damage_flags=0
+    })
+
     local player = caster:GetPlayerOwner()
     local target = keys.target_points[1]
     if player.gems == nil then
@@ -41,21 +53,10 @@ function BuildTest(keys)
 --    Gem:CreateRock(target, player)
 end
 
-function scandir(directory)
-    local i, t, popen = 0, {}, io.popen
-    for filename in popen('ls -a "' .. directory .. '"'):lines() do
-        i = i + 1
-        t[i] = filename
-    end
-    return t
-end
-
 function Build(keys)
     local caster = keys.caster
     local player = caster:GetPlayerOwner()
     local target = keys.target_points[1]
-
-    print(caster:GetModifierNameByIndex(2))
 
     if player.smallGrid then
         local diffX = target.x % 64
@@ -79,11 +80,12 @@ function Build(keys)
     local dummy = CreateUnitByName("gem_dummy", target, true, caster, caster, caster:GetTeamNumber())
 
     if IsInsideNoBuildZone(dummy) then
-        player:ShowError("You can't build there!")
+        player:ShowError("You are not allowed to build there!")
     elseif dummy:GetOrigin() ~= target then
-        player:ShowError("Invalid build location!")
+        player:ShowError("Can't build there!")
     else
-        Gem:CreateGem(Gem:RandomGem(player), target, player)
+        local gem = Gem:CreateGem(Gem:RandomGem(player), target, player)
+        gem:AddKeep()
         local item = keys.ability
         item:SetCurrentCharges(item:GetCurrentCharges() - 1)
     end
