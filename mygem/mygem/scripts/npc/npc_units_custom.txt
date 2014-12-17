@@ -14,7 +14,7 @@
     	    "ConsideredHero" "0"
     	    "IsAncient" "1"
 
-    	    //"Ability1" "unselectable"
+    	    "Ability1" "attack_test"
 
 
     	    //"SoundSet"				"Hero_Pudge"								// Name of sound set.
@@ -2370,8 +2370,8 @@
     "UnitName"                 "Chipped Ruby"
     "AttackTargets"            "GEM_ATTACK_BOTH"
     "CombinesTo"               "gem_special_star_ruby"
-    "FullAoERadius"            "1000"
-    "HalfAoERadius"            "2000"
+    "FullAoERadius"            "100"
+    "HalfAoERadius"            "200"
 }
 
 "gem_flawed_amethyst"
@@ -2528,7 +2528,7 @@
     "AttackRate"               "1.0"
     "AttackAnimationPoint"     "0.0"
     "AttackAcquisitionRange"   "0"
-    "AttackRange"              "0"
+    "AttackRange"              "650"
     "MovementTurnRate"         "1.0"
     "ProjectileModel"          "particles/base_attacks/generic_projectile.vpcf"
     "ProjectileSpeed"          "1400"
@@ -3232,13 +3232,13 @@
     "BoundsHullName"           "DOTA_HULL_SIZE_HERO"
     "RingRadius"               "100"
     "StatusHealth"               "50"
-    "AttackCapabilities"       "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"          "37"
-    "AttackDamageMax"          "38"
+    "AttackCapabilities"       "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackDamageMin"          "40"
+    "AttackDamageMax"          "40"
     "AttackRate"               "1.0"
     "AttackAnimationPoint"     "0.0"
     "AttackAcquisitionRange"   "0"
-    "AttackRange"              "0"
+    "AttackRange"              "265"
     "MovementTurnRate"         "1.0"
     "ProjectileModel"          "particles/base_attacks/generic_projectile.vpcf"
     "ProjectileSpeed"          "1250"
@@ -3249,6 +3249,7 @@
     // Custom
     "UnitName"                 "Star Ruby"
     "AttackTargets"            "GEM_ATTACK_BOTH"
+    "UpgradesTo"               "gem_special_blood_star"
     "CombinedFrom"
      {
              "gem_chipped_amethyst" "1"
@@ -4456,6 +4457,8 @@
     // Custom
     "UnitName"                 "Blood Star"
     "AttackTargets"            "GEM_ATTACK_BOTH"
+    "UpgradesTo"               "gem_special_blood_star"
+    "UpgradeCost"              "50"
 }
 
 "gem_special_uranium_235"
@@ -4737,14 +4740,14 @@
     "RingRadius"               "100"
     "StatusHealth"               "50"
     "AttackCapabilities"       "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"          "64"
+    "AttackDamageMin"          "65"
     "AttackDamageMax"          "65"
     "AttackRate"               "0.5"
     "AttackAnimationPoint"     "0.0"
     "AttackAcquisitionRange"   "600"
     "AttackRange"              "600"
     "MovementTurnRate"         "1.0"
-    "ProjectileModel"          "particles/base_attacks/generic_projectile.vpcf"
+    "ProjectileModel"          "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
     "ProjectileSpeed"          "1000"
 
     "Ability1"                 "tower_invulnerability"

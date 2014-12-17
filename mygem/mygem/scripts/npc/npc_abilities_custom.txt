@@ -3,6 +3,71 @@
 {
 	"Version"		"1"
 
+    "attack_test"
+    {
+        "BaseClass" "ability_datadriven"
+
+        "OnAbilityStart"
+        {
+            "RunScript"
+            {
+                "Target"    "CASTER"
+                "ScriptFile"    "test.lua"
+                "Function"    "OnAbilityStart"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_events"
+            {
+                "Passive"   "1"
+                "OnAttacked"
+                {
+                    "RunScript"
+                    {
+                        "Target"    "CASTER"
+                        "ScriptFile"    "test.lua"
+                        "Function"  "OnAttacked"
+                    }
+                }
+            }
+        }
+    }
+
+	"silver_upgrade"
+	{
+	    "BaseClass" "ability_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityTextureName"    "upgrade_gem"
+
+        "MaxLevel"  "3"
+
+	    "AbilityManaCost" "0"
+        "AbilityCooldown" "10"
+        "AbilityGoldCost"   "%gold_cost"
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "Target"    "CASTER"
+                "ScriptFile"    "gems/base.lua"
+                "Function"  "Upgrade"
+                "goldCost"  "%gold_cost"
+            }
+        }
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"gold_cost"				    "25 125 250"
+			}
+		}
+	}
+
 	"base_buy_hp"
 	{
 	    "BaseClass" "ability_datadriven"
@@ -379,12 +444,18 @@
                         "Target"    "CASTER"
                     }
 
-                    "FireEffect"
+                    "AttachEffect"
                     {
                         //"EffectName" "particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"
                         "EffectName" "particles/generic_gameplay/lasthit_coins.vpcf"
-                        "EffectAttachType" "follow_origin"
-                        "Target" "CASTER"
+                        "EffectAttachType" "follow_overhead"
+                        "Target" "TARGET"
+
+                        "ControlPointEntities"
+                        {
+                            "TARGET" "attach_hitloc"
+                        }
+
                     }
                     "RemoveModifier"
                     {
@@ -418,12 +489,12 @@
             		"01"
             		{
             			"var_type"				"FIELD_INTEGER"
-            			"radius"			"500 600 700"
+            			"radius"			"265 600 700"
             		}
             		"02"
             		{
             			"var_type"				"FIELD_FLOAT"
-            			"damage"			"40 50 100"
+            			"damage"			"40 65 100"
             		}
             }
 	}
