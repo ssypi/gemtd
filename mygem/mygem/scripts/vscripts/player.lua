@@ -2,11 +2,13 @@ if Player == nil then
     Player = {}
 end
 
+
 function Player.InitAll(players)
     for _, player in pairs(players)  do
         Player.Init(player)
     end
 end
+
 
 function Player.Init(player)
     print("Initializing player#" .. player:GetPlayerID())
@@ -21,11 +23,19 @@ function Player.Init(player)
 end
 
 function Player:CreateBuilder()
---    local hero = CreateHeroForPlayer('npc_dota_hero_viper', self)
+--    local hero = CreateHeroForPlayer('npc_dota_hero_kunkka', self)
     local hero = self:GetAssignedHero()
     hero:FindAbilityByName("builder_upgrade_quality"):SetLevel(1)
 --    hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
     hero:SetGold(10, false)
+end
+
+function Player:ChangeTeam(newTeam)
+    local oldTeam = self:GetTeam()
+    local hero = self:GetAssignedHero()
+    hero:SetTeam(newTeam)
+    self:SetTeam(newTeam)
+    PlayerResource:UpdateTeamSlot(self:GetPlayerID(), newTeam)
 end
 
 function Player:CreateBase()
@@ -34,12 +44,7 @@ function Player:CreateBase()
     local target = Entities:FindByName(nil, "spawn_base_" .. pId)
     local base = CreateUnitByName("player_base", target:GetAbsOrigin(), false, hero, hero, self:GetTeam())
     base:SetControllableByPlayer(pId, true)
-    print(target:GetForwardVector())
-    print(target:GetAngles())
     base:SetForwardVector(target:GetForwardVector())
-    local ang = target:GetAngles()
-    PrintTable(getmetatable(ang))
-    PrintTable(ang)
     base:SetHealth(15)
     self.base = base
 end
