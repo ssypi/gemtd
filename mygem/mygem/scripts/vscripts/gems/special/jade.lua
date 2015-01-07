@@ -32,5 +32,6 @@ end
 
 function GiveGold(keys)
     print("GOLD")
-    print(keys.caster:GetUnitName())
+    local owner = keys.caster:GetOwner()
+    owner:ModifyGold(10, false, DOTA_ModifyGold_SellItem)
 end

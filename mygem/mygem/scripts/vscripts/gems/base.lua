@@ -38,3 +38,15 @@ function OnAttackStart(keys)
         gem:OnAttackStart(keys)
     end
 end
+
+function Upgrade(keys)
+    local gem = keys.caster
+    local upgradesTo = gem.upgradesTo
+    print("Upgrading " .. gem:GetUnitName() .. " to " .. upgradesTo)
+    local newGem = gem:ReplaceWith(upgradesTo)
+    if newGem == nil then
+        print("Error upgrading.")
+        local hero = gem:GetPlayerOwner():GetAssignedHero()
+        hero:ModifyGold(keys.ability:GetGoldCost(), false, DOTA_ModifyGold_Unspecified)
+    end
+end
