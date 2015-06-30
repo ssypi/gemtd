@@ -2540,6 +2540,8 @@
     "UnitName"                 "Flawed Ruby"
     "AttackTargets"            "GEM_ATTACK_BOTH"
     "CombinesTo"               "gem_special_star_ruby"
+    "FullAoERadius"            "100"
+    "HalfAoERadius"            "200"
 }
 
 "gem_flawed_topaz"

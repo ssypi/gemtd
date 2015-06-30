@@ -1,7 +1,7 @@
 print("MYGEM LOADED")
 
 if MyGemGameMode == nil then
-    MyGemGameMode = class({})
+    _G.MyGemGameMode = class({})
 end
 
 local spawners = {}

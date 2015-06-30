@@ -26,7 +26,7 @@ function Ruby:OnAttackLanded(keys)
             end
         end
     else
-        print("No Full radius for " .. unit:GetUnitName())
+        print("No Full radius for " .. gem:GetUnitName())
     end
 
     if gem.halfRadius ~= nil then

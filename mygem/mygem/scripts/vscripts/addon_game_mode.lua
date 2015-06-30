@@ -7,10 +7,10 @@ require("mygem")
 
 
 if MyGemGameMode == nil then
-	MyGemGameMode = class({})
+    _G.MyGemGameMode = class({})
 end
 
-function Precache( context )
+function Precache(context)
     --PrecacheUnitByName('npc_precache_everything')
     --[[
         Precache things we know we'll use.  Possible file types include (but not limited to):
@@ -19,6 +19,7 @@ function Precache( context )
             PrecacheResource( "particle", "*.vpcf", context )
             PrecacheResource( "particle_folder", "particles/folder", context )
     ]]
+--    PrecacheResource("model", "models/heroes/kunkka/kunkka.vmdl", context)
     PrecacheResource("model", "models/development/invisiblebox.vmdl", context)
     PrecacheResource("model", "models/courier/f2p_courier/f2p_courier.vmdl", context)
     PrecacheResource("model", "models/props_debris/skull001.vmdl", context)
@@ -30,6 +31,7 @@ function Precache( context )
     PrecacheResource("model", "models/courier/smeevil_magic_carpet/smeevil_magic_carpet_flying.vmdl", context)
     PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl", context)
     PrecacheUnitByNameSync("npc_dota_building", context)
+    PrecacheUnitByNameSync("npc_dota_hero_kunkka", context)
     PrecacheUnitByNameSync("npc_dota_brewmaster_fire", context)
     PrecacheUnitByNameSync("npc_dota_brewmaster_fire_1", context)
     PrecacheUnitByNameSync("npc_dota_brewmaster_fire_2", context)
@@ -87,8 +89,8 @@ end
 
 -- Create the game mode when we activate
 function Activate()
-	GameRules.AddonTemplate = MyGemGameMode()
-	GameRules.AddonTemplate:InitGameMode()
+    GameRules.AddonTemplate = MyGemGameMode()
+    GameRules.AddonTemplate:InitGameMode()
 end
 
 function LoadCustomKV()
@@ -101,14 +103,14 @@ function LoadCustomKV()
 end
 
 function MyGemGameMode:InitGameMode()
-	print("Mygemm is loaded." )
+    print("Mygemm is loaded.")
 
     LoadCustomKV()
     local game = GameRules:GetGameModeEntity()
 
     game:SetAnnouncerDisabled(true)
     game:SetCameraDistanceOverride(1300)
-    game:SetThink( "OnThink", self, "GlobalThink", 2 )
+    game:SetThink("OnThink", self, "GlobalThink", 2)
     --game:ClientLoadGridNav()
 
     Convars:RegisterCommand('tester', function(name)
@@ -123,15 +125,15 @@ function MyGemGameMode:InitGameMode()
 
 
     Convars:RegisterCommand('run', function(name, ...)
-        local args = {...}
+        local args = { ... }
         local string = table.concat(args, "")
         print(string)
         print(assert(loadstring(string))())
     end, 'Run lua script', 0)
 
     Convars:RegisterCommand('test', function(name)
---        local tree1 = Entities:CreateByClassname("MapTree")
---        local tree2 = Entities:CreateByClassname("CDOTA_MapTree")
+        --        local tree1 = Entities:CreateByClassname("MapTree")
+        --        local tree2 = Entities:CreateByClassname("CDOTA_MapTree")
         local tree2 = Entities:FindByClassname(nil, "ent_dota_tree")
         local player = Convars:GetCommandClient()
         print(TimeOfDay:IsDay())
@@ -150,9 +152,9 @@ function MyGemGameMode:InitGameMode()
             print("Growing")
             tree2:GrowBack()
         end
---        tree2:CutDown(player:GetTeam())
---        tree2:GrowBack()
---        EntityFramework:CreateEntity("gem_chipped_ruby")
+        --        tree2:CutDown(player:GetTeam())
+        --        tree2:GrowBack()
+        --        EntityFramework:CreateEntity("gem_chipped_ruby")
     end, 'test', 0)
 
     Convars:RegisterCommand('killall', function(name)
@@ -169,22 +171,49 @@ function MyGemGameMode:InitGameMode()
     game:SetFogOfWarDisabled(true)
     game:SetTopBarTeamValuesVisible(false)
     game:SetAlwaysShowPlayerInventory(true)
---    game:SetGoldSoundDisabled(true)
+    --    game:SetGoldSoundDisabled(true)
 
+    ListenToGameEvent("game_rules_state_change", Dynamic_Wrap(MyGemGameMode, 'OnGameRulesStateChange'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(MyGemGameMode, 'AutoAssignPlayer'), self)
     ListenToGameEvent('entity_hurt', Dynamic_Wrap(MyGemGameMode, 'OnEntityHurt'), self)
     print("init gamemode")
 end
 
--- Evaluate the state of the game
-function MyGemGameMode:OnThink()
-	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+function MyGemGameMode:OnGameRulesStateChange()
+    local nNewState = GameRules:State_Get()
+    print("OnGameRulesStateChange: " .. nNewState)
+
+    if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
+        print("Hero selection")
+    end
+
+    if nNewState == DOTA_GAMERULES_STATE_PRE_GAME then
+        print("Pre-game")
+        local numberOfPlayers = PlayerResource:GetPlayerCount()
+    end
+
+    if nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        print("OnGameRulesStateChange: Game In Progress")
         if not MyGemGameMode.started then
             MyGemGameMode:Start()
         end
-	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
-		return nil
-	end
-	return 1
+    end
+
+    if nNewState >= DOTA_GAMERULES_STATE_POST_GAME then
+        print("POST GAME")
+    end
+end
+
+
+-- Evaluate the state of the game
+function MyGemGameMode:OnThink()
+    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        if not MyGemGameMode.started then
+            MyGemGameMode:Start()
+        end
+    elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
+        return nil
+    end
+    return 1
 end
 

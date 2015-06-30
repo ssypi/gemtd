@@ -25,6 +25,7 @@ function DudeThink()
                 Explode()
             end
         else
+            OrderMoveToPos(moveTarget)
             -- TODO: Check if stuck
             -- Re-order?
         end
