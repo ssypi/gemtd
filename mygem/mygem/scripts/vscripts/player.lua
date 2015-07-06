@@ -23,8 +23,8 @@ function Player.Init(player)
 end
 
 function Player:CreateBuilder()
-    local hero = CreateHeroForPlayer('npc_dota_hero_viper', self)
-    --    local hero = self:GetAssignedHero()
+    -- local hero = CreateHeroForPlayer('npc_dota_hero_viper', self)
+    local hero = self:GetAssignedHero()
     local qualityAbility = hero:FindAbilityByName("builder_upgrade_quality")
     if qualityAbility ~= nil then
         qualityAbility:SetLevel(1)
