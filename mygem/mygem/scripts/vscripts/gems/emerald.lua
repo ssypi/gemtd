@@ -26,7 +26,11 @@ function Emerald:OnAttackLanded(keys)
 --    })
     target:AddAbility("emerald_slow")
     local ability = target:FindAbilityByName("emerald_slow")
-    ability:SetLevel(qualityNum)
+    if ability ~= nil then
+        ability:SetLevel(qualityNum)
+    else
+        print("Ability null for emerald_slow")
+    end
 end
 
 function Emerald:OnAttackStart(keys)
