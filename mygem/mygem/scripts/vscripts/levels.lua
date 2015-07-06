@@ -33,5 +33,15 @@ Levels = {
     NewLevel("dude17", 10),
     NewLevel("dude18", 10),
     NewLevel("dude19", 10),
-    NewLevel("dude20", 10, true)
+    NewLevel("dude20", 10, true),
+    NewLevel("dude21", 10),
+    NewLevel("dude22", 10),
+    NewLevel("dude23", 10),
+    NewLevel("dude24", 10, true),
+    NewLevel("dude25", 10),
+    NewLevel("dude26", 10),
+    NewLevel("dude27", 10),
+    NewLevel("dude28", 10, true),
+    NewLevel("dude29", 10),
+    NewLevel("dude30", 10),
 }

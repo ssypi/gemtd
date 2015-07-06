@@ -1,0 +1,39 @@
+{
+  "dude1": {"model": "models/pets/armadillo/armadillo.vmdl", "scale": 1},
+  "dude2": {"model": "models/pets/icewrack_wolf/icewrack_wolf.vmdl", "scale": 1},
+  "dude3": {"model": "models/courier/frog/frog.vmdl", "scale": 0.5},
+  "dude4": {"model": "models/items/courier/mei_nei_rabbit/mei_nei_rabbit_flying.vmdl", "scale": 1},
+
+  "dude5": {"model": "models/items/courier/pw_zombie/pw_zombie.vmdl", "scale": 1},
+  "dude6": {"model": "models/courier/gold_mega_greevil/gold_mega_greevil.vmdl", "scale": 1},
+  "dude7": {"model": "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged.vmdl", "scale": 1},
+  "dude8": {"model": "models/items/beastmaster/hawk/fotw_eagle/fotw_eagle.vmdl", "scale": 2},
+
+  "dude9": {"model": "models/heroes/broodmother/spiderling.vmdl", "scale": 0.5},
+  "dude10": {"model": "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl", "scale": 1},
+  "dude11": {"model": "models/heroes/undying/undying_minion.vmdl", "scale": 1},
+  "dude12": {"model": "models/courier/octopus/octopus_flying.vmdl", "scale": 1},
+
+  "dude13": {"model": "models/heroes/undying/undying_flesh_golem.vmdl", "scale": 0.75},
+  "dude14": {"model": "models/heroes/brewmaster/brewmaster_earthspirit.vmdl", "scale": 1},
+  "dude15": {"model": "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl", "scale": 1},
+  "dude16": {"model": "models/courier/minipudge/minipudge_flying.vmdl", "scale": 1.5},
+
+  "dude17": {"model": "models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl", "scale": 0.75},
+  "dude18": {"model": "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl", "scale": 1},
+  "dude19": {"model": "models/heroes/brewmaster/brewmaster_firespirit.vmdl", "scale": 1},
+  "dude20": {"model": "models/items/courier/grim_wolf/grim_wolf_flying.vmdl", "scale": 1.5},
+
+  "dude21": {"model": "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl", "scale": 1},
+  "dude22": {"model": "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl", "scale": 1},
+  "dude23": {"model": "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl", "scale": 2},
+  "dude24": {"model": "models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl", "scale": 1},
+
+  "dude25": {"model": "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", "scale": 1},
+  "dude26": {"model": "models/creeps/lane_creeps/creep_bad_siege/creep_bad_siege.vmdl", "scale": 1},
+  "dude27": {"model": "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", "scale": 1},
+  "dude28": {"model": "models/props_structures/ship_broken001.vmdl", "scale": 1},
+
+  "dude29": {"model": "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl", "scale": 2},
+  "dude30": ""
+}

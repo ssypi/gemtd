@@ -38,7 +38,9 @@ end
 
 function Explode()
     -- TODO: Add particles
-    UTIL_Remove(thisEntity)
+    ParticleManager:CreateParticle("particles/generic_gameplay/generic_hit_blood.vpcf", PATTACH_ABSORIGIN, thisEntity)
+    thisEntity:ForceKill(true)
+--    UTIL_Remove(thisEntity)
     endCallback()
 end
 

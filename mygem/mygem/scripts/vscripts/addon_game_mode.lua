@@ -26,7 +26,6 @@ function Precache(context)
     PrecacheResource("model", "models/props_gameplay/sheep01.vmdl", context)
     PrecacheResource("model", "models/effects/dust_00.vmdl", context)
     PrecacheResource("model", "models/courier/drodo/drodo.vmdl", context)
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl", context)
     PrecacheResource("model", "models/props_tree/dire_tree003.vmdl", context)
     PrecacheResource("model", "models/courier/smeevil_magic_carpet/smeevil_magic_carpet_flying.vmdl", context)
     PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl", context)
@@ -49,6 +48,7 @@ function Precache(context)
     PrecacheResource("model", "models/player.vmdl", context)
     PrecacheResource("model", "models/gem_chipped_ruby.vmdl", context)
     PrecacheResource("model", "models/courier/donkey_unicorn/donkey_unicorn.vmdl", context)
+    PrecacheResource("model", "models/props_structures/tower_good4.vmdl", context)
 
     PrecacheResource("model", "models/buildings/building_racks_ranged_reference.vmdl", context)
     PrecacheResource("model", "models/buildings/building_racks_melee_reference.vmdl", context)
@@ -68,6 +68,9 @@ function Precache(context)
     PrecacheResource("particle", "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf", context)
     PrecacheResource("particle", "particles/base_attacks/generic_projectile_trail.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf", context)
+    PrecacheResource("particle", "particles/dark_smoke_test.vpcf", context)
+    PrecacheResource("particle", "particles/addons_gameplay/pit_lava_blast.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_impact.vpcf", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_music_int.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/music/valve_dota_001/music/game_sounds_music.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts", context)
@@ -84,7 +87,49 @@ function Precache(context)
     PrecacheResource("soundfile", "sounds/ui/coins_big.vsnd", context)
     PrecacheResource("soundfile", "coins_big.vsnd", context)
     PrecacheResource("soundfile", "General.CoinsBig", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_creeps.vsndevts", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts", context)
     PrecacheResource("sound_folder", "sounds/misc/creep_deaths", context)
+
+
+    PrecacheResource("model", "models/pets/armadillo/armadillo.vmdl", context)
+    PrecacheResource("model", "models/pets/icewrack_wolf/icewrack_wolf.vmdl", context)
+    PrecacheResource("model", "models/courier/frog/frog.vmdl", context)
+    PrecacheResource("model", "models/items/courier/mei_nei_rabbit/mei_nei_rabbit_flying.vmdl", context)
+
+    PrecacheResource("model", "models/items/courier/pw_zombie/pw_zombie.vmdl", context)
+    PrecacheResource("model", "models/courier/gold_mega_greevil/gold_mega_greevil.vmdl", context)
+    PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged.vmdl", context)
+    PrecacheResource("model", "models/items/beastmaster/hawk/fotw_eagle/fotw_eagle.vmdl", context)
+
+    PrecacheResource("model", "models/heroes/broodmother/spiderling.vmdl", context)
+    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl", context)
+    PrecacheResource("model", "models/heroes/undying/undying_minion.vmdl", context)
+    PrecacheResource("model", "models/courier/octopus/octopus_flying.vmdl", context)
+
+    PrecacheResource("model", "models/heroes/undying/undying_flesh_golem.vmdl", context)
+    PrecacheResource("model", "models/heroes/brewmaster/brewmaster_earthspirit.vmdl", context)
+    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl", context)
+    PrecacheResource("model", "models/courier/minipudge/minipudge_flying.vmdl", context)
+
+    PrecacheResource("model", "models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl", context)
+    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl", context)
+    PrecacheResource("model", "models/heroes/brewmaster/brewmaster_firespirit.vmdl", context)
+    PrecacheResource("model", "models/items/courier/grim_wolf/grim_wolf_flying.vmdl", context)
+
+    PrecacheResource("model", "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl", context)
+    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl", context)
+    PrecacheResource("model", "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl", context)
+    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl", context)
+
+    PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
+    PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_siege/creep_bad_siege.vmdl", context)
+    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
+    PrecacheResource("model", "models/props_structures/ship_broken001.vmdl", context)
+
+    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl", context)
+
 end
 
 -- Create the game mode when we activate
@@ -176,6 +221,7 @@ function MyGemGameMode:InitGameMode()
     ListenToGameEvent("game_rules_state_change", Dynamic_Wrap(MyGemGameMode, 'OnGameRulesStateChange'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(MyGemGameMode, 'AutoAssignPlayer'), self)
     ListenToGameEvent('entity_hurt', Dynamic_Wrap(MyGemGameMode, 'OnEntityHurt'), self)
+    ListenToGameEvent("entity_killed", Dynamic_Wrap(MyGemGameMode, "OnEntityKilled"), self)
     print("init gamemode")
 end
 
@@ -215,5 +261,12 @@ function MyGemGameMode:OnThink()
         return nil
     end
     return 1
+end
+
+function MyGemGameMode:OnEntityKilled(keys)
+    local entityId = keys.entindex_killed
+    local entityKilled = EntIndexToHScript(entityId)
+    ParticleManager:CreateParticle("particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_impact.vpcf", PATTACH_ABSORIGIN, entityKilled)
+    EmitSoundOn("Hero_PhantomAssassin.CoupDeGrace", entityKilled)
 end
 

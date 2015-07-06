@@ -98,6 +98,11 @@ function Running:SpawnDude()
     local spawnPoint = player.spawner:GetOrigin()
     local currentUnit = Levels[self.currentRound].unit
     local dude = CreateUnitByName(currentUnit, spawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS)
+    local particleId = ParticleManager:CreateParticle("particles/dark_smoke_test.vpcf", PATTACH_ABSORIGIN, player.spawner)
+    dude:SetThink(function()
+        ParticleManager:DestroyParticle(particleId, false)
+        return nil
+    end, 2)
     table.insert(self.dudes, dude)
     local scope = dude:GetPrivateScriptScope()
     scope:DispatchOnPostSpawn(player.spawner.waypoints, function() self:DamagePlayer() end)
@@ -110,6 +115,9 @@ function Running:DamagePlayer()
     if not IsValid(base) then
         self:Lose()
     else
+        if not self.player.lost then
+            EmitSoundOn("Roshan.Attack", base)
+        end
         ApplyDamage({
             attacker = base,
             victim = base,
@@ -117,12 +125,19 @@ function Running:DamagePlayer()
             damage_type = DAMAGE_TYPE_PURE
         })
         if not base:IsAlive() then
+            if not self.player.lost then
+                EmitSoundOn("techies_super_explosion", player)
+                self:KillAll()
+                AddFOWViewer(player:GetTeam(),  base:GetAbsOrigin(), 1000, 10, false)
+                ParticleManager:CreateParticle("particles/addons_gameplay/pit_lava_blast.vpcf", PATTACH_ABSORIGIN, base)
+            end
             self:Lose()
         end
     end
 end
 
 function Running:Lose()
+    self.player.lost = true;
     self.player:GetAssignedHero():ForceKill(true)
     print("Game over!")
 end

@@ -16,10 +16,13 @@
         "Ability4"  "ruby_test"
 
         // Attack
+        "AttackCapabilities"			"DOTA_UNIT_CAP_NO_ATTACK"
 
 
         "MovementSpeed"				"1000"
         "MovementTurnRate"			"1.0"
+        "VisionDaytimeRange"		"10000"
+        "VisionNighttimeRange"		"10000"
     }
 
 	//=================================================================================================================
