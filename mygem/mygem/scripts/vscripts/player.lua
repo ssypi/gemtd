@@ -18,8 +18,36 @@ function Player.Init(player)
     player.currentRound = 1
     player:CreateBuilder()
     player:CreateBase()
+    player:CreateSpawner()
     player.state = Build.new(player)
     player.state:Begin()
+end
+
+function Player:CreateSpawner()
+    local playerId = self:GetPlayerID()playerIdD()
+    print("Creating spawner for player#" .. playerId)
+    local spawnPoint = Entities:FindAllByName("spawn_point_p" .. playerId)
+    if spawnPoint ~= nil then
+        local spawner = CreateUnitByName("npc_dude_spawner", spawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS)
+
+        local waypoints = {}
+
+        local i = 1
+        repeat
+            local wpName = "waypoint_p" .. playerId .. "_w" .. i
+            local wp = Entities:FindByName(nil, wpName)
+            table.insert(waypoints, wp)
+            i = i+1
+        until wp == nil
+
+        spawner.waypoints = waypoints
+        self.spawner = spawner
+        print("Spawner created for player#" .. playerId .. " with " .. #spawner.waypoints .. " waypoints")
+        --scope:DispatchOnPostSpawn()
+        --table.insert(spawners, spawner)
+    else
+        print("Spawn point not found for player#" ..  playerId)
+    end
 end
 
 function Player:CreateBuilder()
