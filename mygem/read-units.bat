@@ -1,0 +1,1 @@
+java -jar read-units.jar -i "C:\dev\Projects\mygem" -o "C:\dev\Projects\mygem\mygem\mygem\scripts\npc\units" -nf "02_dudes.kv" -olua "C:\dev\Projects\mygem\mygem\mygem\scripts\vscripts"
