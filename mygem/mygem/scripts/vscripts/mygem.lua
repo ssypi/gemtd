@@ -26,9 +26,9 @@ function MyGemGameMode:Start()
     CreateSpawners()
     MyGemGameMode.started = true
     GameRules:GetGameModeEntity():SetThink("GameLoop", self, "gameThinker", 1)
---    for i=1, #spawners do
---        spawners[i].running = true
---    end
+    --    for i=1, #spawners do
+    --        spawners[i].running = true
+    --    end
 end
 
 -- TODO: We should create one for each player and set it to player.spawner
@@ -47,10 +47,14 @@ function CreateSpawners()
 
             local i = 1
             repeat
+                print("Finding wp#" .. i .. " for player#" .. playerNum)
                 local wpName = "waypoint_p" .. playerNum .. "_w" .. i
                 local wp = Entities:FindByName(nil, wpName)
+                if wp == nil then
+                    print("wp is nil")
+                end
                 table.insert(waypoints, wp)
-                i = i+1
+                i = i + 1
             until wp == nil
 
             spawner.waypoints = waypoints
@@ -70,7 +74,7 @@ function MyGemGameMode:GameLoop()
         end
     end
 
-    for i=1, #players do
+    for i = 1, #players do
         local player = players[i]
         local state = player.state
         if state.done then

@@ -90,6 +90,7 @@ function Precache(context)
     PrecacheResource("soundfile", "soundevents/game_sounds_creeps.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts", context)
+    PrecacheResource("soundfile", "sounds/vo/announcer_dlc_pflax/announcer_anc_attack_yr_03.vsnd", context)
     PrecacheResource("sound_folder", "sounds/misc/creep_deaths", context)
 
 

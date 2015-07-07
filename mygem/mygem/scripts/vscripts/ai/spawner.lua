@@ -9,6 +9,7 @@ local dudes = {}
 local SEARCH_RANGE = 5000.0
 
 function DispatchOnPostSpawn()
+    print("kalakalakala spawner.lua")
     if thisEntity.running == nil then
         thisEntity.running = false
     end
@@ -57,6 +58,7 @@ function SpawnDude()
 end
 
 function SpawnerThink()
+    print("kalakalakala spawnerthink")
     if not thisEntity.running then
         return 1
     end

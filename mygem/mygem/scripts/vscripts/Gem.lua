@@ -153,6 +153,9 @@ end
 function Gem:CreateRock(pos, owner, createBlocker)
     local rock = CreateUnitByName("npc_mygem_building_rock", pos, false, owner, owner, DOTA_TEAM_GOODGUYS)
     CopyFunctions(Gem, rock)
+    if rock:HasModifier("modifier_invulnerable") then
+        rock:RemoveModifierByName("modifier_invulnerable")
+    end
     rock:SetControllableByPlayer(owner:GetPlayerID(), true)
     if createBlocker == nil or createBlocker == true then
         print("blocker arg was true")
