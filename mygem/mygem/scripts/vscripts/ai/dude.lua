@@ -43,10 +43,10 @@ function DudeThink()
                     local player = unit:GetOwner()
                     if not player.underAttackPlayed then
                         EmitSoundOnClient("announcer_dlc_pflax_announcer_anc_attack_yr_03", unit:GetOwner())
-                        player.underAttackPlayed = true;
+                        player.underAttackPlayed = true
                     end
                     unit:SetThink(function()
-                        player.underAttackPlayed = false;
+                        player.underAttackPlayed = false
                         return nil
                     end, 5)
                     if not unit:IsAlive() then

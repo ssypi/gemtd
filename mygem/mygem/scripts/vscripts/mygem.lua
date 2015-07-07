@@ -9,7 +9,7 @@ end
 MyGemGameMode.players = {}
 
 function MyGemGameMode:Start()
-    --Player.InitAll(MyGemGameMode.players)
+    Player.InitAll(MyGemGameMode.players)
     --CreateSpawners()
     MyGemGameMode.started = true
     GameRules:GetGameModeEntity():SetThink("GameLoop", self, "gameThinker", 1)
@@ -47,23 +47,25 @@ end
 function MyGemGameMode:GameLoop()
     local players = MyGemGameMode.players
 
---    for i = 1, #spawners do
---        local spawner = spawners[i]
---        if players[i] ~= nil then
---            players[i].spawner = spawner
---        end
---    end
+    --    for i = 1, #spawners do
+    --        local spawner = spawners[i]
+    --        if players[i] ~= nil then
+    --            players[i].spawner = spawner
+    --        end
+    --    end
 
-    for i=1, #players do
+    for i = 1, #players do
         local player = players[i]
         local state = player.state
-        if state.done then
-            state:End()
-            state = state.nextState
-            player.state = state
-            state:Begin()
+        if state ~= nil then
+            if state.done then
+                state:End()
+                state = state.nextState
+                player.state = state
+                state:Begin()
+            end
+            state:Update()
         end
-        state:Update()
     end
 
     return 0.05
@@ -76,7 +78,10 @@ function MyGemGameMode:AutoAssignPlayer(keys)
     player:SetTeam(DOTA_TEAM_GOODGUYS)
 
     table.insert(MyGemGameMode.players, player)
-    Player.Init(player)
+
+    if MyGemGameMode.started then
+        Player.Init(player)
+    end
     --player:__KeyValueFromInt('teamnumber', DOTA_TEAM_GOODGUYS)
 end
 

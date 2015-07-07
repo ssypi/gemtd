@@ -16,19 +16,17 @@ function Player.Init(player)
     player.gems = {}
     player.allGems = {}
     player.currentRound = 1
-    player:CreateBuilder()
-    player:CreateBase()
     player:CreateSpawner()
-    player.state = Build.new(player)
-    player.state:Begin()
+    player:CreateBase()
+    player:CreateBuilder()
 end
 
 function Player:CreateSpawner()
-    local playerId = self:GetPlayerID()playerIdD()
+    local playerId = self:GetPlayerID()
     print("Creating spawner for player#" .. playerId)
     local spawnPoint = Entities:FindAllByName("spawn_point_p" .. playerId)
-    if spawnPoint ~= nil then
-        local spawner = CreateUnitByName("npc_dude_spawner", spawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS)
+    if spawnPoint ~= nil and #spawnPoint > 0 then
+        local spawner = CreateUnitByName("npc_dude_spawner", spawnPoint[1]:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_BADGUYS)
 
         local waypoints = {}
 
@@ -37,7 +35,7 @@ function Player:CreateSpawner()
             local wpName = "waypoint_p" .. playerId .. "_w" .. i
             local wp = Entities:FindByName(nil, wpName)
             table.insert(waypoints, wp)
-            i = i+1
+            i = i + 1
         until wp == nil
 
         spawner.waypoints = waypoints
@@ -46,20 +44,32 @@ function Player:CreateSpawner()
         --scope:DispatchOnPostSpawn()
         --table.insert(spawners, spawner)
     else
-        print("Spawn point not found for player#" ..  playerId)
+        print("Spawn point not found for player#" .. playerId)
     end
 end
 
 function Player:CreateBuilder()
     -- local hero = CreateHeroForPlayer('npc_dota_hero_viper', self)
     local hero = self:GetAssignedHero()
-    local qualityAbility = hero:FindAbilityByName("builder_upgrade_quality")
-    if qualityAbility ~= nil then
-        qualityAbility:SetLevel(1)
-    end
+    if hero == nil then
+        print("Hero not found for player#" .. self:GetPlayerID() .. ", waiting")
+        self:SetThink(function()
+            print("kalakalakala thinker")
+            self:CreateBuilder()
+            return nil
+        end, 1)
+    else
+        print("Setting builder abilities for player " .. self:GetPlayerID())
+        local qualityAbility = hero:FindAbilityByName("builder_upgrade_quality")
+        if qualityAbility ~= nil then
+            qualityAbility:SetLevel(1)
+        end
+        --    hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
+        hero:SetGold(10, false)
 
-    --    hero:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
-    hero:SetGold(10, false)
+        self.state = Build.new(self)
+        self.state:Begin()
+    end
 end
 
 function Player:ChangeTeam(newTeam)

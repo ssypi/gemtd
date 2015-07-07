@@ -4,6 +4,7 @@ require("player")
 require("states/build")
 require("states/running")
 require("mygem")
+require("generated/precache")
 
 
 if MyGemGameMode == nil then
@@ -11,6 +12,7 @@ if MyGemGameMode == nil then
 end
 
 function Precache(context)
+    PrecacheDudes(context)
     --PrecacheUnitByName('npc_precache_everything')
     --[[
         Precache things we know we'll use.  Possible file types include (but not limited to):
@@ -93,43 +95,43 @@ function Precache(context)
     PrecacheResource("soundfile", "sounds/vo/announcer_dlc_pflax/announcer_anc_attack_yr_03.vsnd", context)
     PrecacheResource("sound_folder", "sounds/misc/creep_deaths", context)
 
-
-    PrecacheResource("model", "models/pets/armadillo/armadillo.vmdl", context)
-    PrecacheResource("model", "models/pets/icewrack_wolf/icewrack_wolf.vmdl", context)
-    PrecacheResource("model", "models/courier/frog/frog.vmdl", context)
-    PrecacheResource("model", "models/items/courier/mei_nei_rabbit/mei_nei_rabbit_flying.vmdl", context)
-
-    PrecacheResource("model", "models/items/courier/pw_zombie/pw_zombie.vmdl", context)
-    PrecacheResource("model", "models/courier/gold_mega_greevil/gold_mega_greevil.vmdl", context)
-    PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged.vmdl", context)
-    PrecacheResource("model", "models/items/beastmaster/hawk/fotw_eagle/fotw_eagle.vmdl", context)
-
-    PrecacheResource("model", "models/heroes/broodmother/spiderling.vmdl", context)
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl", context)
-    PrecacheResource("model", "models/heroes/undying/undying_minion.vmdl", context)
-    PrecacheResource("model", "models/courier/octopus/octopus_flying.vmdl", context)
-
-    PrecacheResource("model", "models/heroes/undying/undying_flesh_golem.vmdl", context)
-    PrecacheResource("model", "models/heroes/brewmaster/brewmaster_earthspirit.vmdl", context)
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl", context)
-    PrecacheResource("model", "models/courier/minipudge/minipudge_flying.vmdl", context)
-
-    PrecacheResource("model", "models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl", context)
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl", context)
-    PrecacheResource("model", "models/heroes/brewmaster/brewmaster_firespirit.vmdl", context)
-    PrecacheResource("model", "models/items/courier/grim_wolf/grim_wolf_flying.vmdl", context)
-
-    PrecacheResource("model", "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl", context)
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl", context)
-    PrecacheResource("model", "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl", context)
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl", context)
-
-    PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
-    PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_siege/creep_bad_siege.vmdl", context)
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
-    PrecacheResource("model", "models/props_structures/ship_broken001.vmdl", context)
-
-    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl", context)
+--
+--    PrecacheResource("model", "models/pets/armadillo/armadillo.vmdl", context)
+--    PrecacheResource("model", "models/pets/icewrack_wolf/icewrack_wolf.vmdl", context)
+--    PrecacheResource("model", "models/courier/frog/frog.vmdl", context)
+--    PrecacheResource("model", "models/items/courier/mei_nei_rabbit/mei_nei_rabbit_flying.vmdl", context)
+--
+--    PrecacheResource("model", "models/items/courier/pw_zombie/pw_zombie.vmdl", context)
+--    PrecacheResource("model", "models/courier/gold_mega_greevil/gold_mega_greevil.vmdl", context)
+--    PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged.vmdl", context)
+--    PrecacheResource("model", "models/items/beastmaster/hawk/fotw_eagle/fotw_eagle.vmdl", context)
+--
+--    PrecacheResource("model", "models/heroes/broodmother/spiderling.vmdl", context)
+--    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl", context)
+--    PrecacheResource("model", "models/heroes/undying/undying_minion.vmdl", context)
+--    PrecacheResource("model", "models/courier/octopus/octopus_flying.vmdl", context)
+--
+--    PrecacheResource("model", "models/heroes/undying/undying_flesh_golem.vmdl", context)
+--    PrecacheResource("model", "models/heroes/brewmaster/brewmaster_earthspirit.vmdl", context)
+--    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl", context)
+--    PrecacheResource("model", "models/courier/minipudge/minipudge_flying.vmdl", context)
+--
+--    PrecacheResource("model", "models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl", context)
+--    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl", context)
+--    PrecacheResource("model", "models/heroes/brewmaster/brewmaster_firespirit.vmdl", context)
+--    PrecacheResource("model", "models/items/courier/grim_wolf/grim_wolf_flying.vmdl", context)
+--
+--    PrecacheResource("model", "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl", context)
+--    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl", context)
+--    PrecacheResource("model", "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl", context)
+--    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl", context)
+--
+--    PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
+--    PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_siege/creep_bad_siege.vmdl", context)
+--    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
+--    PrecacheResource("model", "models/props_structures/ship_broken001.vmdl", context)
+--
+--    PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl", context)
 
 end
 
