@@ -15,7 +15,7 @@ function Player:SelectSlot()
     local player = self
     player.slot = nil
     for i = 1, MAX_PLAYERS do
-        local spawnPoint = Entities:FindAllByName("spawn_point_p" .. i)
+        local spawnPoint = Entities:FindByName(nil, "spawn_point_p" .. i)
         if not spawnPoint.used then
             print("Setting player#" .. player:GetPlayerID() .. " to slot#" .. i)
             player.slot = i
