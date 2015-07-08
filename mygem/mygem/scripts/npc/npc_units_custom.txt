@@ -91,8 +91,9 @@
 
         //"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-    	"AbilityLayout" "1"
+    	"AbilityLayout" "2"
             "Ability1"					"gem_delete"			// Ability 1
+            "Ability2"                  "tower_invulnerability"
             //"Ability2"					""			// Ability 2
             //"Ability3"					""			// Ability 3
             //"Ability4"					""			// Ability 4
