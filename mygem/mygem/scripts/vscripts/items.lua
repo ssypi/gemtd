@@ -6,8 +6,9 @@ function IsInsideNoBuildZone(unit)
         local max = center + zone:GetBoundingMaxs()
         local min = center + zone:GetBoundingMins()
         local unitPos = unit:GetAbsOrigin()
-        local touchesX = (unitPos.x < max.x and unitPos.x > min.x)
-        local touchesY = (unitPos.y < max.y and unitPos.y > min.y)
+        local touchesX = (unitPos.x <= max.x and unitPos.x >= min.x)
+        local touchesY = (unitPos.y <= max.y and unitPos.y >= min.y)
+
         if touchesX and touchesY then
             return true
         end
