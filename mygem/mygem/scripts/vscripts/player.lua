@@ -1,5 +1,5 @@
 if Player == nil then
-    Player = {}
+    _G.Player = {}
 end
 
 
@@ -9,10 +9,30 @@ function Player.InitAll(players)
     end
 end
 
+local MAX_PLAYERS = 2
+
+function Player:SelectSlot()
+    local player = self
+    player.slot = nil
+    for i = 1, MAX_PLAYERS do
+        local spawnPoint = Entities:FindAllByName("spawn_point_p" .. i)
+        if not spawnPoint.used then
+            print("Setting player#" .. player:GetPlayerID() .. " to slot#" .. i)
+            player.slot = i
+            spawnPoint.used = true
+            break
+        end
+    end
+    if player.slot == nil then
+        error("No free slots found for player#" .. player:GetPlayerID())
+    end
+end
 
 function Player.Init(player)
     print("Initializing player#" .. player:GetPlayerID())
     CopyFunctions(Player, player)
+
+    player:SelectSlot()
     player.gems = {}
     player.allGems = {}
     player.currentRound = 1
@@ -22,17 +42,16 @@ function Player.Init(player)
 end
 
 function Player:CreateSpawner()
-    local playerId = self:GetPlayerID()
-    print("Creating spawner for player#" .. playerId)
-    local spawnPoint = Entities:FindAllByName("spawn_point_p" .. playerId)
-    if spawnPoint ~= nil and #spawnPoint > 0 then
-        local spawner = CreateUnitByName("npc_dude_spawner", spawnPoint[1]:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_BADGUYS)
-
+    local slot = self.slot
+    print("Creating spawner for player#" .. self:GetPlayerID() .. " on slot " .. self.slot)
+    local spawnPoint = Entities:FindByName(nil, "spawn_point_p" .. slot)
+    if spawnPoint ~= nil then
+        local spawner = CreateUnitByName("npc_dude_spawner", spawnPoint:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_BADGUYS)
         local waypoints = {}
 
         local i = 1
         repeat
-            local wpName = "waypoint_p" .. playerId .. "_w" .. i
+            local wpName = "waypoint_p" .. slot .. "_w" .. i
             local wp = Entities:FindByName(nil, wpName)
             table.insert(waypoints, wp)
             i = i + 1
@@ -40,7 +59,7 @@ function Player:CreateSpawner()
 
         spawner.waypoints = waypoints
         self.spawner = spawner
-        print("Spawner created for player#" .. playerId .. " with " .. #spawner.waypoints .. " waypoints")
+        print("Spawner created for player#" .. self:GetPlayerID() .. " on slot " .. slot .. " with " .. #spawner.waypoints .. " waypoints")
         --scope:DispatchOnPostSpawn()
         --table.insert(spawners, spawner)
     else
@@ -59,6 +78,14 @@ function Player:CreateBuilder()
             return nil
         end, 1)
     else
+        local slot = self.slot
+        local heroSpawn = Entities:FindByName(nil, "player_start_p" .. slot)
+        if heroSpawn ~= nil then
+            hero:SetAbsOrigin(heroSpawn:GetAbsOrigin())
+        else
+            error("No hero spawn for player#" .. self:GetPlayerID() .. " on slot " .. slot)
+        end
+
         print("Setting builder abilities for player " .. self:GetPlayerID())
         local qualityAbility = hero:FindAbilityByName("builder_upgrade_quality")
         if qualityAbility ~= nil then
@@ -82,11 +109,12 @@ end
 
 function Player:CreateBase()
     local pId = self:GetPlayerID()
-    print("Creating base for player#" .. pId)
+    local slot = self.slot
+    print("Creating base for player#" .. pId .. " on slot " .. slot)
     local hero = self:GetAssignedHero()
-    local target = Entities:FindByName(nil, "spawn_base_" .. pId)
+    local target = Entities:FindByName(nil, "spawn_base_" .. slot)
     if target == nil then
-        print("No spawner found for player#" .. pId)
+        print("No spawner found for player#" .. pId .. " on slot " .. slot)
     else
         local base = CreateUnitByName("player_base", target:GetAbsOrigin(), false, hero, hero, self:GetTeam())
         base:SetControllableByPlayer(pId, true)
