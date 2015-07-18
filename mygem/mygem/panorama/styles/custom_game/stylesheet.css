@@ -1,0 +1,63 @@
+.GemGuideUi {
+    width: 20%;
+    height: 30%;
+    vertical-align: top;
+    background-color: #000000;
+    font-size: 18px;
+    color: white;
+    margin-left: 20px;
+    margin-top: 100px;
+    /*text-align: center;*/
+    opacity: 0.8;
+    flow-children: down;
+}
+
+Label {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-left: 100px;
+}
+
+.GemCombinationRow {
+    flow-children: down;
+    /*border: 1px solid #FFFFFF;*/
+    width: 100%;
+    margin-top: 10px;
+}
+
+.Gem {
+    font-size: 13px;
+    width: 20%;
+    margin-right: -100px;
+    color: red;
+    /*border: 1px solid #FFFFFF;*/
+
+}
+
+.SpecialGem {
+    flow-children: right;
+    /*border: 1px solid #FFFFFF;*/
+    width: 100%;
+}
+
+.Plus {
+    font-size: 16px;
+    margin-right: -25%;
+    /*padding-left: 20px;*/
+    margin-top: 3px;
+    text-align: center;
+    /*border: 1px solid #FFFFFF;*/
+}
+
+#Silver {
+    margin-top: 5px;
+    margin-left: -1px;
+    color: white;
+}
+
+#ChippedDiamond {
+
+}
+
+

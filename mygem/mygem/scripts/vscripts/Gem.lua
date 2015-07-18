@@ -146,6 +146,14 @@ function Gem:RandomGem(player)
     print(quality)
     local gemName = "gem_" .. quality .. "_" .. type
     print("Random gem name: " .. gemName)
+
+    local data = {
+    }
+    local gemNameToJS = "GemName"
+    data[gemNameToJS] = gemName
+    print("Gem unit name: " .. data[gemNameToJS])
+    CustomGameEventManager:Send_ServerToPlayer(player, "place_gem", data)
+
     return gemName
 end
 

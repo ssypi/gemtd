@@ -58,6 +58,13 @@ function GemKeep(keys)
     local player = gem.owner
     gem.keep = true
     player.done = true
+    print("Sending custom game event message")
+    local data = {
+    }
+    local gemName = "GemName"
+    data[gemName] = gem:GetUnitName()
+    print("Gem unit name: " .. data[gemName])
+    CustomGameEventManager:Send_ServerToPlayer(player, "keep_gem", data)
 end
 
 function GemDelete(keys)
