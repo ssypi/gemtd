@@ -72,7 +72,7 @@ function GemDelete(keys)
     gem:Remove()
 end
 
--- Combine two same gems into a better quality gem of the same type
+-- Combine two same placedGems into a better quality gem of the same type
 function GemCombine(keys)
     local gem = keys.caster
     local player = gem.owner
@@ -89,12 +89,18 @@ function GemCombine(keys)
     end
 end
 
--- Combine gems into a special recipe gem
+-- Combine placedGems into a special recipe gem
 function GemCombineSpecial(keys)
     local gem = keys.caster
     local player = gem.owner
     gem.keep = true
     print("Combine special for " .. gem:GetUnitName())
+
+    local data = {
+    }
+    local gemName = "GemName"
+    data[gemName] = gem:GetUnitName()
+    CustomGameEventManager:Send_ServerToPlayer(player, "remove_gem", data)
 
     local allGems = player.allGems
     local tableIndex = FindTableKey(allGems, gem)
@@ -110,13 +116,20 @@ function GemCombineSpecial(keys)
     local newGem = gem:ReplaceWith(combinesTo)
 end
 
--- Remove all the gems used in a special combine
+-- Remove all the placedGems used in a special combine
 function RemoveCombinedGems(player, combinedFrom)
     local allGems = player.allGems
     for i = #allGems, 1, -1 do
         local gem = allGems[i]
         if IsValid(gem) and combinedFrom[gem:GetUnitName()] then
             combinedFrom[gem:GetUnitName()] = 0 -- So we don't remove multiples of the same gem
+
+            local data = {
+            }
+            local gemName = "GemName"
+            data[gemName] = gem:GetUnitName()
+            CustomGameEventManager:Send_ServerToPlayer(player, "remove_gem", data)
+
             gem:ReplaceWithRock()
             table.remove(allGems, i)
         end

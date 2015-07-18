@@ -139,7 +139,7 @@ function ClearUnusedGems(player)
             ClearGemAbilities(gems[i])
         else
             gem:ReplaceWithRock()
-            --table.remove(gems, i)
+            --table.remove(placedGems, i)
         end
     end
     player.gems = {}
@@ -153,7 +153,7 @@ function GiveBuildAbility(player)
     end
     local buildItem = CreateItem(ITEM_BUILD, player, player)
     hero:AddItem(buildItem)
-    player.gems = {} -- clear gems already built this level
+    player.gems = {} -- clear placedGems already built this level
 end
 
 function RemoveBuildAbility(player)
