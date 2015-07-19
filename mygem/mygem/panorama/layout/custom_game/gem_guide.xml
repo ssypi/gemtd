@@ -1,22 +1,27 @@
 <root>
     <styles>
-        <include src="file://{resources}/styles/custom_game/stylesheet.css" />
+        <include src="file://{resources}/styles/custom_game/stylesheet.css"/>
     </styles>
     <scripts>
-        <include src="file://{resources}/scripts/custom_game/gem_guide.js" />
+        <include src="file://{resources}/scripts/custom_game/gem_guide.js"/>
     </scripts>
-    <Panel class="GemGuideUi">
-        <Label id="Title" html="true" text="Special Gem Recipes"/>
-        <Panel class="GemCombinationRow">
-            <Panel id="SilverRow" class="SpecialGem">
-                <Label id="Silver" text="Silver" class="Gem"/>
-                <Label text="=" class="Plus"/>
-                <Label id="ChippedSapphire" class="Gem" html="true" text="Chipped Sapphire"/>
-                <Label text="+" class="Plus"/>
-                <Label id="ChippedDiamond" class="Gem" html="true" text="Chipped Diamond"/>
-                <Label text="+" class="Plus"/>
-                <Label id="ChippedTopaz" class="Gem" html="true" text="Chipped Topaz"/>
+    <Panel class="Root">
+        <Panel class="GemGuideUi">
+            <Label id="Title" html="true" text="Special Gem Recipes"/>
+            <Panel class="Recipes">
+                <Panel class="Row">
+                    <Label text="Silver" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label class="Gem" html="true" text="Chipped Sapphire"/>
+                    <Label text="+" class="Plus"/>
+                    <Label class="Gem" html="true" text="Chipped Diamond"/>
+                    <Label text="+" class="Plus"/>
+                    <Label class="Gem" html="true" text="Chipped Topaz"/>
+                </Panel>
             </Panel>
+        </Panel>
+        <Panel>
+            <Button id="Button" html="true" text="ASD"/>
         </Panel>
     </Panel>
 </root>

@@ -1,63 +1,86 @@
+.Root {
+    width: 15%;
+    height: 50%;
+    /*margin-left: 70%;*/
+    /*margin-top: 5px;*/
+    horizontal-align: right;
+    /*background-color: red;*/
+}
+
 .GemGuideUi {
-    width: 20%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
     vertical-align: top;
     background-color: #000000;
     font-size: 18px;
     color: white;
-    margin-left: 20px;
-    margin-top: 100px;
+    /*margin-left: 20px;*/
+    margin-top: 45px;
     /*text-align: center;*/
     opacity: 0.8;
     flow-children: down;
+    padding-left: 5px;
+
 }
 
 Label {
     color: white;
     font-size: 18px;
-    text-align: center;
-    margin-left: 100px;
+    /*text-align: center;*/
+    /*margin-left: 90px;*/
 }
 
-.GemCombinationRow {
+.Recipes {
     flow-children: down;
     /*border: 1px solid #FFFFFF;*/
     width: 100%;
+    height: 80%;
     margin-top: 10px;
+    /*visibility: collapse;*/
+}
+
+.SpecialGem {
+    font-size: 11px;
+    text-align: center;
 }
 
 .Gem {
-    font-size: 13px;
+    font-size: 11px;
     width: 20%;
-    margin-right: -100px;
+    /*margin-right: -100px;*/
     color: red;
     /*border: 1px solid #FFFFFF;*/
 
 }
 
-.SpecialGem {
+.Row {
     flow-children: right;
     /*border: 1px solid #FFFFFF;*/
     width: 100%;
+    color: white;
 }
 
 .Plus {
     font-size: 16px;
-    margin-right: -25%;
+    /*margin-right: -25%;*/
     /*padding-left: 20px;*/
     margin-top: 3px;
     text-align: center;
     /*border: 1px solid #FFFFFF;*/
 }
 
-#Silver {
-    margin-top: 5px;
-    margin-left: -1px;
-    color: white;
-}
-
-#ChippedDiamond {
+#Title {
 
 }
+
+#Button {
+    vertical-align: top;
+    width: 25px;
+    height: 25px;
+    margin-top: 10%;
+    margin-left: 10%;
+    background-color: red;
+}
+
 
 
