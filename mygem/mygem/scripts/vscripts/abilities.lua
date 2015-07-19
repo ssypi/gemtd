@@ -31,7 +31,6 @@ function ToggleGridOff(keys)
 end
 
 function UpgradeQuality(keys)
-
     local caster = keys.caster
     local playerId = keys.caster:GetPlayerID()
     local player = PlayerResource:GetPlayer(playerId)
@@ -45,9 +44,11 @@ function UpgradeQuality(keys)
     end
     print(player.upgradeQuality)
     local ability = keys.ability
-    if ability:GetLevel() < 5 then
+    if ability:GetLevel() < 8 then
         ability:SetLevel(ability:GetLevel() + 1)
     else
+        -- TODO: tell player their upgrade level is maximum
+        print("Player#" .. playerId .. " has reached maximum upgrade level")
         ability:SetHidden(true)
         caster:RemoveAbility(ability:GetAbilityName())
     end
@@ -106,12 +107,19 @@ end
 -- Remove all the gems used in a special combine
 function RemoveCombinedGems(player, combinedFrom)
     local allGems = player.allGems
+    print("Removing combined gems for player " .. player:GetPlayerID() .. ", count: " .. #combinedFrom)
     for i = #allGems, 1, -1 do
         local gem = allGems[i]
-        if IsValid(gem) and combinedFrom[gem:GetUnitName()] then
-            combinedFrom[gem:GetUnitName()] = 0 -- So we don't remove multiples of the same gem
-            gem:ReplaceWithRock()
-            table.remove(allGems, i)
+        if IsValid(gem) then
+            print("Gem: " .. gem:GetUnitName())
+            local inRecipe = combinedFrom[gem:GetUnitName()]
+            print(inRecipe)
+            if IsValid(gem) and inRecipe ~= nil and inRecipe ~= 0 then
+                print("Is part of recipe")
+                combinedFrom[gem:GetUnitName()] = 0 -- So we don't remove multiples of the same gem
+                gem:ReplaceWithRock()
+                table.remove(allGems, i)
+            end
         end
     end
 end
