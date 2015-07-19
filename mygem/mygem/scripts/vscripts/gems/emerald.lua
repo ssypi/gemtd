@@ -8,6 +8,11 @@ Emerald = {
 
 local MODIFIER_SLOW = "modifier_item_orb_of_venom_slow"
 
+function Emerald:OnCreated(keys)
+    self:SetRenderColor(20, 240, 20)
+end
+
+
 function Emerald:OnAttackLanded(keys)
     local target = keys.target
     print(self.quality)
@@ -24,8 +29,8 @@ function Emerald:OnAttackLanded(keys)
 --        duration = duration,
 --        damage = damage
 --    })
-    target:AddAbility("emerald_slow")
     local ability = target:FindAbilityByName("emerald_slow")
+--    target:AddAbility("emerald_slow")
     if ability ~= nil then
         ability:SetLevel(qualityNum)
     else

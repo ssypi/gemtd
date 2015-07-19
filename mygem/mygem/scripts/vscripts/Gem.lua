@@ -1,9 +1,12 @@
+require("gems/amethyst")
+require("gems/aquamarine")
+require("gems/diamond")
+require("gems/emerald")
+require("gems/opal")
 require("gems/ruby")
 require("gems/sapphire")
-require("gems/emerald")
 require("gems/topaz")
-require("gems/opal")
-require("gems/diamond")
+
 require("gems/special/malachite")
 require("gems/special/silver")
 require("gems/special/star")
@@ -151,7 +154,7 @@ end
 
 -- Creates a mazing rock and a gridnav blocker for it
 function Gem:CreateRock(pos, owner, createBlocker)
-    local rock = CreateUnitByName("npc_mygem_building_rock", pos, false, owner, owner, DOTA_TEAM_GOODGUYS)
+    local rock = CreateUnitByName("npc_mygem_building_rock", pos, false, owner, owner, owner:GetTeam())
     CopyFunctions(Gem, rock)
     if rock:HasModifier("modifier_invulnerable") then
         rock:RemoveModifierByName("modifier_invulnerable")

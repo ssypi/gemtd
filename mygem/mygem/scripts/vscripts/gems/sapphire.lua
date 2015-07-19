@@ -7,6 +7,10 @@ Sapphire = {
 
 local ABILITY_SLOW = "sapphire_slow"
 
+function Sapphire:OnCreated(keys)
+    self:SetRenderColor(10, 10, 200)
+end
+
 function Sapphire:OnAttackLanded(keys)
     local target = keys.target
     local qualityNum = vlua.find(Gem.qualities, self.quality)

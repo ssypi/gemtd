@@ -1,5 +1,9 @@
 Ruby = {}
 
+function Ruby:OnCreated(keys)
+    self:SetRenderColor(250, 10, 10)
+end
+
 function Ruby:OnAttackLanded(keys)
     print("Ruby:OnAttackLanded")
     local target = keys.target

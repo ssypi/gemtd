@@ -4,6 +4,7 @@ Topaz = {
 
 function Topaz:OnCreated(keys)
     print("Topaz created")
+    self:SetRenderColor(240, 250, 25)
 end
 
 function Topaz:OnAttackLanded(keys)

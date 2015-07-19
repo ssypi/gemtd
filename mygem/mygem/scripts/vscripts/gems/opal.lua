@@ -22,6 +22,8 @@ function Opal:OnCreated(keys)
     self:SetBaseDamageMin(dmgMin-0)
     print(self:GetBaseDamageMax())
     print(self:GetBaseDamageMin())
+
+    self:SetRenderColor(140, 240, 240)
 end
 
 function Opal:OnAttackLanded(keys)
