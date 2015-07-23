@@ -6,22 +6,132 @@
         <include src="file://{resources}/scripts/custom_game/gem_guide.js"/>
     </scripts>
     <Panel class="Root">
-        <Panel class="GemGuideUi">
-            <Label id="Title" html="true" text="Special Gem Recipes"/>
+        <Label id="Title" html="true" text="Special Gem Recipes"/>
+        <Panel class="GemGuideUi" id="GemGuideUi">
             <Panel class="Recipes">
                 <Panel class="Row">
                     <Label text="Silver" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
-                    <Label class="Gem" html="true" text="Chipped Sapphire"/>
+                    <Label id="ChippedSapphire" class="Gem" html="true" text="Chipped Sapphire"/>
                     <Label text="+" class="Plus"/>
-                    <Label class="Gem" html="true" text="Chipped Diamond"/>
+                    <Label id="ChippedDiamond" class="Gem" html="true" text="Chipped Diamond"/>
                     <Label text="+" class="Plus"/>
-                    <Label class="Gem" html="true" text="Chipped Topaz"/>
+                    <Label id="ChippedTopaz" class="Gem" html="true" text="Chipped Topaz"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Malachite" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="ChippedOpal" class="Gem" html="true" text="Chipped Opal"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="ChippedEmerald" class="Gem" html="true" text="Chipped Emerald"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="ChippedAquamarine" class="Gem" html="true" text="Chipped Aquamarine"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Star Ruby" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="FlawedRuby" class="Gem" html="true" text="Flawed Ruby"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="ChippedRuby" class="Gem" html="true" text="Chipped Ruby"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="ChippedAmethyst" class="Gem" html="true" text="Chipped Amethyst"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Black Opal" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectOpal" class="Gem" html="true" text="Perfect Opal"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessDiamond" class="Gem" html="true" text="Flawless Diamond"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="NormalAquamarine" class="Gem" html="true" text="Normal Aquamarine"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Blood Stone" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectRuby" class="Gem" html="true" text="Perfect Ruby"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessAquamarine" class="Gem" html="true" text="Flawless Aquamarine"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="NormalAmethyst" class="Gem" html="true" text="Normal Amethyst"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Dark Emerald" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectEmerald" class="Gem" html="true" text="Perfect Emerald"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessSapphire" class="Gem" html="true" text="Flawless Sapphire"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawedTopaz" class="Gem" html="true" text="Flawed Topaz"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Gold" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectAmethyst" class="Gem" html="true" text="Perfect Amethyst"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessAmethyst" class="Gem" html="true" text="Flawless Amethyst"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawedDiamond" class="Gem" html="true" text="Flawed Diamond"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Jade" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="NormalEmerald" class="Gem" html="true" text="Normal Emerald"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="NormalOpal" class="Gem" html="true" text="Normal Opal"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawedSapphire" class="Gem" html="true" text="Flawed Sapphire"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Pink Diamond" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectDiamond" class="Gem" html="true" text="Perfect Diamond"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="NormalTopaz" class="Gem" html="true" text="Normal Topaz"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="NormalDiamond" class="Gem" html="true" text="Normal Diamond"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Red Crystal" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="NormalRuby" class="Gem" html="true" text="Normal Ruby"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessEmerald" class="Gem" html="true" text="Flawless Emerald"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawedAmethyst" class="Gem" html="true" text="Flawed Amethyst"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Uranium 238" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectTopaz" class="Gem" html="true" text="Perfect Topaz"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="NormalSapphire" class="Gem" html="true" text="Normal Sapphire"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawedOpal" class="Gem" html="true" text="Flawed Opal"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Yellow Sapphire" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectSapphire" class="Gem" html="true" text="Perfect Sapphire"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessTopaz" class="Gem" html="true" text="Flawless Topaz"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessRuby" class="Gem" html="true" text="Flawless Ruby"/>
+                </Panel>
+                <Panel class="Row">
+                    <Label text="Paraiba Tourmaline" class="SpecialGem"/>
+                    <Label text="=" class="Plus"/>
+                    <Label id="PerfectAquamarine" class="Gem" html="true" text="Perfect Aquamarine"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawlessOpal" class="Gem" html="true" text="Flawless Opal"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawedEmerald" class="Gem" html="true" text="Flawed Emerald"/>
+                    <Label text="+" class="Plus"/>
+                    <Label id="FlawedAquamarine" class="Gem" html="true" text="Flawed Aquamarine"/>
                 </Panel>
             </Panel>
         </Panel>
         <Panel>
-            <Button id="Button" html="true" text="ASD"/>
+            <Button id="Button" onactivate="ButtonPressed()"/>
         </Panel>
     </Panel>
 </root>

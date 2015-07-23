@@ -17,7 +17,7 @@ function KeepGem(data) {
 
     ChangeGemNameColor(value, "green");
     keptGem = value;
-    keptGems[y]  = value;
+    keptGems[y] = value;
     y++;
     RemoveGemsFromPlacedGems();
 }
@@ -90,18 +90,137 @@ function ChangeGemNameColor(value, color) {
         case "gem_chipped_sapphire":
             $("#ChippedSapphire").style.color = color;
             break;
-
         case "gem_chipped_diamond":
             $("#ChippedDiamond").style.color = color;
             break;
-
         case "gem_chipped_topaz":
             $("#ChippedTopaz").style.color = color;
+            break;
+        case "gem_chipped_emerald":
+            $("#ChippedEmerald").style.color = color;
+            break;
+        case "gem_chipped_amethyst":
+            $("#ChippedAmethyst").style.color = color;
+            break;
+        case "gem_chipped_ruby":
+            $("#ChippedRuby").style.color = color;
+            break;
+        case "gem_chipped_opal":
+            $("#ChippedOpal").style.color = color;
+            break;
+        case "gem_chipped_aquamarine":
+            $("#ChippedAquamarine").style.color = color;
+            break;
+
+        case "gem_flawed_ruby":
+            $("#FlawedRuby").style.color = color;
+            break;
+        case "gem_flawed_sapphire":
+            $("#FlawedSapphire").style.color = color;
+            break;
+        case "gem_flawed_diamond":
+            $("#FlawedDiamond").style.color = color;
+            break;
+        case "gem_flawed_topaz":
+            $("#FlawedTopaz").style.color = color;
+            break;
+        case "gem_flawed_amethyst":
+            $("#FlawedAmethyst").style.color = color;
+            break;
+        case "gem_flawed_aquamarine":
+            $("#FlawedAquamarine").style.color = color;
+            break;
+        case "gem_flawed_opal":
+            $("#FlawedOpal").style.color = color;
+            break;
+        case "gem_flawed_emerald":
+            $("#FlawedEmerald").style.color = color;
+            break;
+
+        case "gem_normal_ruby":
+            $("#NormalRuby").style.color = color;
+            break;
+        case "gem_normal_sapphire":
+            $("#NormalSapphire").style.color = color;
+            break;
+        case "gem_normal_diamond":
+            $("#NormalDiamond").style.color = color;
+            break;
+        case "gem_normal_topaz":
+            $("#NormalTopaz").style.color = color;
+            break;
+        case "gem_normal_amethyst":
+            $("#NormalAmethyst").style.color = color;
+            break;
+        case "gem_normal_aquamarine":
+            $("#NormalAquamarine").style.color = color;
+            break;
+        case "gem_normal_opal":
+            $("#NormalOpal").style.color = color;
+            break;
+        case "gem_normal_emerald":
+            $("#NormalEmerald").style.color = color;
+            break;
+
+        case "gem_flawless_ruby":
+            $("#FlawlessRuby").style.color = color;
+            break;
+        case "gem_flawless_sapphire":
+            $("#FlawlessSapphire").style.color = color;
+            break;
+        case "gem_flawless_diamond":
+            $("#FlawlessDiamond").style.color = color;
+            break;
+        case "gem_flawless_topaz":
+            $("#FlawlessTopaz").style.color = color;
+            break;
+        case "gem_flawless_amethyst":
+            $("#FlawlessAmethyst").style.color = color;
+            break;
+        case "gem_flawless_aquamarine":
+            $("#FlawlessAquamarine").style.color = color;
+            break;
+        case "gem_flawless_opal":
+            $("#FlawlessOpal").style.color = color;
+            break;
+        case "gem_flawless_emerald":
+            $("#FlawlessEmerald").style.color = color;
+            break;
+
+        case "gem_perfect_ruby":
+            $("#PerfectRuby").style.color = color;
+            break;
+        case "gem_perfect_sapphire":
+            $("#PerfectSapphire").style.color = color;
+            break;
+        case "gem_perfect_diamond":
+            $("#PerfectDiamond").style.color = color;
+            break;
+        case "gem_perfect_topaz":
+            $("#PerfectTopaz").style.color = color;
+            break;
+        case "gem_perfect_amethyst":
+            $("#PerfectAmethyst").style.color = color;
+            break;
+        case "gem_perfect_aquamarine":
+            $("#PerfectAquamarine").style.color = color;
+            break;
+        case "gem_perfect_opal":
+            $("#PerfectOpal").style.color = color;
+            break;
+        case "gem_perfect_emerald":
+            $("#PerfectEmerald").style.color = color;
             break;
 
         default:
             $.Msg("No gem found with gem: ", value);
     }
+}
+
+function ButtonPressed() {
+    $.Msg("Button pressed");
+    $("#GemGuideUi").ToggleClass("Visible");
+    $("#Button").ToggleClass("onClick");
 }
 
 GameEvents.Subscribe("keep_gem", KeepGem);
