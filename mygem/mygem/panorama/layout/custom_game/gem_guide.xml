@@ -10,7 +10,7 @@
         <Panel class="GemGuideUi" id="GemGuideUi">
             <Panel class="Recipes">
                 <Panel class="Row">
-                    <Label text="Silver" class="SpecialGem"/>
+                    <Label id="Silver" text="Silver" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="ChippedSapphire" class="Gem" html="true" text="Chipped Sapphire"/>
                     <Label text="+" class="Plus"/>
@@ -19,7 +19,7 @@
                     <Label id="ChippedTopaz" class="Gem" html="true" text="Chipped Topaz"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Malachite" class="SpecialGem"/>
+                    <Label id="Malachite" text="Malachite" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="ChippedOpal" class="Gem" html="true" text="Chipped Opal"/>
                     <Label text="+" class="Plus"/>
@@ -28,7 +28,7 @@
                     <Label id="ChippedAquamarine" class="Gem" html="true" text="Chipped Aquamarine"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Star Ruby" class="SpecialGem"/>
+                    <Label id="StarRuby" text="Star Ruby" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="FlawedRuby" class="Gem" html="true" text="Flawed Ruby"/>
                     <Label text="+" class="Plus"/>
@@ -37,7 +37,7 @@
                     <Label id="ChippedAmethyst" class="Gem" html="true" text="Chipped Amethyst"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Black Opal" class="SpecialGem"/>
+                    <Label id="BlackOpal" text="Black Opal" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectOpal" class="Gem" html="true" text="Perfect Opal"/>
                     <Label text="+" class="Plus"/>
@@ -46,7 +46,7 @@
                     <Label id="NormalAquamarine" class="Gem" html="true" text="Normal Aquamarine"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Blood Stone" class="SpecialGem"/>
+                    <Label id="BloodStone" text="Blood Stone" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectRuby" class="Gem" html="true" text="Perfect Ruby"/>
                     <Label text="+" class="Plus"/>
@@ -55,7 +55,7 @@
                     <Label id="NormalAmethyst" class="Gem" html="true" text="Normal Amethyst"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Dark Emerald" class="SpecialGem"/>
+                    <Label id="DarkEmerald" text="Dark Emerald" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectEmerald" class="Gem" html="true" text="Perfect Emerald"/>
                     <Label text="+" class="Plus"/>
@@ -64,7 +64,7 @@
                     <Label id="FlawedTopaz" class="Gem" html="true" text="Flawed Topaz"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Gold" class="SpecialGem"/>
+                    <Label id="Gold" text="Gold" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectAmethyst" class="Gem" html="true" text="Perfect Amethyst"/>
                     <Label text="+" class="Plus"/>
@@ -73,7 +73,7 @@
                     <Label id="FlawedDiamond" class="Gem" html="true" text="Flawed Diamond"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Jade" class="SpecialGem"/>
+                    <Label id="Jade" text="Jade" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="NormalEmerald" class="Gem" html="true" text="Normal Emerald"/>
                     <Label text="+" class="Plus"/>
@@ -82,7 +82,7 @@
                     <Label id="FlawedSapphire" class="Gem" html="true" text="Flawed Sapphire"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Pink Diamond" class="SpecialGem"/>
+                    <Label id="PinkDiamond" text="Pink Diamond" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectDiamond" class="Gem" html="true" text="Perfect Diamond"/>
                     <Label text="+" class="Plus"/>
@@ -91,7 +91,7 @@
                     <Label id="NormalDiamond" class="Gem" html="true" text="Normal Diamond"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Red Crystal" class="SpecialGem"/>
+                    <Label id="RedCrystal" text="Red Crystal" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="NormalRuby" class="Gem" html="true" text="Normal Ruby"/>
                     <Label text="+" class="Plus"/>
@@ -100,7 +100,7 @@
                     <Label id="FlawedAmethyst" class="Gem" html="true" text="Flawed Amethyst"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Uranium 238" class="SpecialGem"/>
+                    <Label id="Uranium238" text="Uranium 238" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectTopaz" class="Gem" html="true" text="Perfect Topaz"/>
                     <Label text="+" class="Plus"/>
@@ -109,7 +109,7 @@
                     <Label id="FlawedOpal" class="Gem" html="true" text="Flawed Opal"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Yellow Sapphire" class="SpecialGem"/>
+                    <Label id="YellowSapphire" text="Yellow Sapphire" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectSapphire" class="Gem" html="true" text="Perfect Sapphire"/>
                     <Label text="+" class="Plus"/>
@@ -118,7 +118,7 @@
                     <Label id="FlawlessRuby" class="Gem" html="true" text="Flawless Ruby"/>
                 </Panel>
                 <Panel class="Row">
-                    <Label text="Paraiba Tourmaline" class="SpecialGem"/>
+                    <Label id="ParaibaTourmaline" text="Paraiba Tourmaline" class="SpecialGem"/>
                     <Label text="=" class="Plus"/>
                     <Label id="PerfectAquamarine" class="Gem" html="true" text="Perfect Aquamarine"/>
                     <Label text="+" class="Plus"/>

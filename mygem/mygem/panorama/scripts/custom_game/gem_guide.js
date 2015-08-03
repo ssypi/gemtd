@@ -85,6 +85,30 @@ function RemoveGemAfterCombine(data) {
     }
 }
 
+function AddCombinedGem(data) {
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            var gem = data[key];
+        }
+    }
+    $.Msg("Combined gem: ", gem);
+    ChangeGemNameColor(gem, "green");
+    keptGem = gem;
+    keptGems[y] = gem;
+    y++;
+    RemoveGemsFromPlacedGems();
+}
+
+function AddSpecialGem(data) {
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            var gem = data[key];
+        }
+    }
+    $.Msg("Combined Special gem: ", gem);
+    ChangeGemNameColor(gem, "green");
+}
+
 function ChangeGemNameColor(value, color) {
     switch (value) {
         case "gem_chipped_sapphire":
@@ -212,6 +236,46 @@ function ChangeGemNameColor(value, color) {
             $("#PerfectEmerald").style.color = color;
             break;
 
+        case "gem_special_silver":
+            $("#Silver").style.color = color;
+            break;
+        case "gem_special_malachite":
+            $("#Malachite").style.color = color;
+            break;
+        case "gem_special_star_ruby":
+            $("#StarRuby").style.color = color;
+            break;
+        case "gem_special_black_opal":
+            $("#BlackOpal").style.color = color;
+            break;
+        case "gem_special_blood_stone":
+            $("#BloodStone").style.color = color;
+            break;
+        case "gem_special_dark_emerald":
+            $("#DarkEmerald").style.color = color;
+            break;
+        case "gem_special_gold":
+            $("#Gold").style.color = color;
+            break;
+        case "gem_special_jade":
+            $("#Jade").style.color = color;
+            break;
+        case "gem_special_pink_diamond":
+            $("#PinkDiamond").style.color = color;
+            break;
+        case "gem_special_red_crystal":
+            $("#RedCrystal").style.color = color;
+            break;
+        case "gem_special_uranium_238":
+            $("#Uranium238").style.color = color;
+            break;
+        case "gem_special_yellow_sapphire":
+            $("#YellowSapphire").style.color = color;
+            break;
+        case "gem_special_paraiba_tourmaline":
+            $("#ParaibaTourmaline").style.color = color;
+            break;
+
         default:
             $.Msg("No gem found with gem: ", value);
     }
@@ -226,6 +290,8 @@ function ButtonPressed() {
 GameEvents.Subscribe("keep_gem", KeepGem);
 GameEvents.Subscribe("place_gem", PlaceGem);
 GameEvents.Subscribe("remove_gem", RemoveGemAfterCombine);
+GameEvents.Subscribe("add_combined_gem", AddCombinedGem);
+GameEvents.Subscribe("add_special_gem", AddSpecialGem);
 
 
 

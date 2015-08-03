@@ -86,6 +86,11 @@ function GemCombine(keys)
         local newGem = gem:ReplaceWith(newName)
         newGem.keep = true
         player.done = true
+        local combinedGem = {
+        }
+        local gemName = "GemName"
+        combinedGem[gemName] = newGem:GetUnitName()
+        CustomGameEventManager:Send_ServerToPlayer(player, "add_combined_gem", combinedGem)
     end
 end
 
@@ -96,11 +101,11 @@ function GemCombineSpecial(keys)
     gem.keep = true
     print("Combine special for " .. gem:GetUnitName())
 
-    local data = {
+    local gemToBeRemoved = {
     }
     local gemName = "GemName"
-    data[gemName] = gem:GetUnitName()
-    CustomGameEventManager:Send_ServerToPlayer(player, "remove_gem", data)
+    gemToBeRemoved[gemName] = gem:GetUnitName()
+    CustomGameEventManager:Send_ServerToPlayer(player, "remove_gem", gemToBeRemoved)
 
     local allGems = player.allGems
     local tableIndex = FindTableKey(allGems, gem)
@@ -114,6 +119,12 @@ function GemCombineSpecial(keys)
     print("Combining to " .. combinesTo)
     RemoveCombinedGems(player, combinedFrom)
     local newGem = gem:ReplaceWith(combinesTo)
+
+    local specialGem = {
+    }
+    local gemName = "GemName"
+    specialGem[gemName] = newGem:GetUnitName()
+    CustomGameEventManager:Send_ServerToPlayer(player, "add_special_gem", specialGem)
 end
 
 -- Remove all the placedGems used in a special combine
