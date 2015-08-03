@@ -64,7 +64,7 @@ var myGem = {};
         } else {
             ownedGems[gemName] = 1;
         }
-        updatePlacedGems();
+        updateUi();
     }
 
 // Adding placed gem in this turn
