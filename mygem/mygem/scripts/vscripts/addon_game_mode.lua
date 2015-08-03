@@ -270,6 +270,5 @@ function MyGemGameMode:OnEntityKilled(keys)
     local entityId = keys.entindex_killed
     local entityKilled = EntIndexToHScript(entityId)
     ParticleManager:CreateParticle("particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_impact.vpcf", PATTACH_ABSORIGIN, entityKilled)
-    EmitSoundOn("Hero_PhantomAssassin.CoupDeGrace", entityKilled)
 end
 

@@ -1,0 +1,122 @@
+.Root {
+    width: 20%;
+    height: 52%;
+    /*margin-left: 70%;*/
+    /*margin-top: 5px;*/
+    horizontal-align: right;
+    /*background-color: red;*/
+}
+
+.GemGuideUi {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    background-color: #000000;
+    font-size: 18px;
+    color: white;
+    margin-top: 45px;
+    opacity: 0;
+    flow-children: down;
+    transition-property: opacity, transform;
+    transform-origin: 0% 0%;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: ease-in, ease-in-out;
+    transform: scaleY(0);
+    padding-left: 5px;
+}
+
+.Hidden {
+    opacity: 0;
+    transition-property: opacity, height;
+    transition-duration: 2.0s, 1.0s;
+    transition-timing-function: ease-in, linear;
+}
+
+.Visible {
+    opacity: 0.8;
+    transition-property: opacity, transform;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: ease-out, ease-in-out;
+    transform: scaleY(1);
+}
+
+Label {
+    color: white;
+    font-size: 18px;
+}
+
+.Recipes {
+    flow-children: down;
+    /*border: 1px solid #FFFFFF;*/
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    /*visibility: collapse;*/
+}
+
+.SpecialGem {
+    font-size: 11px;
+    text-align: center;
+    width: 15%;
+    padding-top: 6px;
+}
+
+.Gem {
+    font-size: 12px;
+    width: 18%;
+    color: red;
+    text-align: center;
+    padding-left: 6px;
+    padding-right: 5px;
+}
+
+.Row {
+    flow-children: right;
+    width: 100%;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.Plus {
+    font-size: 13px;
+    margin-top: 5px;
+    text-align: center;
+    width: 3%;
+}
+
+#Title {
+    width: 45%;
+    margin-left: 40px;
+    text-align: center;
+    margin-top: 9px;
+    font-family: Radiance;
+    background-color: #000000;
+    opacity: 0.6;
+}
+
+#Button {
+    vertical-align: top;
+    width: 33px;
+    height: 35px;
+    margin-top: 4px;
+    margin-left: 6px;
+    transition-duration: 0.5s;
+    transition-property: transform;
+    background-image: url("file://{images}/custom_game/arrow.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.onClick {
+    transform: rotateX(180deg);
+    transform-origin: 50% 50%;
+}
+
+#Button:hover {
+    background-image: url("file://{images}/custom_game/arrow2.png");
+}
+
+
+
+
+
