@@ -7,7 +7,7 @@
     </scripts>
     <Panel class="Root">
         <Label id="Title" html="true" text="Special Gem Recipes"/>
-        <Panel class="GemGuideUi" id="GemGuideUi">
+        <Panel class="GemGuideUi" id="GemGuideUi" hittest="false">
             <Panel class="Recipes" id="recipes">
                 <Panel class="Row">
                     <Label id="Silver" text="Silver" class="SpecialGem"/>

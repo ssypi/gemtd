@@ -11,5 +11,6 @@
     </script>
     <Panel>
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/gem_guide.xml" />
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/notification.xml" />
     </Panel>
 </root>
