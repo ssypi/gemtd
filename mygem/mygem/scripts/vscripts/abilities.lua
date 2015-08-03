@@ -89,21 +89,50 @@ end
 function GemCombineSpecial(keys)
     local gem = keys.caster
     local player = gem.owner
+
+    local oneHit = false;
+    if gem:HasAbility("gem_keep") then
+        print("combining during build")
+        local ability = gem:FindAbilityByName("gem_keep")
+        ability:SetLevel(1)
+        ability:SetHidden(false)
+--        gem:CastAbilityImmediately(ability, owner:GetPlayerID())
+        oneHit = true;
+    else
+        print("combining out of build")
+    end
+
     gem.keep = true
     print("Combine special for " .. gem:GetUnitName())
 
-    local allGems = player.allGems
-    local tableIndex = FindTableKey(allGems, gem)
-    table.remove(allGems, tableIndex)
-    local pos = gem:GetAbsOrigin()
-    local team = gem:GetTeam()
+    local newGem;
     local combinesTo = gem.combinesTo
-    local combinedFrom = Gem:GetCombineRecipeFor(combinesTo)
-    combinedFrom[gem:GetUnitName()] = nil -- Remove the current gem from the recipe since we already used it
+    if not oneHit then
+        local allGems = player.allGems
+        local tableIndex = FindTableKey(allGems, gem)
+        table.remove(allGems, tableIndex)
+        local combinedFrom = Gem:GetCombineRecipeFor(combinesTo)
+        combinedFrom[gem:GetUnitName()] = nil -- Remove the current gem from the recipe since we already used it
+        print("Combining to " .. combinesTo)
+        RemoveCombinedGems(player, combinedFrom)
+        newGem = gem:ReplaceWithGem(combinesTo)
+    else
+        newGem = gem:ReplaceWithGem(combinesTo)
+        if newGem:HasAbility("gem_keep") then
+            print("already has gem keep")
+        else
+            print("adding gem keep")
+            newGem:AddAbility("gem_keep")
+        end
 
-    print("Combining to " .. combinesTo)
-    RemoveCombinedGems(player, combinedFrom)
-    local newGem = gem:ReplaceWithGem(combinesTo)
+        local ability = newGem:FindAbilityByName("gem_keep")
+        ability:SetLevel(1)
+        ability:SetHidden(false)
+        newGem:CastAbilityNoTarget(ability, player:GetPlayerID())
+    end
+    --local pos = gem:GetAbsOrigin()
+    --local team = gem:GetTeam()
+
     CustomGameEventManager:Send_ServerToPlayer(player, "add_special_gem", {gemName = newGem:GetUnitName()})
 end
 

@@ -1,5 +1,5 @@
 function IsValid(entity)
-    local isValid = entity ~= nil and IsValidEntity(entity) and not IsMarkedForDeletion(entity)
+    local isValid = entity ~= nil and IsValidEntity(entity) and not IsMarkedForDeletion(entity) and not entity:IsNull()
     return isValid
 end
 

@@ -14,9 +14,21 @@ function Build.new(player)
     return buildState
 end
 
+local function ClearInvalidGems(player)
+    for _,gem in pairs(player.allGems) do
+        if not IsValid(gem) then
+            local tableIndex = FindTableKey(player.allGems, gem)
+            print("Clearing invalid gem#" .. tableIndex)
+            table.remove(player.allGems, tableIndex)
+        end
+    end
+    print("player#" .. player:GetPlayerID() .. " gem count: " .. #player.allGems)
+end
+
 
 function Build:Begin()
     local player = self.player
+    ClearInvalidGems(player)
     print("Build state started for " .. player:GetPlayerID())
     self.done = false
     GiveBuildAbility(player)
@@ -30,15 +42,20 @@ function CalculateTotal(combinedFrom)
     return total
 end
 
-function CheckForCombineSpecial(player)
-    local allGems = player.allGems
-    local gem = allGems[#allGems]
+function CheckForCombineSpecial(gem, gems)
+    if not IsValidEntity(gem) then
+        return
+    end
+
+    print("checking combine special for " .. gem:GetUnitName() .. " from gems count " .. #gems)
+--    local allGems = player.allGems
+    --local gem = gems[#gems]
     local combinesTo = gem.combinesTo
     if combinesTo ~= nil then
         local combinedFrom = Gem:GetCombineRecipeFor(combinesTo)
         print("Combined from:")
         PrintTable(combinedFrom)
-        for _,currentGem in pairs(allGems) do
+        for _,currentGem in pairs(gems) do
             if IsValid(currentGem) then
                 local gemName = currentGem:GetUnitName()
                 print(gemName)
@@ -92,6 +109,7 @@ function Build:Update()
             local gem = player.gems[i]
             if IsValid(gem) then
                 CheckForCombine(player, gem)
+                CheckForCombineSpecial(gem, player.gems)
                 if gem:HasAbility("gem_keep") then
                     gem:FindAbilityByName("gem_keep"):SetLevel(1)
                     gem:FindAbilityByName("gem_keep"):SetHidden(false)
@@ -107,7 +125,7 @@ function Build:End()
     print("Build state ended for " .. player:GetPlayerID())
     ClearUnusedGems(player)
     RemoveBuildAbility(player)
-    CheckForCombineSpecial(player)
+    CheckForCombineSpecial(player.allGems[#player.allGems], player.allGems)
     self.nextState = Running.new(player)
 end
 
