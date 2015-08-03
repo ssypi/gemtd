@@ -59,6 +59,7 @@ function GemKeep(keys)
     local player = gem.owner
     gem.keep = true
     player.done = true
+    CustomGameEventManager:Send_ServerToPlayer(player, "keep_gem", {gemName = gem:GetUnitName()})
 end
 
 function GemDelete(keys)
@@ -77,9 +78,10 @@ function GemCombine(keys)
     local qualityNum = FindTableKey(Gem.qualities, quality)
     if qualityNum < #Gem.qualities then
         local newName = "gem_" .. Gem.qualities[qualityNum + 1] .. "_" .. type
-        local newGem = gem:ReplaceWith(newName)
+        local newGem = gem:ReplaceWithGem(newName)
         newGem.keep = true
         player.done = true
+        CustomGameEventManager:Send_ServerToPlayer(player, "add_combined_gem", {gemName = newGem:GetUnitName()})
     end
 end
 
@@ -101,7 +103,8 @@ function GemCombineSpecial(keys)
 
     print("Combining to " .. combinesTo)
     RemoveCombinedGems(player, combinedFrom)
-    local newGem = gem:ReplaceWith(combinesTo)
+    local newGem = gem:ReplaceWithGem(combinesTo)
+    CustomGameEventManager:Send_ServerToPlayer(player, "add_special_gem", {gemName = newGem:GetUnitName()})
 end
 
 -- Remove all the gems used in a special combine

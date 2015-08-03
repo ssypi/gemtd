@@ -128,6 +128,7 @@ function Gem:RandomGem(player)
     if player.forceNextGem ~= nil then
         local nextGem = player.forceNextGem
         player.forceNextGem = nil
+        CustomGameEventManager:Send_ServerToPlayer(player, "place_gem", {gemName=nextGem})
         return nextGem
     end
     if player.upgradeQuality == nil then
@@ -149,14 +150,7 @@ function Gem:RandomGem(player)
     print(quality)
     local gemName = "gem_" .. quality .. "_" .. type
     print("Random gem name: " .. gemName)
-
-    local data = {
-    }
-    local gemNameToJS = "GemName"
-    data[gemNameToJS] = gemName
-    print("Gem unit name: " .. data[gemNameToJS])
-    CustomGameEventManager:Send_ServerToPlayer(player, "place_gem", data)
-
+    CustomGameEventManager:Send_ServerToPlayer(player, "place_gem", {gemName=gemName})
     return gemName
 end
 
@@ -225,34 +219,31 @@ function Gem:Remove()
     UTIL_Remove(self)
 end
 
-function Gem:ReplaceWith(unitName)
-    local newGem = Gem:CreateGem(unitName, self:GetAbsOrigin(), self.owner, false)
-
-    if newGem ~= nil then
-        if IsValid(self.blocker) then
-            newGem.blocker = self.blocker
+local function ReplaceWith(original, replacement)
+    print("replacing " .. original:GetUnitName() .. " with " .. replacement:GetUnitName())
+    if replacement ~= nil then
+        CustomGameEventManager:Send_ServerToPlayer(original.owner, "remove_gem", {gemName = original:GetUnitName()})
+        if IsValid(original.blocker) then
+            replacement.blocker = original.blocker
         else
-            newGem:CreateBlocker()
+            replacement:CreateBlocker()
         end
-        newGem.kills = self.kills
-        UTIL_Remove(self)
-        return newGem
+        replacement.kills = original.kills
+        UTIL_Remove(original)
+        return replacement
     else
-        print("Error replacing " .. self:GetUnitName() .. " with " .. unitName)
+        error("Error replacing " .. original:GetUnitName() .. " with.. ")
+        error(replacement)
     end
 end
 
+function Gem:ReplaceWithGem(gemName)
+    local newGem = Gem:CreateGem(gemName, self:GetAbsOrigin(), self.owner, false)
+    return ReplaceWith(self, newGem)
+end
+
+
 function Gem:ReplaceWithRock()
     local rock = Gem:CreateRock(self:GetAbsOrigin(), self.owner, false)
-
-    print("blocker = ")
-    print(self.blocker)
-    if IsValid(self.blocker) then
-        rock.blocker = self.blocker
-    else
-        print("blocker is not valid creating new")
-        rock:CreateBlocker()
-    end
-    UTIL_Remove(self)
-    return rock
+    return ReplaceWith(self, rock)
 end

@@ -207,7 +207,7 @@ function MyGemGameMode:InitGameMode()
 
     Convars:RegisterCommand('killall', function(name)
         local player = Convars:GetCommandClient()
-        player:GetAssignedHero():ForceKill(true)
+        --player:GetAssignedHero():ForceKill(true)
         if player.state.KillAll ~= nil then
             player.state:KillAll()
         end

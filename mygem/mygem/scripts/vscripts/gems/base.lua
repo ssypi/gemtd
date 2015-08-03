@@ -43,7 +43,7 @@ function Upgrade(keys)
     local gem = keys.caster
     local upgradesTo = gem.upgradesTo
     print("Upgrading " .. gem:GetUnitName() .. " to " .. upgradesTo)
-    local newGem = gem:ReplaceWith(upgradesTo)
+    local newGem = gem:ReplaceWithGem(upgradesTo)
     if newGem == nil then
         print("Error upgrading.")
         local hero = gem:GetPlayerOwner():GetAssignedHero()
