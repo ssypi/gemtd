@@ -77,6 +77,19 @@ function Gem:AddKeep()
     end
 end
 
+function Gem:LevelUp()
+    local gem = self
+    if not gem:HasAbility("gem_damage_bonus") then
+        gem:AddAbility("gem_damage_bonus")
+    end
+    local ability = gem:FindAbilityByName("gem_damage_bonus")
+    local level = ability:GetLevel()
+    if level ~= ability:GetMaxLevel() then
+        ability:SetLevel(level + 1)
+        ParticleManager:CreateParticle("particles/econ/events/ti5/blink_dagger_steam_ti5.vpcf", PATTACH_ABSORIGIN, gem)
+    end
+end
+
 function Gem:CreateGem(unitName, position, player, createBlocker)
     local gem = CreateUnitByName(unitName, position, false, player:GetAssignedHero(), player:GetAssignedHero(), PlayerResource:GetTeam(player:GetPlayerID()))
 --    gem:SetOwner(player)

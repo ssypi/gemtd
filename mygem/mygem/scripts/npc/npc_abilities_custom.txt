@@ -35,6 +35,35 @@
         }
     }
 
+    "gem_damage_bonus"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "MaxLevel" "10"
+
+        "Modifiers"
+        {
+            "modifier_damage_bonus"
+            {
+                "Passive" "1"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%percentage"
+                }
+            }
+        }
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type" "FIELD_INTEGER"
+                "percentage" "10 20 30 40 50 60 70 80 90 100"
+            }
+        }
+    }
+
 	"silver_upgrade"
 	{
 	    "BaseClass" "ability_datadriven"

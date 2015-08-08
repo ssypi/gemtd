@@ -73,6 +73,8 @@ function Precache(context)
     PrecacheResource("particle", "particles/dark_smoke_test.vpcf", context)
     PrecacheResource("particle", "particles/addons_gameplay/pit_lava_blast.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_impact.vpcf", context)
+    PrecacheResource("particle", "particles/econ/events/ti5/blink_dagger_steam_ti5.vpcf", context)
+
     PrecacheResource("soundfile", "soundevents/game_sounds_music_int.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/music/valve_dota_001/music/game_sounds_music.vsndevts", context)
     PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts", context)
@@ -270,5 +272,17 @@ function MyGemGameMode:OnEntityKilled(keys)
     local entityId = keys.entindex_killed
     local entityKilled = EntIndexToHScript(entityId)
     ParticleManager:CreateParticle("particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_impact.vpcf", PATTACH_ABSORIGIN, entityKilled)
+    PrintTable(keys)
+    local attackerId = keys.entindex_attacker
+    local attacker = EntIndexToHScript(attackerId)
+    if attacker.kills ~= nil then
+        attacker.kills = attacker.kills + 1
+    else
+        attacker.kills = 1
+    end
+    if attacker.kills % 10 == 0 then
+        print("Gem: " .. attacker:GetUnitName() .. "kills: " .. attacker.kills)
+        attacker:LevelUp()
+    end
 end
 
