@@ -41,11 +41,11 @@
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
         "AbilityTextureName"    "upgrade_gem"
 
-        "MaxLevel"  "3"
+        "MaxLevel"  "2"
 
 	    "AbilityManaCost" "0"
         "AbilityCooldown" "10"
-        "AbilityGoldCost"   "%gold_cost"
+        "AbilityGoldCost"   "25 300"
 
         "OnSpellStart"
         {
@@ -63,10 +63,406 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"gold_cost"				    "25 125 250"
+				"gold_cost"				    "25 300"
 			}
 		}
 	}
+
+		"malachite_upgrade"
+    	{
+    	    "BaseClass" "ability_datadriven"
+    	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+            "AbilityTextureName"    "upgrade_gem"
+
+            "MaxLevel"  "2"
+
+    	    "AbilityManaCost" "0"
+            "AbilityCooldown" "10"
+            "AbilityGoldCost"   "25 300"
+
+            "OnSpellStart"
+            {
+                "RunScript"
+                {
+                    "Target"    "CASTER"
+                    "ScriptFile"    "gems/base.lua"
+                    "Function"  "Upgrade"
+                    "goldCost"  "%gold_cost"
+                }
+            }
+
+    		"AbilitySpecial"
+    		{
+    			"01"
+    			{
+    				"var_type"					"FIELD_INTEGER"
+    				"gold_cost"				    "25 300"
+    			}
+    		}
+    	}
+
+    		"star_ruby_upgrade"
+        	{
+        	    "BaseClass" "ability_datadriven"
+        	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                "AbilityTextureName"    "upgrade_gem"
+
+                "MaxLevel"  "2"
+
+        	    "AbilityManaCost" "0"
+                "AbilityCooldown" "10"
+                "AbilityGoldCost"   "25 300"
+
+                "OnSpellStart"
+                {
+                    "RunScript"
+                    {
+                        "Target"    "CASTER"
+                        "ScriptFile"    "gems/base.lua"
+                        "Function"  "Upgrade"
+                        "goldCost"  "%gold_cost"
+                    }
+                }
+
+        		"AbilitySpecial"
+        		{
+        			"01"
+        			{
+        				"var_type"					"FIELD_INTEGER"
+        				"gold_cost"				    "25 300"
+        			}
+        		}
+        	}
+
+    	"black_opal_upgrade"
+    	{
+    	    "BaseClass" "ability_datadriven"
+    	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+            "AbilityTextureName"    "upgrade_gem"
+
+            "MaxLevel"  "2"
+
+    	    "AbilityManaCost" "0"
+            "AbilityCooldown" "10"
+            "AbilityGoldCost"   "25 300"
+
+            "OnSpellStart"
+            {
+                "RunScript"
+                {
+                    "Target"    "CASTER"
+                    "ScriptFile"    "gems/base.lua"
+                    "Function"  "Upgrade"
+                    "goldCost"  "%gold_cost"
+                }
+            }
+
+    		"AbilitySpecial"
+    		{
+    			"01"
+    			{
+    				"var_type"					"FIELD_INTEGER"
+    				"gold_cost"				    "25 300"
+    			}
+    		}
+    	}
+
+    	    	"blood_stone_upgrade"
+            	{
+            	    "BaseClass" "ability_datadriven"
+            	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                    "AbilityTextureName"    "upgrade_gem"
+
+                    "MaxLevel"  "2"
+
+            	    "AbilityManaCost" "0"
+                    "AbilityCooldown" "10"
+                    "AbilityGoldCost"   "25 300"
+
+                    "OnSpellStart"
+                    {
+                        "RunScript"
+                        {
+                            "Target"    "CASTER"
+                            "ScriptFile"    "gems/base.lua"
+                            "Function"  "Upgrade"
+                            "goldCost"  "%gold_cost"
+                        }
+                    }
+
+            		"AbilitySpecial"
+            		{
+            			"01"
+            			{
+            				"var_type"					"FIELD_INTEGER"
+            				"gold_cost"				    "25 300"
+            			}
+            		}
+            	}
+
+            	    	"dark_emerald_upgrade"
+                    	{
+                    	    "BaseClass" "ability_datadriven"
+                    	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                            "AbilityTextureName"    "upgrade_gem"
+
+                            "MaxLevel"  "2"
+
+                    	    "AbilityManaCost" "0"
+                            "AbilityCooldown" "10"
+                            "AbilityGoldCost"   "25 300"
+
+                            "OnSpellStart"
+                            {
+                                "RunScript"
+                                {
+                                    "Target"    "CASTER"
+                                    "ScriptFile"    "gems/base.lua"
+                                    "Function"  "Upgrade"
+                                    "goldCost"  "%gold_cost"
+                                }
+                            }
+
+                    		"AbilitySpecial"
+                    		{
+                    			"01"
+                    			{
+                    				"var_type"					"FIELD_INTEGER"
+                    				"gold_cost"				    "25 300"
+                    			}
+                    		}
+                    	}
+
+                    	    	"gold_upgrade"
+                            	{
+                            	    "BaseClass" "ability_datadriven"
+                            	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                                    "AbilityTextureName"    "upgrade_gem"
+
+                                    "MaxLevel"  "2"
+
+                            	    "AbilityManaCost" "0"
+                                    "AbilityCooldown" "10"
+                                    "AbilityGoldCost"   "25 300"
+
+                                    "OnSpellStart"
+                                    {
+                                        "RunScript"
+                                        {
+                                            "Target"    "CASTER"
+                                            "ScriptFile"    "gems/base.lua"
+                                            "Function"  "Upgrade"
+                                            "goldCost"  "%gold_cost"
+                                        }
+                                    }
+
+                            		"AbilitySpecial"
+                            		{
+                            			"01"
+                            			{
+                            				"var_type"					"FIELD_INTEGER"
+                            				"gold_cost"				    "25 300"
+                            			}
+                            		}
+                            	}
+
+        	"jade_upgrade"
+        	{
+        	    "BaseClass" "ability_datadriven"
+        	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                "AbilityTextureName"    "upgrade_gem"
+
+                "MaxLevel"  "2"
+
+        	    "AbilityManaCost" "0"
+                "AbilityCooldown" "10"
+                "AbilityGoldCost"   "25 300"
+
+                "OnSpellStart"
+                {
+                    "RunScript"
+                    {
+                        "Target"    "CASTER"
+                        "ScriptFile"    "gems/base.lua"
+                        "Function"  "Upgrade"
+                        "goldCost"  "%gold_cost"
+                    }
+                }
+
+        		"AbilitySpecial"
+        		{
+        			"01"
+        			{
+        				"var_type"					"FIELD_INTEGER"
+        				"gold_cost"				    "25 300"
+        			}
+        		}
+        	}
+
+        	    	"pink_diamond_upgrade"
+                	{
+                	    "BaseClass" "ability_datadriven"
+                	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                        "AbilityTextureName"    "upgrade_gem"
+
+                        "MaxLevel"  "2"
+
+                	    "AbilityManaCost" "0"
+                        "AbilityCooldown" "10"
+                        "AbilityGoldCost"   "25 300"
+
+                        "OnSpellStart"
+                        {
+                            "RunScript"
+                            {
+                                "Target"    "CASTER"
+                                "ScriptFile"    "gems/base.lua"
+                                "Function"  "Upgrade"
+                                "goldCost"  "%gold_cost"
+                            }
+                        }
+
+                		"AbilitySpecial"
+                		{
+                			"01"
+                			{
+                				"var_type"					"FIELD_INTEGER"
+                				"gold_cost"				    "25 300"
+                			}
+                		}
+                	}
+
+                	    	"red_crystal_upgrade"
+                        	{
+                        	    "BaseClass" "ability_datadriven"
+                        	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                                "AbilityTextureName"    "upgrade_gem"
+
+                                "MaxLevel"  "2"
+
+                        	    "AbilityManaCost" "0"
+                                "AbilityCooldown" "10"
+                                "AbilityGoldCost"   "25 300"
+
+                                "OnSpellStart"
+                                {
+                                    "RunScript"
+                                    {
+                                        "Target"    "CASTER"
+                                        "ScriptFile"    "gems/base.lua"
+                                        "Function"  "Upgrade"
+                                        "goldCost"  "%gold_cost"
+                                    }
+                                }
+
+                        		"AbilitySpecial"
+                        		{
+                        			"01"
+                        			{
+                        				"var_type"					"FIELD_INTEGER"
+                        				"gold_cost"				    "25 300"
+                        			}
+                        		}
+                        	}
+
+        	"uranium_238_upgrade"
+        	{
+        	    "BaseClass" "ability_datadriven"
+        	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+                "AbilityTextureName"    "upgrade_gem"
+
+                "MaxLevel"  "2"
+
+        	    "AbilityManaCost" "0"
+                "AbilityCooldown" "10"
+                "AbilityGoldCost"   "25 300"
+
+                "OnSpellStart"
+                {
+                    "RunScript"
+                    {
+                        "Target"    "CASTER"
+                        "ScriptFile"    "gems/base.lua"
+                        "Function"  "Upgrade"
+                        "goldCost"  "%gold_cost"
+                    }
+                }
+
+        		"AbilitySpecial"
+        		{
+        			"01"
+        			{
+        				"var_type"					"FIELD_INTEGER"
+        				"gold_cost"				    "25 300"
+        			}
+        		}
+        	}
+
+    	"yellow_sapphire_upgrade"
+    	{
+    	    "BaseClass" "ability_datadriven"
+    	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+            "AbilityTextureName"    "upgrade_gem"
+
+            "MaxLevel"  "2"
+
+    	    "AbilityManaCost" "0"
+            "AbilityCooldown" "10"
+            "AbilityGoldCost"   "25 300"
+
+            "OnSpellStart"
+            {
+                "RunScript"
+                {
+                    "Target"    "CASTER"
+                    "ScriptFile"    "gems/base.lua"
+                    "Function"  "Upgrade"
+                    "goldCost"  "%gold_cost"
+                }
+            }
+
+    		"AbilitySpecial"
+    		{
+    			"01"
+    			{
+    				"var_type"					"FIELD_INTEGER"
+    				"gold_cost"				    "25 300"
+    			}
+    		}
+    	}
+
+    	"paraiba_tourmaline_upgrade"
+    	{
+    	    "BaseClass" "ability_datadriven"
+    	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+            "AbilityTextureName"    "upgrade_gem"
+
+            "MaxLevel"  "2"
+
+    	    "AbilityManaCost" "0"
+            "AbilityCooldown" "10"
+            "AbilityGoldCost"   "25 300"
+
+            "OnSpellStart"
+            {
+                "RunScript"
+                {
+                    "Target"    "CASTER"
+                    "ScriptFile"    "gems/base.lua"
+                    "Function"  "Upgrade"
+                    "goldCost"  "%gold_cost"
+                }
+            }
+
+    		"AbilitySpecial"
+    		{
+    			"01"
+    			{
+    				"var_type"					"FIELD_INTEGER"
+    				"gold_cost"				    "25 300"
+    			}
+    		}
+    	}
 
 	"base_buy_hp"
 	{

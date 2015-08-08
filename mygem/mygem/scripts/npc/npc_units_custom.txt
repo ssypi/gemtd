@@ -3079,6 +3079,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "yellow_sapphire_upgrade"
 
     // Custom
     "UnitName"                 "Yellow Sapphire"
@@ -3112,6 +3113,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "black_opal_upgrade"
 
     // Custom
     "UnitName"                 "Black Opal"
@@ -3145,6 +3147,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "star_ruby_upgrade"
 
     // Custom
     "UnitName"                 "Star Ruby"
@@ -3178,6 +3181,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "pink_diamond_upgrade"
 
     // Custom
     "UnitName"                 "Pink Diamond"
@@ -3211,6 +3215,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "jade_upgrade"
 
     // Custom
     "UnitName"                 "Jade"
@@ -3244,6 +3249,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "uranium_238_upgrade"
 
     // Custom
     "UnitName"                 "Uranium 238"
@@ -3277,6 +3283,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "silver_upgrade"
 
     // Custom
     "UnitName"                 "Silver"
@@ -3310,6 +3317,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "gold_upgrade"
 
     // Custom
     "UnitName"                 "Gold"
@@ -3343,6 +3351,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "dark_emerald_upgrade"
 
     // Custom
     "UnitName"                 "Dark Emerald"
@@ -3376,6 +3385,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "blood_stone_upgrade"
 
     // Custom
     "UnitName"                 "Blood Stone"
@@ -3436,6 +3446,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "red_crystal_upgrade"
 
     // Custom
     "UnitName"                 "Red Crystal"
@@ -4014,6 +4025,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "malachite_upgrade"
 
     // Custom
     "UnitName"                 "Malachite"
@@ -4047,6 +4059,7 @@
 
     "Ability1"                 "tower_invulnerability"
     "Ability2"                 "tower_attack_scripts"
+    "Ability3"                 "paraiba_tourmaline_upgrade"
 
     // Custom
     "UnitName"                 "Paraiba Tourmaline"

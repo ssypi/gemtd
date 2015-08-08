@@ -132,7 +132,6 @@ function GemCombineSpecial(keys)
     end
     --local pos = gem:GetAbsOrigin()
     --local team = gem:GetTeam()
-
     CustomGameEventManager:Send_ServerToPlayer(player, "add_special_gem", {gemName = newGem:GetUnitName()})
 end
 
