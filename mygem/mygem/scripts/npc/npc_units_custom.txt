@@ -4029,7 +4029,7 @@
 
     // Custom
     "UnitName"                 "Malachite"
-    "AttackTargets"            "GEM_ATTACK_AIR"
+    "AttackTargets"            "GEM_ATTACK_BOTH"
     "CombinedFrom"
      {
              "gem_chipped_emerald" "1"
