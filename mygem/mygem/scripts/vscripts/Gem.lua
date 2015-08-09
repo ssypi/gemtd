@@ -39,16 +39,28 @@ Gem.qualities = {
 
 
 -- cost: 20, 50, 80, 110, 140, 170, 200, 230
+--Gem.upgradeLevels = {
+--    { 100 },
+--    { 70, 30 },
+--    { 60, 30, 10 },
+--    { 50, 30, 20 },
+--    { 40, 30, 20, 10 },
+--    { 30, 30, 30, 10 },
+--    { 20, 30, 30, 20 },
+--    { 10, 30, 30, 30 },
+--    { 0, 30, 30, 30, 10 }
+--}
+
 Gem.upgradeLevels = {
     { 100 },
-    { 70, 30 },
-    { 60, 30, 10 },
-    { 50, 30, 20 },
-    { 40, 30, 20, 10 },
-    { 30, 30, 30, 10 },
-    { 20, 30, 30, 20 },
-    { 10, 30, 30, 30 },
-    { 0, 30, 30, 30, 10 }
+    { 100, 30 },
+    { 100, 40, 10 },
+    { 100, 50, 20 },
+    { 100, 60, 30, 10 },
+    { 100, 70, 40, 10 },
+    { 100, 80, 50, 20 },
+    { 100, 90, 60, 30 },
+    { 0, 100, 70, 40, 10 }
 }
 
 function Gem:InitCustomKvData()
@@ -122,7 +134,7 @@ function Gem:CreateGem(unitName, position, player, createBlocker)
     end
 
     gem:AddAbility("gem_script_proxy")
-    ability = gem:FindAbilityByName("gem_script_proxy")
+    local ability = gem:FindAbilityByName("gem_script_proxy")
     ability:SetLevel(1)
 
     --    if _G[unitName] ~= nil then
