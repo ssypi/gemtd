@@ -1,4 +1,12 @@
 {
+  "ruby" : {
+    "range" : [800, 800, 800, 900]
+  },
+
+  "emerald" : {
+    "range" : [500, 550, 600, 700, 900]
+  },
+
   "silver" : {
     "model" : [
       "models/buildings/building_racks_melee_reference.vmdl",
@@ -6,7 +14,7 @@
       "models/buildings/building_racks_melee_reference.vmdl"
     ],
     "upgrade_to" : ["sterling_silver", "silver_knight"],
-    "upgrade_cost" : [25, 125, 250]
+    "upgrade_cost" : [25, 300]
   },
 
   "malachite" : {
@@ -16,7 +24,7 @@
       "models/buildings/building_racks_melee_reference.vmdl"
     ],
     "upgrade_to" : ["vivid_malachite", "mighty_malachite"],
-    "upgrade_cost" : [666, 666, 666]
+    "upgrade_cost" : [25, 280]
   },
 
   "star_ruby" : {
@@ -26,7 +34,7 @@
       "models/buildings/building_racks_melee_reference.vmdl"
     ],
     "upgrade_to" : ["fire_star", "blood_star"],
-    "upgrade_cost" : [666, 666]
+    "upgrade_cost" : [30, 290]
   },
 
   "jade" : {
@@ -36,7 +44,7 @@
       "models/buildings/building_racks_melee_reference.vmdl"
     ],
     "upgrade_to" : ["china_jade", "lucky_china_jade"],
-    "upgrade_cost" : [666, 666]
+    "upgrade_cost" : [45, 250]
   },
 
   "gold" : {
@@ -45,42 +53,51 @@
       "models/buildings/building_racks_melee_reference.vmdl"
     ],
     "upgrade_to" : ["egyptian_gold"],
-    "upgrade_cost" : [666]
+    "upgrade_cost" : [210],
+    "range" : [800, 800]
   },
 
   "black_opal" : {
     "upgrade_to" : ["mystic_black_opal"],
-    "upgrade_cost" : [666]
+    "upgrade_cost" : [300]
   },
 
   "blood_stone" : {
     "upgrade_to" : ["ancient_blood_stone"],
-    "upgrade_cost" : [666]
+    "upgrade_cost" : [250]
 
   },
-  "uranium_238" : {},
+
+  "uranium_238" : {
+    "upgrade_cost" : [190]
+  },
+
   "yellow_sapphire" : {
     "upgrade_to" : ["star_yellow_sapphire"],
-    "upgrade_cost" : [666]
-
+    "upgrade_cost" : [180],
+    "range" : [800]
   },
+
   "red_crystal" : {
     "upgrade_to" : ["red_facet", "roze_quartz_crystal"],
-    "upgrade_cost" : [666, 666]
+    "upgrade_cost" : [100, 150]
 
   },
+
   "dark_emerald" : {
     "upgrade_to" : ["enchanted_emerald"],
-    "upgrade_cost" : [666]
-
+    "upgrade_cost" : [250],
+    "range" : [550, 700]
   },
+
   "pink_diamond" : {
     "upgrade_to" : ["great_pink_diamond"],
-    "upgrade_cost" : [666]
+    "upgrade_cost" : [175]
   },
+
   "paraiba_tourmaline" : {
     "upgrade_to" : ["paraiba_tourmaline_facet"],
-    "upgrade_cost" : [666]
+    "upgrade_cost" : [350]
   }
 
 }
