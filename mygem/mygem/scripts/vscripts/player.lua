@@ -130,4 +130,5 @@ function Player:ShowError(message)
         player_ID = self:GetPlayerID(),
         _error = message
     })
+    CustomGameEventManager:Send_ServerToPlayer(self, "show_error_message", { error = message })
 end

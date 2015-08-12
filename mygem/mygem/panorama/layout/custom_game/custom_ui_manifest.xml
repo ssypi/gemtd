@@ -12,5 +12,6 @@
     <Panel>
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/gem_guide.xml" />
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/notification.xml" />
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/error_message.xml" />
     </Panel>
 </root>
