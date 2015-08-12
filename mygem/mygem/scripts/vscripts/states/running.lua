@@ -160,8 +160,4 @@ function Running:End()
     print("Running state ended for " .. player:GetPlayerID())
     self.nextState = Build.new(player)
     player.currentRound = self.currentRound + 1
-
-    if player.currentRound % 4 == 0 then
-        CustomGameEventManager:Send_ServerToPlayer(player, "show_notification", { notification = "Next round is air" })
-    end
 end

@@ -28,7 +28,12 @@ end
 
 function Build:Begin()
     local player = self.player
-    ClearInvalidGems(player)
+    if player.currentRound % 4 == 0 then
+        CustomGameEventManager:Send_ServerToPlayer(player, "show_notification", { notification = "Build 5 new gems. Next round is air" })
+    else
+        CustomGameEventManager:Send_ServerToPlayer(player, "show_notification", { notification = "Build 5 new gems" })
+    end
+        ClearInvalidGems(player)
     print("Build state started for " .. player:GetPlayerID())
     self.done = false
     GiveBuildAbility(player)
