@@ -12,6 +12,8 @@ require("gems/special/silver")
 require("gems/special/star")
 require("gems/special/jade")
 require("gems/special/gold")
+require("gems/special/dark_emerald")
+
 
 if Gem == nil then
     Gem = {}
@@ -116,13 +118,14 @@ function Gem:CreateGem(unitName, position, player, createBlocker)
 
     gem:InitCustomKvData()
 --    local unitName = gem.unitName:gsub("%s+", "")
-    local quality, type = gem:GetUnitName():match("gem_(.+)_(.+)")
+    local quality, type = gem:GetUnitName():match("gem_([^_]+)_(.+)")
     print("Qual:" .. quality)
     print("Type:" .. type)
     gem.quality = quality
     gem.qualityNum = vlua.find(Gem.qualities, quality)
     gem.type = type
     local class = type:gsub("^%l", string.upper)
+    class = class:match("([^_]+)")
     if vlua.find(gem:GetUnitName(), "star") ~= nil then
         class = "Star"
     end

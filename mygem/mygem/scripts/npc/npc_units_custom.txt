@@ -3339,8 +3339,10 @@
     "RingRadius"               "100"
     "StatusHealth"               "50"
     "AttackCapabilities"       "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"          "89"
-    "AttackDamageMax"          "90"
+    "AttackDamageMin"          "2"
+    //"AttackDamageMin"          "89"
+    "AttackDamageMax"          "3"
+    //"AttackDamageMax"          "90"
     "AttackRate"               "0.8"
     "AttackAnimationPoint"     "0.0"
     "AttackAcquisitionRange"   "550"
@@ -3355,7 +3357,7 @@
 
     // Custom
     "UnitName"                 "Dark Emerald"
-    "AttackTargets"            "GEM_ATTACK_AIR"
+    "AttackTargets"            "GEM_ATTACK_BOTH"
     "CombinedFrom"
      {
              "gem_flawed_topaz" "1"

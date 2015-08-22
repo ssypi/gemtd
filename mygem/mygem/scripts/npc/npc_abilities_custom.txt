@@ -823,6 +823,57 @@
     // Tower Abilities
 	// ========================================================================
 
+	"dark_emerald_stun"
+	{
+	    "BaseClass" "ability_datadriven"
+	    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+	    "Modifiers"
+	    {
+	        "modifier_dark_emerald_stun"
+	        {
+	            "Passive"   "1"
+	            "IsHidden"  "1"
+	            "OnAttackLanded"
+	            {
+                    "Random"
+                    {
+                        "Chance" "%stun_chance"
+                        "OnSuccess"
+                        {
+                            "ApplyModifier"
+                            {
+                                "ModifierName"  "modifier_dark_emerald_stun_effect"
+                                "Target"        "TARGET"
+                                "Duration"      "%stun_duration"
+                            }
+                        }
+                    }
+	            }
+	        }
+	        "modifier_dark_emerald_stun_effect"
+	        {
+	            "States"
+	            {
+                    "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "stun_chance"   "75 75"
+	        }
+	        "02"
+	        {
+	            "var_type"      "FIELD_FLOAT"
+	            "stun_duration" "2.0 3.0"
+	        }
+	    }
+	}
+
     "jade_lucky"
     {
 	    "BaseClass" "ability_datadriven"
